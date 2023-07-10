@@ -1,0 +1,153 @@
+.main-container {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+.container-sub {
+  background-color: white;
+}
+.container-sub-header {
+  border-radius: 10px;
+  box-shadow: 2px 2px lightgray;
+  background-color: white;
+}
+.header-buttons > button {
+  width: 45%;
+  border: none;
+  height: 40px;
+  margin-left: 15px;
+  border: 1px solid gray;
+}
+@media screen and (min-width: 960) {
+  .header-buttons{
+  width: 25%;
+
+  }
+}
+.body-buttons > button {
+  width: 45%;
+  border: none;
+  height: 40px;
+  margin-left: 20px;
+  border: 1px solid gray;
+}
+.main-container-sub {
+  margin-bottom: 5px;
+}
+.openbtn {
+  display: flex;
+  /* width: 15%; */
+  margin-left: 5%;
+  margin-top: 30px;
+}
+.openbtn > button {
+  border: none;
+  background-color: #005FBE;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: 15px;
+  font-weight: 20px;
+}
+.header-cols {
+  display: flex;
+  margin-left: 5%;
+}
+.header-cols #p1 {
+  margin-top: 30px;
+  font-size: 12px;
+  font-weight: bolder;
+}
+.header-cols #p2 {
+  margin-left: 16%;
+  margin-top: 30px;
+  font-size: 12px;
+}
+.header-cols #p3 {
+  margin-left: 8%;
+  margin-top: 30px;
+  font-size: 12px;
+}
+.header-cols #p4 {
+  margin-left: 12%;
+  margin-top: 30px;
+  font-size: 12px;
+}
+.header-cols #p5 {
+  margin-left: 13%;
+  margin-top: 30px;
+  font-size: 12px;
+}
+.header-cols-hr {
+  width: 14rem;
+  margin-left: 5%;
+}
+.header-cols-hr > hr {
+  margin-top: 0px;
+}
+
+@media screen and (max-width:1310px) {
+  .header-cols-hr {
+    width: 12rem;
+    margin-left: 5%;
+  }
+}
+
+@media screen and (max-width:958px) {
+  .header-cols-hr {
+    width: 10rem;
+    margin-left: 5%;
+  }
+}
+
+
+.buildbtn {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+  .buildContent {
+    display: none;
+  }
+
+
+  @keyframes slideDown {
+    0% {
+      transform: translate3d(0, -10%, 0);
+    }
+
+    100% {
+      transform: none;
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translate3d(0, 10%, 0);
+    }
+
+    100% {
+      transform: none;
+    }
+  }
+
+  .u--slideUp {
+    animation: slideUp 1s;
+  }
+
+  .u--slideDown {
+
+    animation: slideDown 1s;
+
+  }
+  .btn-build-completness {
+    width: 200px;
+    height: 30px;
+  }
+  .btn-build-completness-open {
+    width: 230px;
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }

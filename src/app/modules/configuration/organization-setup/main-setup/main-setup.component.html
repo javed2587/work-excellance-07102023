@@ -1,0 +1,25 @@
+<!-- <p>main-setup works!</p> -->
+
+<div *ngIf="showComponent" class="menu-header-adjustment">
+  <app-menu-header [pageName]="setup"></app-menu-header>
+  <div *ngIf="showErrors" class="error-messages text-center w-50">
+    <div class="bg-danger text-light mt-1 rounded-3" *ngFor="let e of errorMessages">
+      {{ e }}
+    </div>
+  </div>
+  <app-org-form (sendOrganizationName)="getOrganizationName($event)"
+    (sendOrganizationType)="getOrganizationType($event)" (sendOrganizationNumber)="getOrganizationNumber($event)"
+    (sendOrganizationAddress1)="getOrganizationAddress1($event)"
+    (sendOrganizationAddress2)="getOrganizationAddress2($event)" (sendOrganizationCity)="getOrganizationCity($event)"
+    (sendOrganizationState)="getOrganizationState($event)" (sendOrganizationZip)="getOrganizationZip($event)"
+    (sendMainContactList)="getOrganizationMainContact($event)"
+    (sendBillingContactList)="getOrganizationBillingContact($event)"
+    (sendTechnicalContactList)="getOrganizationTechnicalContact($event)"
+    [isSubmitted]="userUploadFlag" [organization]="organization"></app-org-form>
+  <div class="row ">
+    <div class="col-lg-12">
+      <button (click)="save()" pButton pRipple label="Save" icon="pi pi-check" class="pull-left ml-5"></button>
+    </div>
+  </div>
+  <app-create-org-levels (sendLevel)="getLevel($event)" [organization]="organization"></app-create-org-levels>
+</div>

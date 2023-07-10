@@ -1,0 +1,30 @@
+
+<p-dialog position="top" [draggable]="true" [(visible)]="display" [style]="{width:'70vw'}" [closable]="false"
+  styleClass="dialog-custom">
+  <ng-template pTemplate="header">
+    <i class="pi lock-open" style="font-size: 2rem"></i>
+    <div class="header-label">Page Configuration</div>
+  </ng-template>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="row form-dialog mt-3 ml-5 form-group">
+      <div class="col-auto px-0 mx-0 d-flex">
+        <label for="">First Name</label>
+        <input class="form-control mx-2" id="fname" type="text" formControlName="firstName">
+      </div>
+      <div class="col-auto px-0 mx-0 d-flex">
+        <label for="">Last Name</label>
+        <input class="form-control mx-2" id="lname" type="text" formControlName="lastName">
+      </div>
+      <div class="col-auto px-0 mx-0 d-flex">
+        <label for="">Last Name</label>
+        <input class="form-control mx-2" id="lname" type="text" formControlName="lastName">
+      </div>
+    </div>
+    <div class="button-dialog mt-4 text-center">
+      <button type="button" label="Save" class="btn btn-primary btn-sm  px-4 rounded-3 p-button"
+         [disabled]="!profileForm.valid">Save</button>
+      <button type="button" label="Cancel" class="btn btn-primary btn-sm px-3  rounded-3 p-button"
+        (click)="closeClick()">Cancel</button>
+    </div>
+  </form>
+</p-dialog>

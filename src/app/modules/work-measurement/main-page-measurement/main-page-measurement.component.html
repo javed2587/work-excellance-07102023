@@ -1,0 +1,27 @@
+<div class="div menu-header-adjustment">
+  <app-main-page [moduleNameVal]="currntModuleTitle" (sendPaintByLetters)="getPaintByLetters($event)"
+    (sendLockStatus)="getPageLockStatus($event)" (pushTeamLead)="getPageTeamLeader($event)"
+    (pushTeamMemebrs)="getPageTeamMembers($event)" [moduleNameVal]="currntModuleTitle"
+    [teamLeader]="pageMeta.team?.teamLeader" [teamMembers]="pageMeta.team?.teamMembers"
+    [totalRequiredFields]="totalFieldsRequired" [totalFieldsFilled]="totalFieldsFilled" [userRole]="userRole">
+
+  </app-main-page>
+
+  <!-- <app-main-page [moduleNameVal]="currntModuleTitle"
+  (sendLockStatus)="getLockStatus($event)"
+  > </app-main-page> -->
+
+  <app-date-header [pageName]="currntModuleTitle" [creationDate]="pageMeta.creationDate"
+    [intervalDuration]="pageMeta?.interval?.definition" [startDate]="pageMeta?.interval?.startDate"
+    [intervalEndDate]="pageMeta?.interval?.endDate" (sendCreationDate)="getCreationDate($event)"
+    (intervalEvent)="getPageInterval($event)" (sendAdjustFrequency)="getAdjustFrequency($event)"></app-date-header>
+  <app-phase-one [pageName]="pageName" [pageOwner]="pageOwner" [graphData]="this.pageData"
+    (sendWorkMeasurementList)="getWorkMeasurementList($event)" (sendPageName)="getPageName($event)"
+    (sendPeriod)="getPagePeriod($event)" (sendPageOwner)="getPageOwner($event)" (sendSavePage)="getSavePage($event)"
+    [lockstatus]="lockstatus"></app-phase-one>
+  <app-side-notes [moduleNameVal]="currntModuleTitle" [paintbyletters]="paintbyletters"></app-side-notes>
+  <!-- <app-phase-two></app-phase-two>
+  <app-phase-three></app-phase-three>
+  <app-phase-four></app-phase-four>
+  <app-phase-five></app-phase-five> -->
+</div>

@@ -1,0 +1,59 @@
+<div class="container-fluid px-4 mt-4">
+  <div class="toggler-contianer " *ngIf="showReports === false" class="openbtn">
+    <img height="30px" width="30px" src="../../../../assets/images/dashboard/Colors/Report-Color.svg" />
+    <button id="btn1" class="report-btn" (click)="changeShowBody()">
+      Reports
+      <i style="margin-left: 40px" class="fa-sharp fa-solid fa-chevron-down"></i>
+    </button>
+  </div>
+  <div *ngIf="showReports === true" class="openbtn">
+    <button id="btn1" class="report-btn-open" (click)="changeShowBody()">
+      <img
+        height="30px"
+        width="30px"
+        style="background-color: #005FBE"
+        src="../../../../assets/images/dashboard/White/Report.svg"
+      />
+      Reports
+      <i style="margin-left: 40px" class="fa-sharp fa-solid fa-chevron-up"></i>
+    </button>
+  </div>
+  <div class="card" *ngIf="showReports === true">
+    <div class="card-body">
+      <div class="row  ">
+        <div class="col-6 ">
+          <div class="them-colorAs-blue reports-custom"></div>
+        </div>
+        <div class="col-6 ">
+          <div class="them-colorAs-blue reports-custom"></div>
+        </div>
+      </div>
+
+      <div class="row" >
+        <div class="col-6 h-25 py-0" *ngFor="let reports of reportsArray; let i = index ">
+          <div class="input-group flex-nowrap" (click)="showDialog($event, i)"  >
+          <!-- <div class="input-group flex-nowrap" (click)="showDialog()"> -->
+            <span class="input-group-text mr-1"  >{{reports.index}}</span>
+            <div class="form-control" (click)="reportTitle(reports)">{{reports.title}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- <p-dialog header="Title" [(visible)]="display">
+      <app-table></app-table>
+
+
+      
+    </p-dialog> -->
+
+
+<!-- <p-overlayPanel  [style]="{ width: '500px'}" styleClass="overlay-overider"> -->
+
+
+<!-- </p-overlayPanel> -->
+

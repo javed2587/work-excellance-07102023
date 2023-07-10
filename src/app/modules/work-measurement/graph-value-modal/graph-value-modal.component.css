@@ -1,0 +1,36 @@
+.custom-card {
+    width: 715px;
+    height: 406px;
+    left: 69%;
+    bottom: 357px;
+ }
+ .bgColor {
+    background-color: rgb(251, 251, 251);
+ }
+ .btn-position{
+    position: relative;
+    top: 66px;
+    /* left: -2px; */
+    right: 20px;
+ }
+ .form-control {
+    font-size:12px !important;
+}
+.inner-card {
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: none;
+}
+.inner-card .row .col-4 {
+   margin-bottom: -12px;
+}
+
+:host ::ng-deep .p-calendar-w-btn .p-inputtext{
+   height: 32px !important;
+}
+
+:host ::ng-deep .p-calendar-w-btn .p-datepicker-trigger {
+   height: 32px !important;
+  
+}

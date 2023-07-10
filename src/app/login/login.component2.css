@@ -1,0 +1,105 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .login-form {
+    background-color: #fff;
+    padding: 40px 80px 40px 80px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  
+  .login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #FFC107;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+button{
+  margin-bottom: 10px;
+}
+button > i{
+  margin-right: 5px;
+}
+:host ::ng-deep .p-button{
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+
+ .google-btn {
+	 width: 400px;
+	 height: 42px;
+	 background-color: #4285f4;
+	 border-radius: 2px;
+	 box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+}
+ .google-btn .google-icon-wrapper {
+	 position: absolute;
+	 margin-top: 1px;
+	 margin-left: 1px;
+	 width: 40px;
+	 height: 40px;
+	 border-radius: 2px;
+	 background-color: #fff;
+}
+ .google-btn .google-icon {
+	 position: absolute;
+	 left: 0px;
+	 margin-top: 11px;
+	 margin-left: 11px;
+	 width: 18px;
+	 height: 18px;
+}
+ .google-btn .btn-text {
+  position: relative;
+  top: 11px;
+  font-weight: 500;
+	 margin: 11px 11px 0 0;
+	 color: #fff;
+	 font-size: 14px;
+	 letter-spacing: 0.2px;
+	 font-family: "Roboto";
+}
+ .google-btn:hover {
+	 box-shadow: 0 0 6px #4285f4;
+}
+ .google-btn:active {
+	 background: #1669f2;
+}
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 100%;
+  bottom: -70px;
+  right: 10px;
+  cursor: pointer;
+  user-select: none;
+  transform: translateY(-50%);
+}
+
+ 

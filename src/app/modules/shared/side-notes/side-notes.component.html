@@ -1,0 +1,27 @@
+<div *ngIf="showSidebar">
+  <p-sidebar [(visible)]="paintbyletters" position="right" [baseZIndex]="10000" [modal]="true" [showCloseIcon]="false"
+    [transitionOptions]="'600ms'">
+    <div *ngIf="moduleNameVal == 'Work System'" class="div">
+      <div class="container" *ngFor="let item of tooltipsWorkSystem; let i= index">
+        <div class="card text-center main__container shadow-sm">
+          <div class="card-header header__background">{{ item.title }}</div>
+          <!-- <button id="button-card">{{ i + 1 }}</button> -->
+          <div class="card-body body-text">
+            <p>{{ item.text }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="moduleNameVal == 'Work Improvement'" class="div">
+      <div class="container" *ngFor="let item of tooltipsWorkImprovement; let i= index">
+        <div class="card text-center main__container">
+          <div class="card-header header__background">{{ item.title }}</div>
+          <!-- <button id="button-card">{{ i + 1 }}</button> -->
+          <div class="card-body body-text">
+            <p>{{ item.text }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-sidebar>
+</div>

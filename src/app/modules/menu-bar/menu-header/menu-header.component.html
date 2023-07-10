@@ -1,0 +1,148 @@
+<div class="">
+  <!-- <div class="row" style="height: 4rem;">
+    <div class="col-12"> -->
+      <!-- <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item link1">
+                <img height="28ps" width="33px" id="img1"
+                  src="../../../../assets/images/header-images/worksystem.svg" />
+                <a class="nav-link active pointer" aria-current="page" href="#">{{
+                  moduleName
+                  }}</a>
+              </li>
+
+              <li class="nav-item link3" (click)="showPaintByLetters()">
+                <img class="pointer" height="40px" width="34px"
+                  src="../../../../assets/images/header-images/paintbynumbers.svg" />
+                <a class="nav-link active pointer">
+
+                  Paint by Letters {{(math.trunc((totalFieldsFilled/totalRequiredFields)*100))}}%</a>
+              </li>
+              <li class="nav-item link4">
+                <img class="pointer" id="img3" height="30px" width="35px"
+                  src="../../../../assets/images/header-images/Dashboard-1.svg" />
+                <a class="nav-link active pointer" href="#">Activities </a>"
+              </li>
+
+              <li class="nav-item link6">
+                <img class="pointer" id="img4" height="28px" width="35px"
+                  src="../../../../assets/images/header-images/thispageicon.svg" />
+                <a class="nav-link active pointer" (click)="downloadPDF() ">Page PDF</a>
+              </li>
+              <li *ngIf="lockstatus == false && userRole != userRoles.TEAM_MEMBER" class="nav-item link7" (click)="changeLockStatus()">
+                <img class="pointer" height="38px" width="38px"
+                  src="../../../../assets/images/header-images/unlock.svg" />
+                <a class="nav-link active pointer"> Lock</a>
+              </li>
+              <li *ngIf="lockstatus == true && userRole != userRoles.TEAM_MEMBER" class="nav-item link7" (click)="changeLockStatus()">
+                <img class="pointer" height="38px" width="38px"
+                  src="../../../../assets/images/header-images/lock.svg" />
+                <a class="nav-link active pointer"> Unlock</a>
+              </li>
+              <li class="nav-item link8">
+                <img class="pointer" id="img5" height="28px" width="35px"
+                  src="../../../../assets/images/header-images/new.svg" />
+                <a class="nav-link active pointer" href="#"> New</a>
+              </li>
+              <li class="nav-item link9">
+                <img class="pointer" id="img6" height="30px" width="35px"
+                  src="../../../../assets/images/header-images/opportunities.svg" />
+                <a class="nav-link active pointer" (click)="showTeamMember()">Team Members</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav> -->
+    <!-- </div> -->
+  <!-- </div> -->
+
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3" data-bs-theme="dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="navbar-brand">
+            <!-- <i class="fa-solid fa-users-gear mr-2" style="color: white;"></i> -->
+            <img height="28ps" width="33px" id="img1"
+            src="../../../../assets/images/header-images/worksystem_1.png" />
+            <span class="navbar-text">{{moduleName}}</span>
+            </a>
+          </li>
+          <li class="nav-item" (click)="showPaintByLetters()">
+            <a class="navbar-brand" >
+              <!-- <i class="fa-sharp fa-solid fa-paint-roller mr-2"></i> -->
+              <img class="pointer" height="28ps" width="33px"
+              src="../../../../assets/images/header-images/paintbynumbers.png" />
+              <span class="navbar-text">Paint by Letters {{(math.trunc((totalFieldsFilled/totalRequiredFields)*100))}}%</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="navbar-brand"  routerLink="/activities-page">
+              <!-- <i class="fa-solid fa-chart-pie"></i> -->
+              <img class="pointer" id="img3" height="23px" width="40px"
+              src="../../../../assets/images/header-images/dashboard-1.png" />
+             <span class="navbar-text">Activities</span>
+            </a>
+          </li>
+          <li class="nav-item" (click)="downloadPDF()">
+            <a class="navbar-brand">
+              <i class="fa-solid fa-file-pdf mr-2"></i>
+              <!-- <img class="pointer" id="img4" height="28ps" width="28px"
+              src="../../../../assets/images/header-images/thispageicon.png" /> -->
+              <span class="navbar-text">PDF</span>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="lockstatus == false && userRole != userRoles.TEAM_MEMBER" class="nav-item link7" (click)="changeLockStatus()">
+            <a class="navbar-brand">
+              <!-- <i class="fa-solid fa-unlock-keyhole mr-2"></i> -->
+              <img class="pointer" height="28px" width="28px"
+              src="../../../../assets/images/header-images/unlock.png" />
+              <span class="navbar-text">Lock</span>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="lockstatus == true && userRole != userRoles.TEAM_MEMBER" class="nav-item link7" (click)="changeLockStatus()">
+            <a class="navbar-brand">
+              <!-- <i class="fa-solid fa-unlock-keyhole mr-2"></i> -->
+              <img class="pointer" height="28px" width="33px"
+              src="../../../../assets/images/header-images/lock.png" />
+              <span class="navbar-text">Unlock</span>
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="navbar-brand">
+              <img class="pointer" id="img5" height="28px" width="35px"
+              src="../../../../assets/images/header-images/new.png" />
+              <span class="navbar-text">New</span>
+            </a>
+          </li> -->
+          <li class="nav-item" (click)="showTeamMember()">
+            <a class="navbar-brand">
+              <!-- <i class="fa-solid fa-lightbulb mr-2"></i> -->
+              <img class="pointer" id="img6" height="30px" width="35px"
+              src="../../../../assets/images/header-images/opportunities_1.png" />
+              <span class="navbar-text">Team Members</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<div *ngIf="TeamMember == true">
+  <app-team-member [teamLeader]="teamLeader" [closeTeamModel]="closeTeamModal" [teamMemberList]="teamMembers"
+    (sendTeamMembers)="getTeamMembers($event)" (sendTeamLead)="getTeamLead($event)"
+    (sendCloseFlag)="getFlagValue($event)">
+  </app-team-member>
+</div>

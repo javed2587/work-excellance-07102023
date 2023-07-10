@@ -1,0 +1,45 @@
+.navbar {
+    margin-left: 5.7rem;
+    margin-right: 0.89rem;
+    margin-top: 0.55rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+  #archivepdf,
+  #sendmail {
+    margin-left: 40px;
+    cursor: pointer;
+  }
+  #archivepdf > i,
+  #sendmail > i {
+    font-size: 30px;
+    margin-right: 8px;
+  }
+  @media only screen and (max-width: 684px) {
+    #archivepdf > i,
+    #sendmail > i {
+      font-size: 25px;
+      margin-right: 4px;
+    }
+  }
+  @media only screen and (max-width: 667px) {
+    #text1 {
+      font-size: 13px;
+    }
+    #archivepdf > i,
+    #sendmail > i {
+      font-size: 20px;
+      margin-right: 3px;
+    }
+    #archivepdf > a,
+    #sendmail > a {
+      font-size: 13px;
+    }
+  }
+
+
+  .A3iconStyle{
+    margin: 5px;
+    width: 30px;
+    height: 35px;
+  }

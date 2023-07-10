@@ -1,0 +1,45 @@
+<div class="contianer px-3" *ngFor="let lev of levels; let i =index">
+  <div class="top-section">
+    <div class="row row-custom">
+      <div class="col-1 d-flex justify-content-end text-center">
+        <button class="btn-style" (click)="toggle(i)">
+          <img src="../../../../assets/images/WorkSystem/UpArrow.png" alt="" *ngIf="up" />
+          <img src="../../../../assets/images/WorkSystem/DownArrow.png" alt="" *ngIf="down" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="div create-levels-container mx-3 ">
+    <div class="container-label">
+      <h5>{{lev?.mainTitle}}</h5>
+    </div>
+    <div class="card mx-4 custom-card" *ngIf="lev?.collapse">
+      <div class="card-body px-2 py-1">
+
+        <div class="row optional-row">
+          <div class="col-2 "></div>
+          <div class="col-10 py-0">
+          </div>
+        </div>
+
+        <div class="row first-row">
+          <div class="col-2 pr-0">
+          </div>
+          <div class="col-10 pt-0">
+          </div>
+        </div>
+
+        <div class="row second-row">
+          <div class="col-2 pr-0">
+
+          </div>
+          <div class="col-10">
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

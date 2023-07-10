@@ -1,0 +1,71 @@
+
+<div class="container-main shadow-lg">
+  <div style="margin-left: 40px; margin-right: 40px">
+    <div class="container-sub1">
+      <input type="text" placeholder="Search" />
+      <i id="icon1" class="fa-solid fa-magnifying-glass fa-lg"></i>
+      <img id="icon2" src="../../../../assets/note-2.svg" />
+      <img id="icon3" src="../../../../assets/Cross-01.svg" />
+      <img
+        id="icon4"
+        src="../../../assets/icons8-microsoft-teams-2019-240.png"
+      />
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th id="head-border" scope="col">Type</th>
+            <th
+              style="width: 2%; font-size: 12px"
+              id="head-border"
+              scope="col"
+            >
+              Status
+            </th>
+            <th style="width: 30%" id="head-border" scope="col">Description</th>
+            <th id="head-border" scope="col">Owner</th>
+            <th id="head-border" scope="col">
+              Due Date
+              <i class="fa-solid fa-arrow-down-wide-short"></i>
+            </th>
+            <th id="head-border" scope="col">Priority</th>
+            <th id="head-border" scope="col">Author</th>
+            <th id="head-border" scope="col">Date Created</th>
+            <th style="width: 25%" id="head-border" scope="col">
+              Comments/Note
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of TableData">
+            <td id="body-border" scope="row" class="pl-5">{{ data.type }}</td>
+            <td
+            *ngIf="data.type == 'T'; else notcompleted"
+            [ngStyle]="{
+              'background-color': data.status,
+              'border-radius': '50%'
+            }"
+            id="body-border"
+          ></td>
+          <ng-template #notcompleted>
+            <td
+              [ngStyle]="{
+                'background-color': data.status
+              }"
+              id="body-border"
+            ></td>
+          </ng-template>
+            <td id="body-border">{{ data.description }}</td>
+            <td id="body-border">{{ data.owner }}</td>
+            <td id="body-border">{{ data.dueDate }}</td>
+            <td id="body-border">{{ data.priority }}</td>
+            <td id="body-border">{{ data.author }}</td>
+            <td id="body-border">{{ data.dateCreated }}</td>
+            <td id="body-border">{{ data.comments }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

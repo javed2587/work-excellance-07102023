@@ -1,0 +1,83 @@
+<div class="contianer px-3 ">
+  <!-- <div class="top-section">
+    <div class="row row-custom">
+      <div class="col-1 d-flex justify-content-end text-center">
+        <button class="btn-style" (click)="toggle()">
+          <img src="../../../../assets/WorkSystem/UpArrow.png" alt="" *ngIf="up">
+          <img src="../../../../assets/WorkSystem/DownArrow.png" alt="" *ngIf="down">
+        </button>
+      </div>
+      <div class="col-11 d-flex justify-content-end text-center">
+      </div>
+    </div>
+  </div> -->
+  <div class="card card-top px-2 rounded shadow-sm contianer-bg mt-3" *ngIf="flagg">
+    <div class="row g-0">
+      <span *ngIf="showInfoModal" class="modal-position">
+        <app-info-modal [title]='moduleName' [description]="modalDescription"></app-info-modal>
+      </span>
+      <div class="col-md-6">
+        <div class="">
+          <div class="d-flex mt-4 mx-2">
+            <div class="label_contant">
+              <!-- <span (click)="openInfoCard()">
+                <img class="info-icon" src="../../../../assets/images/header-images/info-icons.svg" alt="">
+              </span> -->
+              <span class="mr-2">Name</span>
+              <span (click)="openLightCard()">
+                <img class="light-icon" src="../../../../assets/images/header-images/Bulb.svg" alt="">
+              </span>
+              <span *ngIf="showLightModal &&
+              phaseOneModalFlag == true &&
+              phaseTwoModalFlag == false &&
+              phaseFourModalFlag == false &&
+              phaseFiveModalFlag == false &&
+              phaseThreeModalFlag == false" class="infoTollbar-group">
+                <app-mian-tool-bar [openRatingTabFlag]="rating">
+                </app-mian-tool-bar>
+              </span>
+            </div>
+            <div class="input-group mb-1 pl-1">
+              <input type="text" class="input-height" placeholder="" aria-label="Username" maxlength="150"
+                aria-describedby="basic-addon1" [(ngModel)]="pageName" (input)="setPageName()" [disabled]="true">
+            </div>
+          </div>
+
+          <div class="d-flex my-3 mx-2">
+            <div class="label_contant">Page Owner </div>
+            <div class="input-group mb-1 pl-1">
+              <!-- <p-dropdown placeholder="Select Page Owner" [classList]="['p-user-dropdown']" [disabled]="true ? lockstatus == true : false"
+                style="width:100%;" [options]="users" optionLabel="email" [(ngModel)]="pageOwnerUser"
+                (ngModelChange)="setPageOwner($event)" [disabled]="true"></p-dropdown> -->
+              <input type="text" class="input-height" placeholder="" aria-label="Username"
+                aria-describedby="basic-addon1" [value]="pageOwner.name" (input)="setPageOwner($event)"
+                [disabled]="true">
+              <!-- <input type="text" class="form-control" placeholder="" aria-label="Username"
+                aria-describedby="basic-addon1" [(ngModel)]="pageOwner"  (input)="setPageOwner()" [disabled]="true ? lockstatus == true : false"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+
+          <div class="d-flex my-3 mx-2">
+            <div class="label_contant">
+              <span class="">Plan Purpose</span>
+            </div>
+            <div class="input-group mb-1 pl-1">
+              <textarea class="form-control" rows="4" id="comment" maxlength="250" (input)="setPlanPurpose()"
+                (click)="onClickShowMic()" [(ngModel)]="textAreaVal"
+                [disabled]="true ? lockstatus == true : false"> </textarea>
+              <div class="mic-position" (click)="startService()" *ngIf="showMicForTextArea">
+                <i class="fa fa-microphone microphone-ico"
+                  [ngStyle]="{'color': (voiceservice==true) ? 'red' : 'blue'}"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-add-rating></app-add-rating>

@@ -1,0 +1,148 @@
+:host ::ng-deep {
+  /* Responsive */
+}
+:host ::ng-deep .p-paginator .p-paginator-current {
+  margin-left: auto;
+}
+:host ::ng-deep #icon2 {
+  margin-left: 10px;
+  color: #C71AE4;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+:host ::ng-deep #icon3 {
+  margin-left: 10px;
+  color: red;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  margin-top: 10px;
+}
+:host ::ng-deep #icon4 {
+  margin-left: 10px;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+:host ::ng-deep .p-datatable .p-datatable-header {
+  border: none;
+}
+:host ::ng-deep .p-datatable .p-datatable-customers {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+:host ::ng-deep .p-datatable .p-datatable-header {
+  background: white;
+}
+:host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
+  background: #005FBE;
+  color: white;
+  border: 1px solid white;
+}
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+  border: 1px solid lightgray;
+}
+:host ::ng-deep .p-datatable .p-datatable-thead > tr > th:hover {
+  background: #005FBE;
+  color: white;
+}
+:host ::ng-deep .p-datatable .p-sortable-column .p-sortable-column-icon {
+  color: white;
+}
+:host ::ng-deep .p-progressbar {
+  height: 0.5rem;
+  background-color: #D8DADC;
+}
+:host ::ng-deep .p-progressbar .p-progressbar-value {
+  background-color: #607D8B;
+}
+:host ::ng-deep .descr {
+  width: 30%;
+}
+:host ::ng-deep .table-header {
+  display: flex;
+  justify-content: flex-end;
+}
+:host ::ng-deep .p-calendar .p-datepicker {
+  min-width: 25rem;
+}
+:host ::ng-deep .p-calendar .p-datepicker td {
+  font-weight: 400;
+}
+:host ::ng-deep .due {
+  width: 7%;
+}
+:host ::ng-deep .p-datatable.p-datatable-customers .p-datatable-header {
+  padding: 1rem;
+  text-align: left;
+  font-size: 1.5rem;
+}
+:host ::ng-deep .p-datatable.p-datatable-customers .p-paginator {
+  padding: 1rem;
+}
+:host ::ng-deep .p-datatable.p-datatable-customers .pri {
+  width: 8.5%;
+  text-align: center;
+}
+:host ::ng-deep .p-datatable.p-datatable-customers .status1 {
+  background-color: red;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+}
+:host ::ng-deep .p-datatable.p-datatable-customers .p-datatable-thead > tr > th {
+  text-align: left;
+}
+:host ::ng-deep .p-datatable.p-datatable-customers .p-datatable-tbody > tr > td {
+  cursor: auto;
+}
+:host ::ng-deep .p-datatable.p-datatable-customers .p-dropdown-label:not(.p-placeholder) {
+  text-transform: uppercase;
+}
+:host ::ng-deep .p-datatable-customers .p-datatable-tbody > tr > td .p-column-title {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  :host ::ng-deep .p-datatable.p-datatable-customers .p-selectable-row, :host ::ng-deep .p-datatable.p-datatable-customers .p-selectable-row > td, :host ::ng-deep .p-datatable.p-datatable-customers th {
+    font-size: 1rem;
+  }
+  :host ::ng-deep .p-datatable.p-datatable-customers .descr {
+    width: 20%;
+    text-align: center;
+  }
+  :host ::ng-deep .p-datatable.p-datatable-customers .due {
+    width: 12%;
+  }
+}
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  :host ::ng-deep .p-datatable.p-datatable-customers .p-selectable-row, :host ::ng-deep .p-datatable.p-datatable-customers .p-selectable-row > td, :host ::ng-deep .p-datatable.p-datatable-customers th {
+    font-size: 12px;
+  }
+  :host ::ng-deep .p-datatable.p-datatable-customers .descr {
+    width: 15%;
+    text-align: center;
+  }
+  :host ::ng-deep .p-datatable.p-datatable-customers .due {
+    width: 12%;
+  }
+}
+@media screen and (max-width: 767px) {
+  :host ::ng-deep .p-datatable.p-datatable-customers .p-selectable-row, :host ::ng-deep .p-datatable.p-datatable-customers .p-selectable-row > td, :host ::ng-deep .p-datatable.p-datatable-customers th {
+    font-size: 12px;
+  }
+  :host ::ng-deep .p-datatable.p-datatable-customers .descr {
+    width: 15%;
+    text-align: center;
+  }
+  :host ::ng-deep .p-datatable.p-datatable-customers .due {
+    width: 12%;
+  }
+  :host ::ng-deep .p-datatable.p-datatable-customers .pri {
+    width: 15%;
+  }
+}/*# sourceMappingURL=ptable-2.component.css.map */

@@ -1,0 +1,93 @@
+.card-top{
+  max-height: 325px;
+  background-color: rgb(255, 255, 255);
+}
+.main-card {
+  max-height: 250px;
+  overflow-y: auto;
+  border: none;
+}
+.card-body{
+  padding: 5px !important;
+  height: 245px;
+  overflow-y: auto;
+}
+.top-section{
+  height: 29px;
+}
+.heading{
+  display: flex;
+  --bs-gutter-x: -0.5rem !important;
+}
+.heading .col{
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+.head{
+  padding-top: 2px;
+  padding-bottom: 0px;
+  height: 25px !important; 
+}
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* font-size: 10px; */
+  text-align: center;
+  justify-content: end;
+
+}
+.imag-icon{
+  width: 40px;
+  height: 20px;
+  margin: 0 0 3px 9px;
+}
+.contianer-bg {
+  background-color: #fafafa;
+}
+
+.btn-down{
+  width: 420px;
+  padding: 10px ;
+  margin-bottom: 10px;
+  height: 40px;
+}
+.btn-up{
+  position: relative;
+  top: 17px;
+  left: 70px;
+  
+}
+
+.input-height2 {
+  padding-left: 10px;
+  height: 26px;
+  width:45vw;
+  border-radius: 0.375rem;
+  border: 1px solid #dee2e6;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.input-height2:focus{
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #ffe69c;
+  border-color: #FFC107;
+}
+
+
+/* On screens that are 1360px or less, set the background color to blue */
+@media screen and (max-width: 1360px) {
+  .input-height2 {
+    width:44vw;
+  }
+}
+
+  @media screen and (max-width: 1260px) {
+    .input-height2 {
+      width:43vw;
+    }
+  }
+      @media screen and (max-width: 1260px) {
+        .input-height2 {
+          width:42vw;
+        }
+      }

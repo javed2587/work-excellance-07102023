@@ -1,0 +1,82 @@
+
+  <div class="container-fluid mt-5 mb-3">
+      <div class="card rounded shadow-sm mx-4 bg-color">
+        <div class="card-body ">
+       <div class="row border-bottom">
+          <div class="col-4">Organization</div>
+          <div class="col-8">
+            <div class="row">
+              <div class="col-4">Main Contact</div>
+              <div class="col-4">Billing Contact</div>
+              <div class="col-4">Technical Contact</div>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="row">
+              <label class="col-2 col-form-label">Name</label>
+              <div class="col-10"><input type="text" class="form-control py-1"></div>
+          </div>
+          <!-- <div class="row">
+            <label class="col-2 col-form-label">Address 1</label>
+            <div class="col-10"><input type="text" class="form-control py-1"></div>
+        </div> -->
+        <div class="row">
+          <label class="col-2 col-form-label">Address 2</label>
+          <div class="col-10"><input type="text" class="form-control py-1"></div>
+      </div>
+          <div class="row">
+            <label class="col-2 col-form-label pr-1">Type</label>
+            <div class="col-4 py-1"><input type="text" class="form-control"></div>
+            <label class="col-2 col-form-label px-1">Address 1</label>
+            <div class="col-4 py-1"><input type="text" class="form-control py-1" ></div>
+          </div>
+          <div class="row">
+            <label class="col-2 col-form-label pr-1">Number</label>
+            <div class="col-4 py-1"><input type="number" class="form-control py-1" placeholder="+1(000) 000-0000"></div>
+
+            <label class="col-2 col-form-label px-1">Address 2</label>
+            <div class="col-4 py-1"><input type="text" class="form-control py-1"></div>
+          </div>
+          <div class="row">
+            <label class="col-2 col-offset-6 col-form-label">City</label>
+            <div class="col-4 py-1"><input type="text" class="form-control"></div>
+            <label class="col-2 col-offset-6 col-form-label py-1">State</label>
+            <div class="col-4 py-1"><input type="text" class="form-control py-1"></div>
+          </div>
+          <div class="row">
+            <label class="col-2 col-offset-6 col-form-label py-1">Zip</label>
+            <div class="col-4 py-1"><input type="text" class="form-control py-1"></div>
+          </div>
+        </div>
+
+        <div class="col-8">
+          <div class="row">
+            <div class="col-4 border-start">
+              <div class="row" *ngFor="let contact of contactList">
+                <div class="col-4 py-1">{{contact.label}}</div>
+                <div class="col-8 py-1"><input type="text" class="form-control" placeholder={{contact.placeHolder}}></div>
+              </div>
+            </div>
+            <div class="col-4 border-start">
+              <div class="row" *ngFor="let contact of contactList">
+                <div class="col-4 py-1">{{contact.label}}</div>
+                <div class="col-8 py-1"><input type="text" class="form-control" placeholder={{contact.placeHolder}}></div>
+              </div>
+            </div>
+            <div class="col-4 border-start">
+              <div class="row" *ngFor="let contact of contactList">
+                <div class="col-4 py-1">{{contact.label}}</div>
+                <div class="col-8 py-1"><input type="text" class="form-control" placeholder={{contact.placeHolder}}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+  </div>
+</div>
+
+
+<h1>Hello World</h1>

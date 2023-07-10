@@ -1,0 +1,41 @@
+<div class="div menu-header-adjustment">
+<app-filter-nav [isSendMailActive]="sendMailActivated" (sendFilters)="getFilters($event)" (sendmail)="recievemailData($event)"></app-filter-nav>
+<!-- <app-activities-data></app-activities-data> -->
+<app-ptable [activities]="activities" (sendselectedActivities)="recieveSelectedActivities($event)" (sendCheckForEmail)="recieveCheckForEmail($event)"></app-ptable>
+</div>
+
+<!-- Modal -->
+
+
+
+  <p-dialog   [transitionOptions]="'0ms'" [draggable]="true" [visible]="display"  [style]="{width:'65vw'}" [closable]="false"
+  styleClass="dialog-custom" [modal]="true" appendToBody=true >
+  <ng-template pTemplate="header">
+    <i class="pi lock-open" style="font-size: 2rem"></i>
+    <div class="header-label"><b>Email</b></div>
+  </ng-template>
+  <div class="container mt-3">
+    <form>
+      <div class="form-group">
+        <label>To</label>
+        <input type="email" class="form-control"  placeholder="Email Address" [(ngModel)]= "email" [ngModelOptions]="{ standalone: true }">
+      </div>
+      <div class="form-group">
+        <label>Subject</label>
+        <input type="text" class="form-control" placeholder="Subject" [(ngModel)]= "subject" [ngModelOptions]="{ standalone: true }">
+      </div>
+        <div class="button-dialog  text-center mt-3">
+            <button type="button" label="Save" class="btn btn-primary btn-sm  px-4 rounded-3 p-button"
+              (click)="saveform()">Send</button>
+            <button type="button" label="Cancel" class="btn btn-primary btn-sm px-3  rounded-3 p-button"
+             (click)="closeform()" >Cancel</button>
+          </div>
+      <!-- <p-button (onClick)="closeDialog()" style="margin-top:10px">Submit</p-button> -->
+    </form>
+  </div>
+</p-dialog>
+
+
+
+<!-- Button trigger modal -->
+

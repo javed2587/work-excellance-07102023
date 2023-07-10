@@ -1,0 +1,47 @@
+<p-dialog position={{modelPosition}}  [transitionOptions]="'0ms'" [draggable]="true" [visible]="isDisplayModal"  [style]="{width:'65vw'}" [closable]="false"
+  styleClass="dialog-custom" [modal]="true">
+  <ng-template pTemplate="header">
+    <i class="pi lock-open" style="font-size: 2rem"></i>
+    <div class="header-label"><b>Opportunity</b></div>
+  </ng-template>
+     <div class="div p-10">
+        <div class="mt-1">
+            <p-editor [(ngModel)]="oppertunityValue.text" [style]="{'height':'127px'}" autoRun="true">
+                <ng-template pTemplate="header">
+                  <span class="ql-formats">
+                    <select class="ql-size">
+                      <option value="small">little</option>
+                      <option selected></option>
+                      <option value="large">Subtitle</option>
+                      <option value="huge">Title</option>
+                    </select>
+                  </span>
+                    <span class="ql-formats">
+                        <button type="button" class="ql-bold" aria-label="Bold"></button>
+                        <button type="button" class="ql-italic" aria-label="Italic"></button>
+                        <button type="button" class="ql-underline" aria-label="Underline"></button>
+                        <button class="ql-list" value="ordered"></button>
+                        <button class="ql-list" value="bullet"></button>
+                    </span>
+
+                      <span id="toolbar">
+                        <span class="ql-formats">
+                          <button class="ql-align ql-active" value=""></button>
+                          <button class="ql-align" value="center"></button>
+                          <button class="ql-align" value="right"></button>
+                          <button class="ql-align" value="justify"></button>
+                        </span>
+                      </span>
+                </ng-template>
+            </p-editor>
+
+          <div class="button-dialog  text-center mt-3">
+            <button type="button" label="Save" class="btn btn-primary btn-sm  px-4 rounded-3 p-button"
+              (click)="saveData()"> Save</button>
+            <button type="button" label="Cancel" class="btn btn-primary btn-sm px-3  rounded-3 p-button"
+              (click)="cancelModal()">Cancel</button>
+          </div>
+         </div>
+     </div>
+
+</p-dialog>

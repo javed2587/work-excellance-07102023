@@ -1,0 +1,124 @@
+
+:host ::ng-deep .p-dialog{
+    border-radius: 20px;
+    }
+    
+    :host ::ng-deep .p-dialog-header{
+      height: 15px;
+      background-color: #fdb719;
+    }
+    :host ::ng-deep .p-dialog-header>div
+      {
+        margin-left: 17vw;
+      }
+      :host ::ng-deep .p-dialog .p-dialog-content{
+          padding: 0px !important;
+      }
+    :host ::ng-deep .p-dialog {
+     margin-top: 8vw;
+     margin-right: 8vw;
+     border-radius: 35px;
+     
+    }
+    
+    .p-button {
+      margin-right: 5px; 
+    }
+    .header_div {
+      height: 100px;
+      width: 100px;
+      background-color: red;
+    }
+    form .form-dialog div>input{
+      height: 30px;
+      margin: 0px;
+      padding: 0px;
+      width: auto;
+    }
+    :host ::ng-deep .p-chkbox-label {
+       color: red;
+       background-color: green;
+    }
+   :host ::ng-deep .radio-style {
+     margin-bottom: 3px;
+   }
+  .rate_tray{
+    width: 95%;
+    padding: 0px;
+    height: 26px;
+    margin-left: 5px;
+    border: 1px solid #D7D7D7;
+    padding-left: 5px;
+    font-size: 16px;
+  }
+  .dabutton:focus {
+    background-color:yellow;
+}
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+      background-color: red;
+
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: rgb(255, 255, 255);
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+#basic-addon1 {
+  width: 68px;
+  font-size: smaller;
+}

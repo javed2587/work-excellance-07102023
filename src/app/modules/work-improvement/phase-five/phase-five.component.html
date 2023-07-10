@@ -1,0 +1,223 @@
+<div class="contianer px-3 ">
+  <div class="top-section">
+    <div class="row row-custom">
+      <div class="col-4">
+        <button class="btn-style btn-up" (click)="toggle()" *ngIf="up">
+          <i class="fa-solid fa-angle-up"></i>
+        </button>
+        <button class="btn-style btn-down" (click)="toggle()" *ngIf="down">
+          <div class="row">
+            <div class="col-5 px-0">Potential Plan Barriers</div>
+            <div class="col-1 px-0">
+              <div class="custome-vr"></div>
+            </div>
+            <div class="col-4 px-0">PDCA Statements</div>
+            <div class="col-2 px-0"><i class="fa-solid fa-angle-down "></i></div>
+          </div>
+          <!-- <div class="d-flex">
+           <div class="col px-0">Potential Plan Barriers</div>
+           <div class="col px-0"> <div class="custome-vr"></div></div>
+           <div class="col px-0">PDCA Statements</div>
+           <div class="col px-0"><i class="fa-solid fa-angle-down "></i></div>
+          </div> -->
+
+
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card card-top px-2 rounded shadow-sm contianer-bg mt-3" *ngIf="flagg">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <div class="card main-card contianer-bg">
+          <div class="card-body">
+            <div class="row heading">
+              <div class="col-8 til head"><label class="label">{{firstCardtitle}} </label></div>
+              <div class="col-4 buttons head">
+                <div class=" flex-container">
+                  <div class="" (click)="startService('PotentialPlan')" *ngIf="showMicForPotentialPlan">
+                    <i class="fa fa-microphone microphone-ico"
+                       [ngStyle]="{'color': (voicePotential==true) ? 'red' : 'blue'}"></i>
+                  </div>
+                  <div class="flex-item-right">
+                    <img src="../../../../../assets/images/WorkSystem/add.png" class="imag-icon"
+                         (click)="addFieldsForPotentialPlan()">
+                  </div>
+                  <div class="flex-item-right">
+                    <img src="../../../../../assets/images/WorkSystem/minus.png" class="imag-icon"
+                         (click)="removeFiledsForPotentialPlan()">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div cdkDropList class="example-list" (cdkDropListDropped)="dropPotentialPlan($event)">
+              <div class="input-group mb-1 pl-1" *ngFor="let o of listOfPotentialPlan; let i = index"
+                   (click)="fetchIndexForPotentialPlan(i)" cdkDrag>
+                <span class="input-group-text mr-1" id="basic-addon1" [ngStyle]="{'background-color':o?.color}"
+                      (click)="addRatingForPotentialPlan(i)">{{i + 1}}</span>
+                <span *ngIf="o.showModal &&
+                potentialPlanShowModal == true &&
+                contingencyPlanShowModal == false &&
+                pdcaShowModal == false &&
+                phaseFiveModalFlag == true &&
+                phaseFourModalFlag == false &&
+                phaseTwoModalFlag == false &&
+                phaseOneModalFlag == false &&
+                phaseThreeModalFlag == false" class="tollbar-group">
+                  <app-mian-tool-bar
+                    (pushColorToMainParentSpan)="setColorValueForPotentialPlan($event)"
+                    (pushTaslValue)="getTaskForPotentialPlan($event)"
+                    (pushOppertunity)="getOpportunityForPotentialPlan($event)"
+                    (pushDecisionValue)="getDecisionForPotentialPlan($event)"
+                    (pushNotesValue)="getNoteForPotentialPlan($event)"
+                    [showSnakeBarMenu]="showSnakeBar" [displayVal]='showModal'
+                    [openRatingTabFlag]="true"
+                    [openRatingForNote]="true"
+                    [color]="o.color"
+                    [color]="potentialPlans[i].rating.color"
+                    [note]="potentialPlans[i].rating.note"
+                    [decision]="potentialPlans[i].rating.decision"
+                    [opportunity]="potentialPlans[i].rating.opportunity"
+                    [task]="potentialPlans[i].rating.task"
+                    >
+                  </app-mian-tool-bar>
+                </span>
+                <input type="text" class="input-height2" placeholder="" aria-label="Username"
+                       aria-describedby="basic-addon1" (input)="getPotentialPlanValue(o, i)" [(ngModel)]="o.value"
+                       [disabled]="true ? lockstatus == true : false">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card main-card contianer-bg">
+          <div class="card-body">
+            <div class="row heading">
+              <div class="col-8 til head"><label class="label">{{secondCardtitle}} </label></div>
+              <div class="col-4 buttons head">
+                <div class=" flex-container">
+                  <div class="" (click)="startService('ContingencyPlan')" *ngIf="showMicForContingencyPlan">
+                    <i class="fa fa-microphone microphone-ico"
+                       [ngStyle]="{'color': (voicContingency==true) ? 'red' : 'blue'}"></i>
+                  </div>
+                  <div class="flex-item-right">
+                    <img src="../../../../../assets/images/WorkSystem/add.png" class="imag-icon"
+                         (click)="addFieldsForContingencyPlan()">
+                  </div>
+                  <div class="flex-item-right">
+                    <img src="../../../../../assets/images/WorkSystem/minus.png" class="imag-icon"
+                         (click)="removeFiledsForContingencyPlan()">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div cdkDropList class="example-list" (cdkDropListDropped)="dropContingencyPlan($event)">
+              <div class="input-group mb-1 pl-1" *ngFor="let o of listOfContingencyPlan; let i = index"
+                   (click)="fetchIndexForContingencyPlan(i)" cdkDrag>
+                <span class="input-group-text mr-1" id="basic-addon1" [ngStyle]="{'background-color':o?.color}"
+                      (click)="addRatingForContingencyPlan(i)">{{i + 1}}</span>
+                <span *ngIf="o.showModal &&
+                contingencyPlanShowModal == true &&
+                potentialPlanShowModal == false &&
+                pdcaShowModal == false &&
+                phaseFiveModalFlag == true &&
+                phaseFourModalFlag == false &&
+                phaseTwoModalFlag == false &&
+                phaseOneModalFlag == false &&
+                phaseThreeModalFlag == false" class="tollbar-group">
+                  <app-mian-tool-bar
+                    (pushColorToMainParentSpan)="setColorValueForContingencyPlan($event)"
+                    (pushNotesValue)="getNoteForContingencyPlan($event)"
+                    (pushOppertunity)="getOpportunityForContingencyPlan($event)"
+                    (pushTaslValue)="getTaskForContingencyPlan($event)"
+                    (pushDecisionValue)="getDecisionForContingencyPlan($event)"
+                    [showSnakeBarMenu]="showSnakeBar" [displayVal]='showModal'
+                    [openRatingTabFlag]="true"
+                    [openRatingForNote]="true"
+                    [color]="o.color"
+                    [color]="contingencyPlans[i].rating.color"
+                    [note]="contingencyPlans[i].rating.note"
+                    [decision]="contingencyPlans[i].rating.decision"
+                    [opportunity]="contingencyPlans[i].rating.opportunity"
+                    [task]="contingencyPlans[i].rating.task">
+                  </app-mian-tool-bar>
+                </span>
+                <input type="text" class="input-height2" placeholder="" aria-label="Username"
+                       aria-describedby="basic-addon1" (input)="getContingencyPlanValue(o, i)" [(ngModel)]="o.value"
+                       [disabled]="true ? lockstatus == true : false">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card main-card contianer-bg">
+          <div class="card-body">
+            <div class="row heading">
+              <div class="col-8 til head"><label class="label">{{thirdCardtitle}} </label></div>
+              <div class="col-4 buttons head">
+                <div class=" flex-container">
+                  <div class="" (click)="startService('PDCA')" *ngIf="showMicForPDCA">
+                    <i class="fa fa-microphone microphone-ico"
+                       [ngStyle]="{'color': (voicPDCA==true) ? 'red' : 'blue'}"></i>
+                  </div>
+                  <div class="flex-item-right">
+                    <img src="../../../../../assets/images/WorkSystem/add.png" class="imag-icon"
+                         (click)="addFieldsForPDCA()">
+                  </div>
+                  <div class="flex-item-right">
+                    <img src="../../../../../assets/images/WorkSystem/minus.png" class="imag-icon"
+                         (click)="removeFiledsForPDCA()">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div cdkDropList class="example-list" (cdkDropListDropped)="dropForPDCA($event)">
+              <div class="input-group mb-1 pl-1" *ngFor="let o of listOfPDCA; let i = index"
+                   (click)="fetchIndexForForPDCA(i)" cdkDrag>
+                <span class="input-group-text mr-1" id="basic-addon1" [ngStyle]="{'background-color':o?.color}"
+                      (click)="addRatingForPDCA(i)">{{i + 1}}</span>
+                <span *ngIf="o.showModal &&
+                pdcaShowModal == true &&
+                contingencyPlanShowModal == false &&
+                potentialPlanShowModal == false &&
+                phaseFiveModalFlag == true &&
+                phaseFourModalFlag == false &&
+                phaseTwoModalFlag == false &&
+                phaseOneModalFlag == false &&
+                phaseThreeModalFlag == false" class="tollbar-group"
+                >
+                  <app-mian-tool-bar (pushColorToMainParentSpan)="setColorValueForForPDCA($event)"
+                                     (pushNotesValue)="getNoteForPDCAStatement($event)"
+                                     (pushOppertunity)="getOpportunityForPDCAStatement($event)"
+                                     (pushTaslValue)="getTaskForPDCAStatement($event)"
+                                     (pushDecisionValue)="getDecisionForPDCAStatement($event)"
+                                     [showSnakeBarMenu]="showSnakeBar" [displayVal]='showModal'
+                                     [openRatingTabFlag]="true"
+                                     [openRatingForNote]="true"
+                                     [color]="o.color"
+                                     [color]="pdca[i].rating.color"
+                                     [note]="pdca[i].rating.note"
+                                     [decision]="pdca[i].rating.decision"
+                                     [opportunity]="pdca[i].rating.opportunity"
+                                     [task]="pdca[i].rating.task">
+                  </app-mian-tool-bar>
+                </span>
+                <input type="text" class="input-height2"  placeholder="" aria-label="Username"
+                       aria-describedby="basic-addon1" (input)="getPDCAStatementValue(o, i)" [(ngModel)]="o.value"
+                       [disabled]="true ? lockstatus == true : false">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <span *ngIf="showModal">
+  <app-add-rating (onaddRating)="setRate($event)" (onCancel)="cancelRate($event)" [displayVal]='modal'>
+  </app-add-rating>
+</span> -->
+

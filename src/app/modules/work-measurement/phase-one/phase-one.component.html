@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="collapse-section">
+    <div class="row row-custom">
+      <div class="col-1 d-flex justify-content-end text-center">
+        <button class="btn-style" (click)="toggle()">
+          <img src="../../../../assets/images/WorkSystem/UpArrow.png" alt="" *ngIf="up">
+          <img src="../../../../assets/images/WorkSystem/DownArrow.png" alt="" *ngIf="down">
+        </button>
+      </div>
+      <div class="col-11 d-flex justify-content-end text-center">
+      </div>
+    </div>
+  </div>
+  <div class="card first-card px-2 rounded shadow-sm" *ngIf="flage">
+    <form>
+      <div class="row p-4">
+        <div class="col ">
+          <label class="px-2 pt-1">Name</label>
+          <input type="text" class="form-control" maxlength="150"
+           name="name" [(ngModel)]="pageName" (input)="getPageName()"
+            [disabled]="true">
+        </div>
+        <div class="col">
+            <label class="px-2 pt-1">Page Owner</label>
+            
+              <!-- <p-dropdown placeholder="Select Page Owner" name="pageOwner" [classList]="['p-user-dropdown']" style="width:100%;"
+                [options]="users" optionLabel="email" [(ngModel)]="pageOwnerUser"
+                (onChange)="getPageOwner($event)" [disabled]="true" ></p-dropdown> -->
+              <input type="text" class="form-control" [value]="pageOwner.name" [disabled]="true">
+            
+          
+        </div>
+        <div class="row p-0 ">
+          <div class="inc-btn pl-2 pt-3 border-0 g-0">
+            <button class="mx-1 px-2 btn-dark text-warning" >
+                <div class="text" (click)="addGraph()"><span>+ Add Measurement</span> </div>
+            </button>
+            <button class="mx-1 px-2 btn-dark text-warning" >
+              <div class="text" (click)="deleteGraph()"><span>- Remove Measurement</span> </div>
+          </button>
+            <button pButton pRipple label="Save" (click)="savePage()" icon="pi pi-check"></button>
+        </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!---Phase two will be repeate now all others pahse need to be deleted now its dynamic add and remove -->
+<div class="div" *ngFor="let i of GraphList;let index=index">
+  <app-phase-two (click)="removeStatementIndex(index)" [workMeasurementData]="graphData[index]" (sendMeasurementData)="getMeasurementData($event)"
+    (sendShowModal)="getShowModal($event)" [GraphList]="GraphList" [selectedRowIndex]="index" [GraphListIndex]="index"
+    [lockstatus]="lockstatus"></app-phase-two>
+</div>

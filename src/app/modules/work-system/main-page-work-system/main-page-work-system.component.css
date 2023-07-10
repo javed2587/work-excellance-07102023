@@ -1,0 +1,31 @@
+.menu-header-adjustment{
+    position: relative;
+    bottom: 88px; 
+    min-height: 75%;
+}
+/* :host ::ng-deep .p-button {
+    background-color: rgb(0,95,190);
+    height: 1.77rem;
+    color: white;
+    background-origin: padding-box;
+    border: none;
+    margin-bottom: 14px;
+    border-radius: 5px;
+    } */
+    .btn-custom {
+       background-color: blue;
+       color: white;
+    }
+    .savebuuton{
+        position: relative;
+        top: 43px;
+        left: 17rem;
+
+        background-color: rgb(0,95,190);
+        height: 1.77rem;
+        color: white;
+        background-origin: padding-box;
+        border: none;
+        /* margin-bottom: 14px; */
+        border-radius: 5px;
+    }

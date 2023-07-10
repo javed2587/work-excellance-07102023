@@ -1,0 +1,118 @@
+<div
+  style="
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-radius: 20%;
+  "
+  class="card shadow p-3 mb-5 bg-white rounded"
+>
+  <div style="margin-left: 40px; margin-right: 40px">
+    <div class="card-body">
+      <p-table
+        #dt
+        [value]="customers"
+        dataKey="id"
+        styleClass="p-datatable-customers"
+        [loading]="loading"
+        [globalFilterFields]="[
+          'description',
+          'type',
+          'status',
+          'author',
+          'datecreated',
+          'comments',
+          'priority'
+        ]"
+      >
+        <ng-template pTemplate="caption">
+          <div class="table-header">
+            <span
+              style="text-align: right; width: 30%"
+              class="p-input-icon-left"
+            >
+              <i class="pi pi-search"></i>
+              <input
+                pInputText
+                type="text"
+                style="width: 100%"
+                (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                placeholder="Search"
+              />
+            </span>
+            <img id="icon2" src="../../../../assets/note-2.svg" />
+            <img id="icon3" src="../../../../assets/Cross-01.svg" />
+            <img
+              id="icon4"
+              src="../../../assets/icons8-microsoft-teams-2019-240.png"
+            />
+          </div>
+        </ng-template>
+      
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 7%; text-align: center;">Type</th>
+            <th style="width: 7%; text-align: center;">Status</th>
+            <th class="descr">Description</th>
+            <th class="due"  pSortableColumn="date">
+              Due Date
+              <p-sortIcon style="color: white" field="date"></p-sortIcon>
+            </th>
+            <th class="pri" >Priority</th>
+            <th style="width: 10%; text-align: center  ;">Author</th>
+            <th class="due">Date Created</th>
+            <th class="descr">Comments/Note</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-customer>
+          
+          <tr class="p-selectable-row">
+            <td data-title="Type" style="text-align: center;">
+              {{ customer.type }}
+            </td>
+            <td style="padding-left: 2.5%;" data-title="Status" *ngIf="customer.status == 'red'; else otherstatus">
+              <div
+              class="status1" 
+              ></div>
+            </td>
+            <ng-template #otherstatus>
+              <td style="padding-left: 2.5%;" data-title="Status">
+                <div
+                  [ngStyle]="{
+                    'background-color': customer.status,
+                    
+                    height: '20px',
+                    width: '25px'
+                  }"
+                ></div>
+              </td>
+            </ng-template>
+            <td data-title="Description">
+              {{ customer.description }}
+            </td>
+            <td style="text-align: center;" data-title="Due Date" >
+              {{ customer.date }}
+            </td>
+            <td style="text-align: center;"  data-title="Priority">
+              {{ customer.priority }}
+            </td >
+            <td style="text-align: center;"  data-title="Author">
+              {{ customer.author }}
+            </td>
+            <td style="text-align: center;"  data-title="Date Created">
+              {{ customer.datecreated }}
+            </td>
+            <td  data-title="Comments/Note">
+              {{ customer.comments }}
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="8">No customers found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

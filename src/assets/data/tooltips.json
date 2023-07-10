@@ -1,0 +1,19 @@
+{
+    "tooltipsworksystem": {
+      "name": "The name of this Work System. (Examples Include: Sales, Human Resources, Information Technology, Production, Finance, Purchasing.)",
+      "Management system": "A listing of the management systems that work across multiple phases to ensure that value of the work. (Note: Use the examples in your workbook.)",
+      "worktype": "A descriptive label that names the different work types that flow through the Work System. (Example: High Touch, Low Touch, No Touch",
+      "managementrail": "A simple, concise statement that articulates how work is enabled and ensured to perform.",
+      "leadershiprail": "A simple, concise statement that articulates the purpose ('why') the work is being performed",
+      "pageowner": "The name(s) of the person(s) that owns this Work System. (Hint: Whenever possible this should be one person.)",
+      "phasepurpose": "A simple, concise statement that identifies 'why' this particular phase of work exists",
+      "phasemeasure": "A list of potential measures for work in each phase. (Note: In each phase you can always measure 4 items: 1) Time in the phase, 2) First Time Quality, 3) Total Cost, 4) Feedback",
+      "phase": "The name of each phase of work that best describes the work steps",
+      "stepsofwork": "A descriptive label of the process steps that are done in a phase to move to the next gate. (Note: The Dresser Drawer, action verbs, along a continuum of detail/granularity - does it allow the story to be told.)(Note: The order of steps is very important to create flow.)"
+    
+    },
+    "tooltipsworkimprovement": {},
+    "tooltipsworkmeasurement": {},
+    "tooltipsworkdirection": {},
+    "tooltipsactivitespage": {}
+  }

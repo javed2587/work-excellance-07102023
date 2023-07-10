@@ -1,0 +1,46 @@
+/* .float-left {
+    width: 35rem;
+    position: absolute;
+    right: 15px;
+    z-index: 100;
+  }
+  ::ng-deep .p-sidebar .p-sidebar-header {
+    padding: 0rem !important;
+  }
+  ::ng-deep .p-sidebar {
+    height: fit-content;
+    width: fit-content;
+    background: none;
+  }
+  ::ng-deep .p-sidebar .p-sidebar-content {
+    padding: 0rem;
+  } */
+
+
+  /* .float-left {
+    width: 40rem;
+    position: absolute;
+    top: 110px;
+    right: 13px;
+  } */
+  :host ::ng-deep .p-dialog .p-dialog-header {
+    padding: 0rem;
+    
+  }
+  :host ::ng-deep .p-dialog {
+    height: fit-content;
+    width: fit-content;
+    background: none;
+  }
+  :host ::ng-deep .p-dialog .p-dialog-content {
+    padding: 0rem;
+    overflow-x: hidden;
+  }
+  :host ::ng-deep .modal-content{
+    border: 0px solid rgba(0,0,0,.2);
+  }
+  :host ::ng-deep .modal-body{
+    padding: 1rem;
+  }
+
+  

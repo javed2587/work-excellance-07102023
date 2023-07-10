@@ -1,0 +1,27 @@
+.dashboard-header{
+  position: fixed;
+  top: 7.6rem;
+  left: 15rem;
+}
+
+.dsahbord-img{
+    width: 40px;
+  }
+  .row .col-12{
+    padding-left: 10rem;
+  }
+  .logo-img{
+    width: 14rem;
+     position: relative;
+     bottom: 30px;
+   }
+   /* .header-label {
+    position: relative;
+    top: 42px;
+   } */
+
+   .menu-header-adjustment{
+    position: relative; 
+     bottom: 60px; 
+   min-height: 70%; 
+}

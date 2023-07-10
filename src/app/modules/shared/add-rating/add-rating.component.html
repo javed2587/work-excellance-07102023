@@ -1,0 +1,20 @@
+<p-dialog position={{modelPosition}}  [transitionOptions]="'0ms'" [draggable]="true" [visible]="isdisplayRatingModal"  [style]="{width:'65vw'}" [closable]="false"
+  styleClass="dialog-custom" [modal]="true" appendToBody=true >
+  <ng-template pTemplate="header">
+    <i class="pi lock-open" style="font-size: 2rem"></i>
+    <div class="header-label"><b>Rate</b></div>
+  </ng-template>
+   <div class="div mb-3 mt-4 mx-3">
+    <div class="form-check p-field-checkbox m-2 d-flex" *ngFor="let category of categories">
+      <p-radioButton [value]="category"  [(ngModel)]="selectedCategory" styleClass="radio-style" > </p-radioButton>
+      <span class="input-group-text mx-1 mt-1 " id="basic-addon1" [ngStyle]="category.color">{{category.colorName}}</span>
+      <input type="text" class="form-control fw-bold" placeholder="" [ngStyle]=""   value="{{category.name}}" aria-label="Username" aria-describedby="basic-addon1" disabled>
+    </div>
+    <div class="button-dialog  text-center mt-3">
+      <button type="button" label="Save" class="btn btn-primary btn-sm  px-4 rounded-3 p-button"
+        (click)="saveRating()"> Save</button>
+      <button type="button" label="Cancel" class="btn btn-primary btn-sm px-3  rounded-3 p-button"
+        (click)="closeClick()">Cancel</button>
+    </div>
+   </div>
+</p-dialog> 

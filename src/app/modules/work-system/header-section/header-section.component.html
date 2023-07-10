@@ -1,0 +1,535 @@
+<div class="contianer px-3">
+  <div class="top-section">
+    <div class="row row-custom">
+      <div class="col-1 d-flex justify-content-end text-center">
+        <button class="btn-style" (click)="toggleBody()">
+          <img
+            src="../../../../assets/images/WorkSystem/UpArrow.png"
+            alt=""
+            *ngIf="upArrow"
+          />
+          <img
+            src="../../../../assets/images/WorkSystem/DownArrow.png"
+            alt=""
+            *ngIf="downArrow"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card card-top px-2 rounded shadow-sm" *ngIf="showBody">
+    <div class="row g-0">
+      <!-- <span *ngIf="showInfoModal" class="modal-position">
+        <app-info-modal
+        [title]="currentModuleName"
+        [description]="modalDescription">
+      </app-info-modal>
+      </span> -->
+      <div class="col-md-4">
+        <div class="card main-card">
+          <div class="">
+            <div class="first-container">
+              <div class="row g-1 mt-1">
+                <div class="col-12 top-h">
+                  <!-- <span (click)="openInfoCard()">
+                    <img class="info-icon" src="../../../../assets/images/header-images/info-icons.svg" alt="" />
+                  </span> -->
+                  <label
+                    class="label"
+                    style="cursor: pointer"
+                    pTooltip=" The name of this Work System.
+                    (Examples Include:  Sales, Human Resources, Information Technology, Production, Finance, Purchasing.) "
+                    tooltipStyleClass="tooltip-header"
+                    tooltipPosition="bottom"
+                  >
+                    Name
+                  </label>
+                  <span (click)="openLightCardOnName()">
+                    <img
+                      class="light-icon"
+                      src="../../../../assets/images/header-images/Bulb.svg"
+                      alt=""
+                    />
+                  </span>
+                  <span
+                    *ngIf="
+                      showLightModal &&
+                      phaseListModalFlag == false &&
+                      headerSectionModalFlag == true
+                    "
+                    class="infoTollbar-group"
+                  >
+                    <app-mian-tool-bar
+                      (pushNotesValue)="setNotesValueForNmae($event)"
+                      (pushOppertunity)="setOppertunityForName($event)"
+                      (pushDecisionValue)="setDecisionValueForName($event)"
+                      (pushTaslValue)="setTaskValueForName($event)"
+                      [openRatingTabFlag]="false"
+                      [lockstatus]="lockstatus"
+                      [openRatingForNote]="true"
+                    >
+                    </app-mian-tool-bar>
+                  </span>
+                  <div class="input-group px-1">
+                    <input
+                      type="text"
+                      class="input-height"
+                      placeholder=""
+                      maxlength="150"
+                      aria-label="Username"
+                      (ngModelChange)="saveName($event)"
+                      [(ngModel)]="nameValue"
+                      aria-describedby="basic-addon1"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row g-1 mt-1">
+                <div class="col-12 top-h">
+                  <label
+                    class="label"
+                    style="cursor: pointer"
+                    pTooltip="The name(s) of the person(s) that owns this Work System. (Hint: Whenever possible this should be one person.)"
+                    tooltipStyleClass="tooltip-header"
+                    tooltipPosition="bottom"
+                    >Page Owner
+                  </label>
+                  <div class="input-group px-1">
+                    <!-- <input type="text" class="form-control" placeholder="" maxlength="150" aria-label="Username"
+                      aria-describedby="basic-addon1" [disabled]="true ? lockstatus == true : false"  /> -->
+                    <!-- <p-autoComplete >"
+                      [(ngModel)]="pageOwner"
+                      [suggestions]="results" [field]="'email'"
+                      (completeMethod)="searchPageOwner($event)"
+                       (ngModelChange)="savePageOwner($event)" >
+                      </p-autoComplete> -->
+
+                    <!-- <p-dropdown placeholder="Select Page Owner" [classList]="['p-user-dropdown']" style="width:100%;"
+                      [options]="users" optionLabel="email" [(ngModel)]="pageOwnerUser"
+                      (ngModelChange)="savePageOwner($event)" [disabled]="true"></p-dropdown> -->
+                    <input
+                      type="text"
+                      class="input-height"
+                      [value]="pageOwner.name"
+                      [disabled]="true"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="top-rial mb-3">
+              <div class="row mt-1">
+                <div class="col-9 py-0">
+                  <label
+                    class="label"
+                    style="cursor: pointer"
+                    pTooltip="A simple, concise statement that articulates the purpose ('why') the work is being performed"
+                    tooltipStyleClass="tooltip-header"
+                    tooltipPosition="bottom"
+                    >Leadership Rail
+                  </label>
+                </div>
+                <div class="col-3 py-0 pr-4">
+                  <div
+                    class="mic-position"
+                    (click)="startService('firstTextArea')"
+                    *ngIf="showMicForFirstTextArea"
+                  >
+                    <i
+                      class="fa fa-microphone microphone-ico"
+                      [ngStyle]="{
+                        color: firstTextVoiceservice == true ? 'red' : 'blue'
+                      }"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+              <div class="text-area mt-1">
+                <div class="input-group mb-1 px-1 text-area">
+                  <div
+                    class="input-group-text mr-1 color-span"
+                    id="basic-addon1"
+                    [ngStyle]="{ 'background-color': leaderShipRailObj?.rating?.color }"
+                    maxlength="10"
+                    (click)="addTextAreaRatingForLeadershipRail()"
+                  ></div>
+                  <span
+                    *ngIf="
+                      showModal &&
+                      phaseListModalFlag == false &&
+                      headerSectionModalFlag == true
+                    "
+                    class="tollbar-group"
+                  >
+                    <app-mian-tool-bar
+                      (pushColorToMainParentSpan)="
+                        setColorForLeadership($event)
+                      "
+                      (pushNotesValue)="setNotesValueForLeaderShipRail($event)"
+                      (pushOppertunity)="
+                        setOppertunityForLeaderShipRail($event)
+                      "
+                      (pushDecisionValue)="
+                        setDecisionValueForLeaderShipRail($event)
+                      "
+                      (pushTaslValue)="setTaskValueForLeaderShipRail($event)"
+                      [showSnakeBarMenu]="showSnakeBar"
+                      [displayVal]="modal"
+                      [lockstatus]="lockstatus"
+                      [openRatingTabFlag]="true"
+                      [openRatingForNote]="true"
+                      [decision]="leaderShipRailObj?.rating?.decision"
+                      [note]="leaderShipRailObj?.rating?.note"
+                      [task]="leaderShipRailObj?.rating?.task"
+                      [opportunity]="leaderShipRailObj?.rating?.opportunity"
+                      [color]="leaderShipRailObj?.rating?.color"
+                    >
+                    </app-mian-tool-bar>
+                  </span>
+                  <textarea
+                    class="form-control"
+                    rows="3"
+                    id="comment"
+                    maxlength="250"
+                    (click)="showMicForLeadership('firstMic')"
+                    (ngModelChange)="saveLaderShipRail($event)"
+                    [(ngModel)]="leadershipTextValue"
+                    [disabled]="lockstatus == true"
+                  >
+                  </textarea>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-9 py-0">
+                  <label
+                    class="label"
+                    style="cursor: pointer"
+                    pTooltip="A simple, concise statement that articulates how work is enabled and ensured to perform."
+                    tooltipStyleClass="tooltip-header"
+                    tooltipPosition="bottom"
+                    >Management Rail
+                  </label>
+                </div>
+                <div class="col-3 pr-4 py-0">
+                  <div
+                    class="mic-position"
+                    (click)="startService('secondTextArea')"
+                    *ngIf="showMicForSecondTextArea"
+                  >
+                    <i
+                      class="fa fa-microphone microphone-ico"
+                      [ngStyle]="{
+                        color: secondTextVoiceservice == true ? 'red' : 'blue'
+                      }"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+              <div class="text-area mt-2">
+                <div class="input-group mb-1 px-1 text-area">
+                  <div
+                    class="input-group-text mr-1 color-span"
+                    id="basic-addon1 "
+                    [ngStyle]="{ 'background-color': managementRailObj?.rating?.color }"
+                    maxlength="10"
+                    (click)="textAreaRatingForManagmentRail()"
+                  ></div>
+                  <span
+                    *ngIf="
+                      trextTwoModal &&
+                      phaseListModalFlag == false &&
+                      headerSectionModalFlag == true
+                    "
+                    class="tollbar-group"
+                  >
+                    <app-mian-tool-bar
+                      (pushColorToMainParentSpan)="
+                        setColorForManagementRail($event)
+                      "
+                      (pushNotesValue)="setNotesValueForMangementRail($event)"
+                      (pushOppertunity)="setOppertunityForMangementRail($event)"
+                      (pushDecisionValue)="
+                        setDecisionValueForManagementRail($event)
+                      "
+                      (pushTaslValue)="setTaskValueForManagemetRail($event)"
+                      [showSnakeBarMenu]="showSnakeBar"
+                      [displayVal]="modal"
+                      [lockstatus]="lockstatus"
+                      [openRatingTabFlag]="true"
+                      [decision]="managementRailObj?.rating?.decision"
+                      [note]="managementRailObj?.rating?.note"
+                      [task]="managementRailObj?.rating?.task"
+                      [opportunity]="managementRailObj?.rating?.opportunity"
+                      [color]="managementRailObj?.rating?.color"
+                      [openRatingForNote]="true"
+                    >
+                    </app-mian-tool-bar>
+                  </span>
+                  <!-- <div class="form-floating">
+                      <textarea class="form-control" placeholder="Leave a comment here" rows="3" id="comment" maxlength="250" ></textarea>
+                      <label for="floatingTextarea">Ensure</label>
+                     </div> -->
+                  <textarea
+                    class="form-control"
+                    rows="3"
+                    id="comment"
+                    maxlength="250"
+                    (click)="showMicForLeadership('firstMic')"
+                    (ngModelChange)="saveManagementRail($event)"
+                    [(ngModel)]="secondTextValue"
+                    [disabled]="true ? lockstatus == true : false"
+                  >
+                  </textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card second-card">
+          <div class="card-body">
+            <div class="row heading">
+              <div class="col-8 til head">
+                <label
+                  class="label"
+                  style="cursor: pointer"
+                  pTooltip="A descriptive label that names the different work types that flow through the Work System. (Example: High Touch, Low Touch, No Touch"
+                  tooltipStyleClass="tooltip-header"
+                  tooltipPosition="bottom"
+                >
+                  Work Type
+                </label>
+              </div>
+              <div class="col-4 buttons head">
+                <div class="flex-container">
+                  <div
+                    class="flex-item-right mic_"
+                    (click)="startService('workType')"
+                    *ngIf="showMicForWorkType"
+                  >
+                    <i
+                      class="fa fa-microphone microphone-ico"
+                      [ngStyle]="{
+                        color: workTypeVoiceservice == true ? 'red' : 'blue'
+                      }"
+                    ></i>
+                  </div>
+                  <div class="flex-item-right">
+                    <img
+                      src="../../../../../assets/images/WorkSystem/add.png"
+                      class="imag-icon"
+                      (click)="addFieldsWorkType()"
+                    />
+                  </div>
+                  <div class="flex-item-right" (click)="removeFieldWorkType()">
+                    <img
+                      src="../../../../../assets/images/WorkSystem/minus.png"
+                      class="imag-icon"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              cdkDropList
+              class="example-list"
+              (cdkDropListDropped)="dropWorkSystem($event)"
+            >
+              <div
+                class="input-group mb-1 pl-1"
+                *ngFor="let ob of workTypeList; let i = index"
+                (click)="fetchIndexForWorkType(i)"
+                cdkDrag
+                [cdkDragDisabled]="ob?.rating?.isDisabledDragDrop"
+              >
+                <span
+                  class="input-group-text mr-1"
+                  id="basic-addon1"
+                  [ngStyle]="{ 'background-color': ob?.rating?.color }"
+                  (click)="oenSnakbarForWorkType(i)"
+                  >{{ i < 9 ? i + 1 + ".0" : +i + 1 }}</span
+                >
+                <div class="div">
+                  <span
+                    *ngIf="
+                      ob?.rating?.showModal &&
+                      worktypeModalFlag &&
+                      phaseListModalFlag == false &&
+                      headerSectionModalFlag == true
+                    "
+                    class="tollbar-group"
+                  >
+                    <app-mian-tool-bar
+                      (pushColorToMainParentSpan)="
+                        setColorValueForWorkType($event)
+                      "
+                      (pushNotesValue)="setNotesValueForworkType($event)"
+                      (pushOppertunity)="setOppertunityForWorkType($event)"
+                      (pushDecisionValue)="setDecisionValueForWorktype($event)"
+                      (pushTaslValue)="setTaskValueForWorkType($event)"
+                      [showSnakeBarMenu]="showSnakeBar"
+                      [displayVal]="modal"
+                      [lockstatus]="lockstatus"
+                      [openRatingForNote]="true"
+                      [openRatingTabFlag]="true"
+                      [color]="ob?.rating?.color"
+                      [decision]="ob?.rating?.decision"
+                      [task]="ob?.rating?.task"
+                      [opportunity]="ob?.rating?.opportunity"
+                      [note]="ob?.rating?.note"
+                    >
+                    </app-mian-tool-bar>
+                  </span>
+                </div>
+
+                <input
+                  type="text"
+                  class="input-height2"
+                  placeholder=""
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                  minlength="2"
+                  maxlength="150"
+                  (ngModelChange)="saveWorkType($event, i)"
+                  [(ngModel)]="ob.text"
+                  [disabled]="true ? lockstatus == true : false"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card main-card">
+          <div class="card-body">
+            <div class="row heading">
+              <div class="col-8 til head">
+                <label
+                  class="label"
+                  style="cursor: pointer"
+                  pTooltip="A listing of the management systems that work across multiple phases to ensure that value of the work. (Note: Use the examples in your workbook.)"
+                  tooltipStyleClass="tooltip-header"
+                  tooltipPosition="bottom"
+                  >Management System</label
+                >
+              </div>
+              <div class="col-4 buttons head">
+                <div class="flex-container">
+                  <div
+                    class="flex-item-right mic_"
+                    (click)="startService('managment')"
+                    *ngIf="showMicForManagment"
+                  >
+                    <i
+                      class="fa fa-microphone microphone-ico"
+                      [ngStyle]="{
+                        color: managmentVoiceservice == true ? 'red' : 'blue'
+                      }"
+                    ></i>
+                  </div>
+                  <div class="flex-item-right">
+                    <img
+                      src="../../../../../assets/images/WorkSystem/add.png"
+                      class="imag-icon"
+                      (click)="addFiledManagement()"
+                    />
+                  </div>
+                  <div class="flex-item-right">
+                    <img
+                      src="../../../../../assets/images/WorkSystem/minus.png"
+                      class="imag-icon"
+                      (click)="removeFiledManagement()"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              cdkDropList
+              class="example-list"
+              (cdkDropListDropped)="dropMangment($event)"
+            >
+              <div
+                class="input-group mb-1 pl-1"
+                *ngFor="let o of managment; let i = index"
+                (click)="fetchIndexForManagment(i)"
+                cdkDrag
+                [cdkDragDisabled]="o?.rating?.isDisabledDragDrop"
+              >
+                <span
+                  class="input-group-text mr-1"
+                  id="basic-addon1"
+                  [ngStyle]="{ 'background-color': o?.rating?.color }"
+                  (click)="openSankebarForManagment(i)"
+                  >{{ i < 9 ? i + 1 + ".0" : +i + 1 }}</span
+                >
+                <div class="openSnackBar">
+                  <span
+                    *ngIf="
+                      o?.rating?.showModal &&
+                      managementtypeModalFlag &&
+                      phaseListModalFlag == false &&
+                      headerSectionModalFlag == true
+                    "
+                    class="tollbar-group"
+                  >
+                    <app-mian-tool-bar
+                      (pushColorToMainParentSpan)="
+                        setColorValueForManagment($event)
+                      "
+                      (pushNotesValue)="setNotesValue($event)"
+                      (pushOppertunity)="setOppertunityForManagment($event)"
+                      (pushDecisionValue)="setDecisionValue($event)"
+                      (pushTaslValue)="setTaskValue($event)"
+                      [showSnakeBarMenu]="showSnakeBar"
+                      [displayVal]="modal"
+                      [lockstatus]="lockstatus"
+                      [openRatingForNote]="true"
+                      [openRatingTabFlag]="true"
+                      [color]="o?.rating?.color"
+                      [decision]="o?.rating?.decision"
+                      [note]="o?.rating?.note"
+                      [task]="o?.rating?.task"
+                      [opportunity]="o?.rating?.opportunity"
+                    >
+                    </app-mian-tool-bar>
+                  </span>
+                </div>
+                <input
+                  id="managementfield"
+                  name="managementfield"
+                  type="text"
+                  class="input-height2"
+                  placeholder=""
+                  maxlength="250"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                  [(ngModel)]="o.text"
+                  (ngModelChange)="saveManagementValue($event, i)"
+                  (click)="setCursorForManagment(i)"
+                  [disabled]="true ? lockstatus == true : false"
+                />
+                <!-- <span>{{o.value}}</span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="div" *ngIf="isPrimeModal">
+  <app-prime-alert
+    (sendDisplayVlaueFlag)="getIsDispalyPrimeAlrt($event)"
+    [isDisplayPrimeAlertModal]="isPrimeModal"
+    [alertMessage]="addMessage"
+    [messagTypeOfAlertModal]="messageType"
+  >
+  </app-prime-alert>
+</div>
+
+<!-- <button (click)="saveDataForBackend()" class="mx-3">internal header</button> -->

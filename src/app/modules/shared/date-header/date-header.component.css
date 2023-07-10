@@ -1,0 +1,143 @@
+.continer-position{
+    position: relative;
+}
+.custom-row{
+    position: relative;
+    bottom: 13px;
+    right: 24px;
+}
+.date-wraper{
+   height: 15px;
+}
+.calander-main>div{
+   height: 30px;
+   width: 60%;
+}
+
+:host ::ng-deep .p-dropdown .p-dropdown-label {
+    height: 20px;
+}
+:host ::ng-deep .p-dropdown .p-dropdown-label {
+    padding: 0px;
+    padding-top: 0px;
+    padding-left: 5px;
+    padding-bottom: 26px;
+
+    font-size: 12px;
+    padding-top: 2px;
+}
+/* :host ::ng-deep .p-calendar {
+    height: 30px;
+} */
+
+.custome-row {
+    height: 10px;
+}
+.row .d-flex >label , .date-label {
+    font-weight: 500;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+/* @media (min-width: 576px) {
+    .label-heading{
+        height: auto;
+        font-size: 8px;
+    }
+   
+    :host ::ng-deep .p-dropdown .p-dropdown-label {
+        font-size: 10px;
+     }
+} */
+
+/* Medium devices (tablets, 768px and up) */
+/* @media (min-width: 768px) {
+    .label-heading{
+        height: auto;
+        font-size: 10px;
+    } 
+    :host ::ng-deep .p-dropdown{
+        width: 3rem;
+    }
+    
+    :host ::ng-deep .p-dropdown .p-dropdown-label {
+        font-size: 12px;
+     }
+} */
+
+/* Large devices (desktops, 992px and up) */
+/* @media (min-width: 992px) {
+    .label-heading{
+        font-size: 11px;
+    } 
+    :host ::ng-deep .p-dropdown{
+        width: 4rem;
+    }
+   
+    :host ::ng-deep .p-dropdown .p-dropdown-label {
+        font-size: 14px;
+     }
+} */
+
+/* X-Large devices (large desktops, 1200px and up) */
+/* @media (min-width: 1200px) {
+    .label-heading{
+        font-size: 12px;
+        font-weight: 400px;
+        height: auto;
+    } 
+    :host ::ng-deep .p-dropdown{
+        width: 6rem;
+    }
+   
+    :host ::ng-deep .p-dropdown .p-dropdown-label {
+        font-size: 15px;
+     }
+} */
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+/* @media (min-width: 1400px) {
+    .label-heading{
+        font-size: 14px;
+        font-weight: 600px;
+    } 
+    :host ::ng-deep .p-dropdown{
+        width: 7rem
+    }
+  
+    :host ::ng-deep .p-dropdown  .p-dropdown-label {
+       font-size: 16px; 
+    }
+} */
+:host ::ng-deep .p-overlaypanel {
+    margin-top: -12px;
+    position: absolute;
+    margin-left: 40px;
+}
+::ng-deep .tooltip-header .p-tooltip-text {
+    width: 12rem;
+    font-size: small;
+  }
+  ::ng-deep .tooltip-updateDate .p-tooltip-text {
+    width: 16.5rem;
+    font-size: small;
+  }
+
+  ::ng-deep .tooltip-endeDate .p-tooltip-text {
+    width: 25.5rem;
+    font-size: small;
+  }
+
+
+  /* Custom styles for p-calendar */
+:host ::ng-deep .clander-custom {
+    width: 120px;
+    height: 30px;
+    /* padding: 10px; */
+  }
+  
+  :host ::ng-deep .clander-custom .p-inputtext {
+    font-size: small;
+    padding: 2px !important; 
+  }
+  
+ 

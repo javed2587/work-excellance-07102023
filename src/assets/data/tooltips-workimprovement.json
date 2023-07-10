@@ -1,0 +1,54 @@
+[
+    {
+      "title": "Name",
+      "text": "The name of this Work Improvement Plan. (Examples Include:  Human Resources, Inventory Reductions, Line 3 New Alignment for Flow, Sales Growth, IT Stabilization, Finance)  (Hint: This label can be for the organization, a leader, a function, or a project.)"
+    },
+    {
+      "title": "Page Owner",
+      "text": "A listing of the names of people that own the plan.  This is not a list of people responsible to complete each planned step on the plan.  The owner(s) role is to ensure all that all planned steps are being completed on time.  (Hint: Whenever possible this should be one person.)"
+    },
+    {
+      "title": "Plan Date",
+      "text": "The date the plan was written.  This date should not change once the plan is completed and agreed upon by the team."
+    },
+    {
+      "title": "Last Updated Date",
+      "text": "The date the plan was last updated.  This date should be updated each time any changes are made, including rating updates made to the plan during the check & adjust process.  (Note: Used as a version control mechanism.)"
+    },
+    {
+      "title": "Plan Purpose",
+      "text": "A simple concise statement that articulates the purpose of the improvement work effort on this plan.  (Note:  Answer the question 'Why' this work improvement is necessary, what is it's purpose.)"
+    },
+    {
+      "title": "Current State",
+      "text": "A few concise statements that articulate current conditions and the compelling needs of the current condition.  Statements that convey what has happened recently.  These statements of current state tell a short story and convey the reasons that this improvement work must be undertaken in the defined interval.  (Hint: These themes can be developed from the notes & conversations when you rated the related Work System using the Opportunities A3.  Include the good, bad, and the ugly.)"
+    },
+    {
+      "title": "Plan Directional Statements",
+      "text": "A few concise statements to provide guidance for the team responsible for the planned steps.  These statements will help the team stay on track & on the agreed upon path and serve as reminders of the commitments made to each other to complete this work effort.  (Examples include: We will own our parts of the plan, We will complete our steps on time,  We will solve problems together using data, This project is critical to our strategy, We will foster collaboration and teamwork, We will make our work visible and available)"
+    },
+    {
+      "title": "Plan Outcomes",
+      "text": "A few concise statements that create identifiable outcomes that we check as we complete this work effort.  Answers questions such as:  What are the items the team will achieve or improve?  What are the flags we need to capture along the way?  These 'what' statements are not the same as the plan measures and generally not measurable in terms of data; however, can be related to a plan measure.  (Examples include: 'Old thinking' has been replaced,  Improve marketing program activities, Clearly defined processes & standards, Unified visuals)  (Hint: Usually written with action verb language followed by what result you will achieve.)"
+    },
+    {
+      "title": "Plan Measures",
+      "text": "Descriptive words to define measures and targets that will clearly track the results of the work effort and indicate whether you are getting closer to your desired targets.  What 'needles', 'dials', or 'levers' will we move?  How can we easily measure the 'Success' of this work, based on our understanding of current state and our belief that if we do the planned steps, we will improve these items?  (Note: The plan measures can be supported by a dashboard to track results, generally over a period of time.)"
+    },
+    {
+      "title": "Key Initiatives",
+      "text": "A few words that summarize a grouping of related planned steps.  These summarized statements will define the key work effort to be accomplished and should be developed by referencing the plan purpose directional statements, outcomes, & measures, and identified opportunities.  (Initiative Defined: An act or strategy intended to resolve difficulty or improve a situation; a fresh approach to something.)"
+    },
+    {
+      "title": "Potential Plan Barriers",
+      "text": "A listing of potential conditions or situations that may arise as we work to complete this plan. What are the distractions, constraints, roadblocks, and risk failures that will stop or slow down the completion of this improvement work effort.  The reason for identifying these up front is to ensure that we properly create a contingency plan to be immediately implemented in case this Barrier arises.  (Examples include: Cannot gather the right data, do not have time to complete the work, too much on the plan, other competing initiatives get in the way, resources are not available)"
+    },
+    {
+      "title": "Contingency Plan for Barriers",
+      "text": "A listing of agreed upon action(s) that we can implement if a Barrier arises.  Statements or high-level thinking that set direction for how we will respond or act if a barrier occurs.  We create a one-for-one contingency plan for each barrier anticipated when the plan is created.  (Examples include: Use the data we can get, hire temporary labor, reset the timelines for completions, take items off the plan, delay the overall timeline to complete, work overtime)"
+    },
+    {
+      "title": "PDCA Statements",
+      "text": "A few concise words or phrases that helps the team use the system of PDCA (Plan, Do, Check & Adjust) to stay on track.  These statements should indicate the team's commitment to the plan and completing check & adjust as a team, convey the work effort necessary to ensure the plan is effective and moving us closer to the desired results, and how the team will manage the execution of action items that will be generated from this plan."
+    }
+  ]

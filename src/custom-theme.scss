@@ -1,0 +1,24 @@
+
+// @use '@angular/material' as mat;
+
+
+
+// @include mat.core();
+
+
+
+// $WorkExcellence -primary: mat.define-palette(mat.$indigo-palette);
+// $WorkExcellence -accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// $WorkExcellence -warn: mat.define-palette(mat.$red-palette);
+
+// $WorkExcellence -theme: mat.define-light-theme((
+//   color: (
+//     primary: $WorkExcellence -primary,
+//     accent: $WorkExcellence -accent,
+//     warn: $WorkExcellence -warn,
+//   )
+// ));
+
+// @include mat.all-component-themes($WorkExcellence -theme);
+

@@ -1,0 +1,60 @@
+.container-fluid .colapse-card {
+  height: 43rem;
+}
+
+.top-section {
+  height: 29px;
+}
+
+.firstDiv-buttons {
+  padding-right: 44px;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: end;
+}
+
+.row .col-md-6 .main-card {
+  max-height: 310px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: none;
+}
+
+.full-card {
+  height: 300px;
+  border: none;
+}
+
+.add-phases button {
+  width: 9rem;
+}
+
+.col-md-5 .input-group .card .card-body {
+  height: 79px;
+  width: 29rem;
+  max-height: 85px;
+  overflow: auto;
+  border: none;
+}
+
+.col-md-5 .input-group .card {
+  background-color: #fafafa;
+}
+.custom-flex {
+  height: 86px;
+  overflow: auto;
+}
+
+
+:host ::ng-deep .p-multiselect{
+  width: 100% !important;
+}
+
+:host ::ng-deep .p-multiselect .p-multiselect-label {
+  padding: 0.1rem 0.5rem;
+  font-size: 14px;
+}

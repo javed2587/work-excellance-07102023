@@ -1,0 +1,67 @@
+<p-dialog position={{modelPosition}}  [transitionOptions]="'0ms'" [draggable]="true" [visible]="displayVal"  [style]="{width:'65vw'}" [closable]="false"
+  styleClass="dialog-custom" [modal]="true">
+  <ng-template pTemplate="header">
+    <i class="pi lock-open" style="font-size: 2rem"></i>
+    <div class="header-label"><b>Decision</b></div>
+  </ng-template>
+  <div class="row">
+    <div class="col-6">
+        <label class="px-2 pt-1" for="">Owner</label>
+        <!-- <div class="col input-group ">
+            <input type="text" class="form-control" placeholder="" aria-label="Username"
+                aria-describedby="basic-addon1" [(ngModel)]="ownerValue" >
+        </div> -->
+        <div class="input-group ">
+          <select (change)="setOwner($event)" class="option-items " id="cars" name="cars" >
+            <option value="select">Select Owner</option>
+            <option [selected]="ownerVal ? ownerVal.id == user.id : false" *ngFor="let user of users" [value]="user.id">{{user.username}}</option>
+          </select>
+        </div>
+    </div>
+    <div class="col-6">
+        <label class="px-2 pt-1" for="">Date</label>
+        <div class="col input-group">
+            <input type="date" class="form-control" placeholder="" aria-label="Username"
+                aria-describedby="basic-addon1" [(ngModel)]="dateValue" >
+        </div>
+    </div>
+  </div>
+         <div class="mt-1">
+            <p-editor [(ngModel)]="decisionValue" [style]="{'height':'127px'}">
+                <ng-template pTemplate="header">
+                  <span class="ql-formats">
+                    <select class="ql-size">
+                      <option value="small">little</option>
+                      <option selected></option>
+                      <option value="large">Subtitle</option>
+                      <option value="huge">Title</option>
+                    </select>
+                  </span>
+                    <span class="ql-formats">
+                        <button type="button" class="ql-bold" aria-label="Bold"></button>
+                        <button type="button" class="ql-italic" aria-label="Italic"></button>
+                        <button type="button" class="ql-underline" aria-label="Underline"></button>
+                        <button class="ql-list" value="ordered"></button>
+                        <button class="ql-list" value="bullet"></button>
+                    </span>
+
+                      <span id="toolbar">
+                        <span class="ql-formats">
+                          <button class="ql-align" value=""></button>
+                          <button class="ql-align" value="center"></button>
+                          <button class="ql-align" value="right"></button>
+                          <button class="ql-align" value="justify"></button>
+                        </span>
+                      </span>
+                </ng-template>
+            </p-editor>
+
+          <div class="button-dialog  text-center mt-3">
+            <button type="button" label="Save" class="btn btn-primary btn-sm  px-4 rounded-3 p-button"
+              (click)="saveData()"> Save</button>
+            <button type="button" label="Cancel" class="btn btn-primary btn-sm px-3  rounded-3 p-button"
+              (click)="cancelModal()">Cancel</button>
+          </div>
+         </div>
+
+</p-dialog>

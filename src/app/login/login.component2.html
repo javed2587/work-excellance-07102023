@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="login-form">
+      <img src="../../assets/images/Header/WorkExcellence.png" alt="" srcset="" style="height: 120px; width: 200px;">
+      <h3 class="title mt-4 mb-4"></h3>
+      <form #login="ngForm">
+        <input autofocus="" id="email" name="email" [value]="email" placeholder="Email"
+        class="form-control mb-2" required="" ngModel autocomplete="off" />
+        <div class="password-container">
+        <input id="password" name="password" placeholder="Password" [value]="password" type="{{ showPassword ? 'text' : 'password' }}"
+        [(ngModel)]="password" type="password" class="form-control mb-2" required="" ngModel autocomplete="off"
+        [type]="showPassword ? 'text' : 'password'" />
+        <span class="password-toggle" (click)="togglePasswordVisibility()">
+          <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+        </span>
+      </div>
+        <p-button type="submit"
+        (onClick)="myLoginFunc(login.value)" ><b style="position: absolute; right: 175px;">Sign In</b></p-button>
+      </form>
+      <p>OR</p>
+      <div class="google-btn">
+        <a href="{{ googleAuthUrl }}" style="text-decoration: none;">
+          <div class="google-icon-wrapper">
+            <img class="google-icon"
+              src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+          </div>
+          <p class="btn-text">Sign in with Google</p>
+        </a>
+      </div>
+      <div class="google-btn mt-2">
+        <a href="{{ microsoftAuthUrl }}" style="text-decoration: none;">
+          <div class="google-icon-wrapper">
+            <i class="bi bi-microsoft" style="display: flex; justify-content: center; margin-top: 12px;"></i>
+          </div>
+          <p class="btn-text ">Sign in with Microsoft</p>
+        </a>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,89 @@
+.snakBar-menu{
+    background-color: black;
+    height: 36px;
+    color: white;
+    position: absolute;
+    top: -4px;
+    border-radius: 10px 10px 0px 0px;
+    left: 37px;
+    z-index: 5;
+    padding: -5px;
+    padding-left: -15px;
+    padding-right: 7px;
+}
+
+.message__actions {
+    position: absolute;
+    top: -16px;
+    right: 17px;
+    display: none;
+    z-index: 1;
+    
+}
+.main-bar {
+    gap: 12px;
+    padding: 4px 0px 0px 9px;
+}
+.change-my-color {
+    width: 43px;
+    padding-top: 2px;
+}
+.addNote-styel{
+    width: 25px;
+    padding-top: 2px;
+}
+.change-decision-color{
+ width: 25px;
+}
+.change-oppertunity-color {
+    width: 30px;
+}
+
+/* ------------Tooltip text style------------ */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+  .add-note {
+    z-index: 1;
+    padding: -3px;
+    position: relative;
+    margin-top: 25px;
+    left: 25px;
+  }
+  .add-note-div {
+    position: relative;
+    z-index: 1;
+  }
+  app-add-note{
+    z-index: 1;
+  }
+  ::ng-deep .tooltip .p-tooltip-text {
+    width:fit-content;
+  }
+
+
+  .input-group>.form-control:focus {
+    z-index: 0px !important;
+  }

@@ -1,0 +1,183 @@
+<div class="menu-header-adjustment">
+  <app-main-page
+    [moduleNameVal]="currntModuleTitle"
+    [teamLeader]="pageMeta?.team?.teamLeader"
+    [teamMembers]="pageMeta?.team?.teamMembers"
+    (sendLockStatus)="getLockStatus($event)"
+    (sendPaintByLetters)="getPaintByLetters($event)"
+    (pushTeamLead)="getTeamLeader($event)"
+    (pushTeamMemebrs)="getTeamMembers($event)"
+    [totalRequiredFields]="totalFieldsRequired"
+    [totalFieldsFilled]="totalFieldsFilled"
+    [userRole]="userRole"
+  ></app-main-page>
+  <!-- <app-main-page [moduleNameVal]="currntModuleTitle"> </app-main-page> -->
+  <app-side-notes
+    [moduleNameVal]="currntModuleTitle"
+    [paintbyletters]="paintbyletters"
+  ></app-side-notes>
+
+  <!--? old date header -->
+  <!-- <div class="top-section">
+      <div class="row row-custom" style="height: 10px;">
+        <div class="col-1 d-flex justify-content-end text-center">
+
+        </div>
+        <div class="col-11 d-flex justify-content-end text-center" style="z-index: 0;" >
+          <div class="mr-25">Sales L0.1</div>
+          <div class="date d-flex" >
+            <p class="mx-3">
+              <span>
+                <strong>Start Date</strong>
+              </span>
+
+            </p>
+            <p class="mx-3">
+
+              <input class="input-date-h" type="date" [(ngModel)]="start_date"    style="height: 23px;" class="form-control"
+                          id="input-start-date">
+            </p>
+            <p class="mx-3">
+              <span>
+                <strong>Interval</strong>
+              </span>
+
+            </p>
+            <p class="mx-3">
+
+              <select style="height: 23px;    padding: 0px 1px 1px 6px;            " class="form-control" (change)="calculateEndDate()"   [(ngModel)]="interval" >
+                  <option class="background-white" disabled selected>Interval</option>
+                  <option class="background-white" value="1">1-Month</option>
+                  <option class="background-white" value="3">3-Month</option>
+                  <option class="background-white" value="6">6-Month</option>
+                  <option class="background-white" value="9">9-Month</option>
+                  <option class="background-white" value="12">12-Month</option>
+              </select>
+            </p>
+            <p class="mx-3">
+              <span>
+                <strong>Adjust Frequencey</strong>
+              </span>
+
+            </p>
+            <p class="mx-3">
+
+              <select style="height: 23px;    padding: 0px 1px 1px 10px;
+              " class="form-control" [(ngModel)]="frequencey">
+                  <option class="background-white" disabled selected>Frequencey</option>
+                  <option class="background-white" [disabled]=" interval=='3' || interval=='6' || interval=='9' || interval=='12'" value="Daily">Daily</option>
+                  <option class="background-white" [disabled]=" interval=='1'" value="Weekly">Weekly</option>
+                  <option class="background-white" [disabled]="interval!='12'" value="Monthly">Monthly</option>
+              </select>
+            </p>
+            <p class="mx-3">
+              <span>
+                <strong>End  Date</strong>
+              </span>
+
+            </p>
+            <p class="mx-3">
+             {{end_date}}
+            </p>
+            <p class="mx-3">
+              <span>
+                <strong>Updated Date</strong>
+              </span>
+            {{dateDataList.updateDate}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+  <!--? New Date header -->
+  <app-date-header
+    (intervalEvent)="getMetaInterval($event)"
+    (startDateEvent)="sethDateValue($event)"
+    (sendAdjustFrequency)="getAdjustFrequency($event)"
+    (sendCreationDate)="getCreationDate($event)"
+    (sendPlanDate)="getPlanDate($event)"
+    [pageName]="currntModuleTitle"
+    [startDate]="pageMeta?.interval?.startDate"
+    [creationDate]="pageMeta?.creationDate"
+    [intervalDuration]="pageMeta?.interval?.definition"
+    [intervalEndDate]="pageMeta?.interval?.endDate"
+  ></app-date-header>
+
+  <!-- <app-toolbar></app-toolbar> -->
+
+  <app-phase-one
+    [phaseOneModalFlag]="phaseOneModalFlag"
+    [phaseTwoModalFlag]="phaseTwoModalFlag"
+    [phaseThreeModalFlag]="phaseThreeModalFlag"
+    [phaseFourModalFlag]="phaseFourModalFlag"
+    [phaseFiveModalFlag]="phaseFiveModalFlag"
+    [pageName]="pageName"
+    [pageOwner]="pageOwner"
+    [textAreaVal]="pageMeta?.planPurpose?.toString()"
+    (sendPageName)="getPageName($event)"
+    (sendPageOwner)="getPageOwner($event)"
+    (sendPlanPurpose)="getPlanPurpose($event)"
+    (sendPhaseOneModalFlag)="getPhaseOneModalFlag($event)"
+    [lockstatus]="lockstatus"
+  ></app-phase-one>
+
+  <app-phase-two
+    [phaseOneModalFlag]="phaseOneModalFlag"
+    [phaseTwoModalFlag]="phaseTwoModalFlag"
+    [phaseThreeModalFlag]="phaseThreeModalFlag"
+    [phaseFourModalFlag]="phaseFourModalFlag"
+    [phaseFiveModalFlag]="phaseFiveModalFlag"
+    (sendCurrentPhaseData)="getCurrentPhaseData($event)"
+    (sendPlanDirectionPhaseData)="getPlanDirectionPhaseData($event)"
+    (sendPhaseTwoModalFlag)="getPhaseTwoModalFlag($event)"
+    [currentStates]="workImprovementCurrentStates"
+    [planDirectionalStatement]="workImprovementPlanDirections"
+    [lockstatus]="lockstatus"
+  ></app-phase-two>
+  <!-- <app-phase-three></app-phase-three> -->
+  <app-phase-three
+    [main_page_start_date]="start_date"
+    [main_page_interval]="interval"
+    [main_page_frequencey]="frequencey"
+    [lockstatus]="lockstatus"
+    [phaseOneModalFlag]="phaseOneModalFlag"
+    [phaseTwoModalFlag]="phaseTwoModalFlag"
+    [phaseThreeModalFlag]="phaseThreeModalFlag"
+    [phaseFourModalFlag]="phaseFourModalFlag"
+    [phaseFiveModalFlag]="phaseFiveModalFlag"
+    [workImprovmentInitiatives]="workImprovementIInitiatives"
+    (sendWorkImprovementInitiatives)="getWorkImprovementInitiatives($event)"
+    (sendPhaseThreeModalFlag)="getPhaseThreeModalFlag($event)"
+    (onSavePage)="savePage()"
+  ></app-phase-three>
+  <!-- <app-phase-three-test></app-phase-three-test> -->
+  <app-phase-four
+    [phaseOneModalFlag]="phaseOneModalFlag"
+    [phaseTwoModalFlag]="phaseTwoModalFlag"
+    [phaseThreeModalFlag]="phaseThreeModalFlag"
+    [phaseFourModalFlag]="phaseFourModalFlag"
+    [phaseFiveModalFlag]="phaseFiveModalFlag"
+    (sendPhaseFourModalFlag)="getPhaseFourModalFlag($event)"
+    (sendPlanOutcomesPhaseData)="getPlanOutcomesPhaseData($event)"
+    (sendPlanMeasuresPhaseData)="getPlanMeasuresPhaseData($event)"
+    [lockstatus]="lockstatus"
+    [planOutcomesPhaseData]="workImprovementPlanOutcomes"
+    [PlanMeasuresPhaseData]="workImprovementPlanMeasures"
+  ></app-phase-four>
+  <app-phase-five
+    [phaseOneModalFlag]="phaseOneModalFlag"
+    [phaseTwoModalFlag]="phaseTwoModalFlag"
+    [phaseThreeModalFlag]="phaseThreeModalFlag"
+    [phaseFourModalFlag]="phaseFourModalFlag"
+    [phaseFiveModalFlag]="phaseFiveModalFlag"
+    (sendPhaseFiveModalFlag)="getPhaseFiveModalFlag($event)"
+    (sendPotentialPlans)="getPotentialPlansPhaseData($event)"
+    (sendContingencyPlans)="getContingencyPlansPhaseData($event)"
+    (sendPDCAStatements)="getWorkImprovementPDCAStatements($event)"
+    [lockstatus]="lockstatus"
+    [wiPotentialPlans]="workImprovementPotentialPlans"
+    [wiContingencyPlans]="workImprovementContingencyPlans"
+    [wiPDCAStatements]="workImprovementPDCAStatements"
+  ></app-phase-five>
+</div>

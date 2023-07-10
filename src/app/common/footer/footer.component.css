@@ -1,0 +1,93 @@
+
+
+/*--------------------------
+ FOOTER
+----------------------*/
+footer{
+   position: fixed; 
+left: 0;
+bottom: 0;
+width: 100%;
+color: white;
+text-align: center;
+}
+.nav-background-social{
+    background-color: #ffffff;
+}
+.nav-background{
+    background-color: #fdb719;
+   
+}
+.overlap{
+    top: 22px;
+position: relative;
+left: 30px;
+display: flex;
+
+}
+.row-style{
+    padding-top: 30px;
+    text-align-last: center;
+}
+.row-style, .p{
+    font-size: smaller;
+}
+.privacy-row{
+    margin-left: 20px;
+}
+.u423-amg{
+    border-width: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 49px;
+    height: 49px;
+}
+.fa {
+    padding-top: 10px;
+    font-size: 30px;
+    width: 35px;
+    height: 36px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+  }
+  .icons-group a {
+    background:  #fdb719;
+    color: white;
+  }
+/* .fa-facebook {
+    background:  #fdb719;
+    color: white;
+  }
+  .fa-twitter {
+    background:  #fdb719;
+    color: white;
+  }
+  .fa-youtube {
+    background:  #fdb719;
+    color: white;
+  }
+  .fa-instagram {
+    background:  #fdb719;
+    color: white;
+  }
+  .fa-linkedin {
+    background:  #fdb719;
+    color: white;
+  }
+  .fa-google {
+    background:  #fdb719;
+    color: white;
+  } */
+  .half-circle {
+    width: 45px;
+    height: 50px;
+    border-top-left-radius: 110px;
+    border-top-right-radius: 110px;
+    border: 3px solid #fdb719;
+    border-bottom: 0;
+    padding: 0px;
+    margin-left: 10px;
+}

@@ -1,0 +1,158 @@
+<div class="container-fluid">
+  <div class="top-section">
+    <div class="row row-custom">
+      <div class="col-1 d-flex justify-content-end text-center">
+        <button class="btn-style" (click)="toggle()">
+          <img
+            src="../../../../assets/images/WorkSystem/UpArrow.png"
+            alt=""
+            *ngIf="upArrow"
+          />
+          <img
+            src="../../../../assets/images/WorkSystem/DownArrow.png"
+            alt=""
+            *ngIf="downArrow"
+          />
+        </button>
+      </div>
+      <div class="col-11 d-flex justify-content-end text-center"></div>
+    </div>
+  </div>
+  <div
+    class="card card-common-properties custom-card px-2 shadow-sm"
+    *ngIf="collapseCard"
+  >
+    <div class="">
+      <div class="row">
+        <div class="col-6">
+          <div class="d-flex mt-4 mx-2">
+            <div class="label_contant">
+              <span class="mr-3">Name</span>
+            </div>
+            <div class="input-group mb-1 pl-1">
+              <input
+                type="text"
+                class="input-height"
+                (input)="setPageName()"
+                [(ngModel)]="pageName"
+                [disabled]="true"
+                maxlength="150"
+              />
+            </div>
+          </div>
+
+          <div class="d-flex my-3 mx-2">
+            <div class="label_contant">Page Owner</div>
+            <div class="input-group mb-1 pl-1">
+              <!-- <p-dropdown placeholder="Select Page Owner" [(ngModel)]="pageOwnerUser" [classList]="['p-user-dropdown']"
+                [disabled]="true" style="width:100%;" (onChange)="setPageOwner($event)"
+                [options]="items" optionLabel="email"></p-dropdown> -->
+              <input
+                type="text"
+                class="input-height"
+                [value]="pageOwner.name"
+                [disabled]="true"
+              />
+              <p-dialog
+                header="Warning"
+                [(visible)]="display"
+                [closeOnEscape]="true"
+                [closable]="true"
+                [closable]="false"
+              >
+                <ng-template pTemplate="header"> </ng-template>
+                When possible it is best to have only one owner.
+                <ng-template pTemplate="footer">
+                  <button
+                    type="button"
+                    pButton
+                    autofocus
+                    (click)="hidebutton()"
+                  >
+                    OK
+                  </button>
+                </ng-template>
+              </p-dialog>
+
+              <!-- <input type="text" class="form-control" placeholder="" aria-label="Username" value="{{page_owner}}"
+                  aria-describedby="basic-addon1" [disabled]="true ? lockstatus == true : false"> -->
+            </div>
+          </div>
+          <div class="d-flex my-3 mx-2">
+            <div class="statement-btn p-0 border-0 g-0">
+              <button class="mx-1 px-3 btn-dark text-warning">
+                <div class="text" (click)="addStatement()">
+                  <span>+ Add Statement</span> 
+                </div>
+              </button>
+              <button class="mx-1 mx-1 btn-dark text-warning">
+                <div class="text" (click)="removeStatement()">
+                  <span>- Remove Statement</span> 
+                </div>
+              </button>
+            </div>
+            <button
+              pButton
+              pRipple
+              (click)="savePage()"
+              label="Save"
+              icon="pi pi-check"
+            ></button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card-body">
+            <div class="d-flex my-3 mx-2">
+              <div class="label-textArea">
+                <span class=""
+                  >Overall Work <br />
+                  Direction Purpose</span
+                >
+              </div>
+              <div class="input-group mb-1 pl-1 text-area">
+                <textarea
+                  class="form-control"
+                  rows="4"
+                  id="comment"
+                  maxlength="250"
+                  (click)="onClickShowMic()"
+                  (input)="setPagePurpose()"
+                  [(ngModel)]="pageOverallPurpose"
+                  [disabled]="true ? lockstatus == true : false"
+                ></textarea>
+                <div
+                  class="mic-position"
+                  (click)="startService()"
+                  *ngIf="showMicForTextArea"
+                >
+                  <i
+                    class="fa fa-microphone microphone-ico"
+                    [ngStyle]="{ color: voiceservice == true ? 'red' : 'blue' }"
+                  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="div"
+  *ngFor="let i of statementsList; let statementsListIndex = index"
+>
+  <app-phase-two
+    [phaseMasterIndex]="statementsListIndex + 1"
+    [wdStatement]="pageStatements[statementsListIndex]"
+    (click)="removeStatementIndex(statementsListIndex)"
+    [lockstatus]="lockstatus"
+    (sendColor)="getStatementColor($event)"
+    (sendStatement)="getStatement($event)"
+    (sendStatementPurpose)="getStatementPurpose($event)"
+    (sendStatementOwners)="getStatementOwners($event)"
+    (sendInputs)="getInputs($event)"
+    (sendOutcomes)="getOutcomes($event)"
+    (sendPdcaStatements)="getPdcaStatements($event)"
+  ></app-phase-two>
+</div>

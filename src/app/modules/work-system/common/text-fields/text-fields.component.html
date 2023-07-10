@@ -1,0 +1,340 @@
+<div class="first-container">
+  <div class="phase-purpose form-group mb-1 px-1">
+    <label
+      for="phasePurpose"
+      style="cursor: pointer"
+      pTooltip="{{ tooltipsJSON.phasepurpose }}"
+      tooltipStyleClass="tooltip-header"
+      tooltipPosition="bottom"
+      >Phase Purpose</label
+    >
+    <span
+      (click)="
+        sendPhasePurposeSnakbarStatus(
+          mainIndex,
+          phases[this.mainIndex].phaseurposeFlag
+        )
+      "
+    >
+      <img
+        class="light-icon"
+        src="../../../../assets/images/header-images/Bulb.svg"
+        alt=""
+      />
+    </span>
+    <div
+      class="snackBar-position"
+      *ngIf="
+        phases[this.mainIndex].phaseurposeFlag &&
+        this.phaseListModalFlag == true &&
+        this.headerSectionModalFlag == false
+      "
+    >
+      <app-mian-tool-bar
+        [displayVal]="false"
+        (pushNotesValue)="fetchNotesValue($event)"
+        (pushOppertunity)="fetchOpportunityValue($event)"
+        (pushTaslValue)="fetchTaskValue($event)"
+        (pushDecisionValue)="fetchDecisionValue($event)"
+        [lockstatus]="lockstatus"
+        [openRatingForNote]="true"
+        [color]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.purpose?.rating?.color"
+        [decision]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.purpose?.rating?.decision"
+        [note]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.purpose?.rating?.note"
+        [test]="phasesPage"
+        [task]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.purpose?.rating?.task"
+        [opportunity]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.purpose?.rating?.opportunity"
+      >
+      </app-mian-tool-bar>
+    </div>
+    <input
+      type="text"
+      #box
+      class="form-control text"
+      placeholder=""
+      aria-label="Username"
+      aria-describedby="basic-addon1"
+      maxlength="250"
+      [(ngModel)]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.purpose.text"
+      (ngModelChange)="savePhasePurpose($event)"
+      [disabled]="true ? lockstatus == true : false"
+    />
+  </div>
+  <div class="phase-measure">
+    <div class="row flex-container">
+      <div class="col-8 text-start">
+        <label
+          class="label"
+          style="cursor: pointer"
+          pTooltip="{{ tooltipsJSON.phasemeasure }}"
+          tooltipStyleClass="tooltip-header"
+          tooltipPosition="bottom"
+          >Phase Measure</label
+        >
+      </div>
+      <div class="col-4 buttons-container d-flex">
+        <div class="" (click)="addPhaseMeasures()">
+          <img
+            src="../../../../../assets/images/WorkSystem/add.png"
+            class="imag-icon"
+          />
+        </div>
+        <div class="" (click)="removePhaseMeasures()">
+          <img
+            src="../../../../../assets/images/WorkSystem/minus.png"
+            class="imag-icon"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="cutom-input">
+      <div class="phase-measure-container">
+        <div
+          class="div input-group my-1 px-1"
+          *ngFor="let obj of phases[this.mainIndex].phaseMeasures; let i = index"
+          (click)="fetchIndex(i)"
+        >
+          <span
+            (click)="
+              getPhaseMeasureForSnakeBarStatus(
+                this.mainIndex,
+                i,
+                obj.toolbarStatus
+              )
+            "
+            class="pr-1 bar-position"
+          >
+            <img
+              class="light-icon"
+              src="../../../../assets/images/header-images/Bulb.svg"
+              alt=""
+            />
+          </span>
+          <span
+            *ngIf="
+              phases[this.mainIndex].phaseMeasures[i].toolbarStatus &&
+              this.phaseListModalFlag == true &&
+              this.headerSectionModalFlag == false
+            "
+            class="phaseMeasure-toolbar"
+          >
+            <app-mian-tool-bar
+              [displayVal]="false"
+              [lockstatus]="lockstatus"
+              [openRatingForNote]="true"
+              (pushNotesValue)="fetchPhaseMeasureNotesValue($event, i)"
+              (pushOppertunity)="fetchPhaseMeasureOpportunityValue($event, i)"
+              (pushDecisionValue)="fetchPhaseMeasureDecisionValue($event, i)"
+              (pushTaslValue)="fetchPhaseMeasureTaskValue($event, i)"
+              
+              [color]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.phaseMeasures[i]?.rating?.color"
+              [note]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.phaseMeasures[i]?.rating?.note"
+              [decision]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.phaseMeasures[i]?.rating?.decision"
+              [task]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.phaseMeasures[i]?.rating?.task"
+              [opportunity]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.phaseMeasures[i]?.rating?.opportunity"
+            >
+            </app-mian-tool-bar>
+          </span>
+
+          <input
+            type="text"
+            class="input-height"
+            value=""
+            placeholder=""
+            aria-label="Username"
+            [(ngModel)]="obj.value"
+            aria-describedby="basic-addon1"
+            maxlength="150"
+            (ngModelChange)="savePhaseMeasures($event, i)"
+            [disabled]="true ? lockstatus == true : false"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-----main phase name -->
+  <label
+    for=""
+    style="cursor: pointer"
+    pTooltip="{{ tooltipsJSON.phase }}"
+    tooltipStyleClass="tooltip-header"
+    tooltipPosition="bottom"
+    >Phase</label
+  >
+  <div class="input-group mb-2 px-1">
+    <span
+      class="input-group-text mr-1 backgound"
+      id="basic-addon1"
+      [ngStyle]="{ 'background-color': phasesPage?.phases[this.mainIndex]?.phaseDefinition?.phase?.rating?.color }"
+      (click)="
+        openPhaseNameSnackBarStatus(
+          this.mainIndex,
+          phases[this.mainIndex].phaseNameFlag
+        )
+      "
+    >
+      {{ indexPlusOne }}.0</span
+    >
+    <span
+      *ngIf="
+        phases[this.mainIndex].phaseNameFlag &&
+        this.phaseListModalFlag == true &&
+        this.headerSectionModalFlag == false
+      "
+      class="tollbar-group"
+    >
+      <app-mian-tool-bar
+        (pushColorToMainParentSpan)="setPhaseNameRating($event)"
+        (pushNotesValue)="fetchPhaseNameNotes($event)"
+        (pushOppertunity)="fetchPhaseNameOpportunity($event)"
+        (pushTaslValue)="fetchPhaseNameTask($event)"
+        (pushDecisionValue)="fetchPhaseNameDecision($event)"
+        [displayVal]="false"
+        [lockstatus]="lockstatus"
+        [openRatingForNote]="true"
+        [openRatingTabFlag]="true"
+        [color]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.phase?.rating?.color"
+        [decision]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.phase?.rating?.decision"
+        [note]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.phase?.rating?.note"
+        [task]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.phase?.rating?.task"
+        [opportunity]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.phase?.rating?.opportunity"
+      >
+      </app-mian-tool-bar>
+    </span>
+    <input
+      type="text"
+      #box
+      class="input-height2"
+      placeholder=""
+      aria-label="Username"
+      [(ngModel)]="phasesPage?.phases[this.mainIndex]?.phaseDefinition?.phase.text"
+      (ngModelChange)="savePageName($event)"
+      [disabled]="true ? lockstatus == true : false"
+      aria-describedby="basic-addon1"
+      maxlength="150"
+      style="font-weight: bold"
+    />
+  </div>
+</div>
+<div class="second-contianer">
+  <div class="row heading">
+    <div class="col til">
+      <label
+        class="label"
+        style="cursor: pointer"
+        pTooltip="{{ tooltipsJSON.stepsofwork }}"
+        tooltipStyleClass="tooltip-header"
+        tooltipPosition="bottom"
+        >Steps of Work
+      </label>
+    </div>
+    <div class="col buttons">
+      <div class="flex-container">
+        <div class="mic_" (click)="startService()" *ngIf="showMic">
+          <i
+            class="fa fa-microphone microphone-ico"
+            [ngStyle]="{ color: isVoiceservice == true ? 'red' : 'blue' }"
+          ></i>
+        </div>
+        <div class="" (click)="addFieldsPhasesWorkType()">
+          <img
+            src="../../../../../assets/images/WorkSystem/add.png"
+            class="imag-icon"
+          />
+        </div>
+        <div class="" (click)="removeFieldPhasesWorkType()">
+          <img
+            src="../../../../../assets/images/WorkSystem/minus.png"
+            class="imag-icon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ---------------Without dragDrop--------------- -->
+  <!--
+    <div class="second-card px-2" >
+      <div class="input-group my-2" *ngFor="let obj of seconCard; let i = index" (click)="fetchIndex(i)">
+        <span class="input-group-text fs-6 mr-1" id="basic-addon1" [ngStyle]="{'background-color':obj?.color}" (click)="addRatingForWorkType(i)">{{indxVal}}.{{i+1}}</span>
+        <span  *ngIf="obj.
+        2" class="tollbar-group">
+          <app-mian-tool-bar (pushColorToMainParentSpan)="setColorValueForWorkType($event)" [showSnakeBarMenu]="showSnakeBar" [displayVal]='modal'>
+          </app-mian-tool-bar>
+        </span>
+        <input type="text" class="form-control" placeholder="" aria-label="Username"
+          aria-describedby="basic-addon1">
+      </div>
+  </div> -->
+  <!-- ---------------dragDrop--------------- -->
+  <div class="second-card px-2">
+    <div
+      cdkDropList
+      class="example-list"
+      (cdkDropListDropped)="dropStepsOfWork($event)"
+    >
+      <div
+        class="input-group my-1"
+        *ngFor="let obj of phases[this.mainIndex].workSteps; let i = index"
+        (click)="fetchIndex(i)"
+        cdkDrag
+        [cdkDragDisabled]="obj.isChildDragDropOn"
+      >
+        <span
+          class="input-group-text fs-6 mr-1"
+          id="basic-addon1"
+          [ngStyle]="{ 'background-color': obj?.rateValue }"
+          (click)="
+            sendStepsWorkSnakbarStatus(this.mainIndex, i, obj.toolbarStatus)
+          "
+          >{{ indexPlusOne }}.{{ i + 1 }}</span
+        >
+        <span
+          *ngIf="
+            phases[this.mainIndex].workSteps[i].toolbarStatus &&
+            this.phaseListModalFlag == true &&
+            this.headerSectionModalFlag == false
+          "
+          class="tollbar-group"
+        >
+          <app-mian-tool-bar
+            (pushColorToMainParentSpan)="sendStepsWorkRating($event)"
+            (pushNotesValue)="fetchWorkStepsNotesValue($event, i)"
+            (pushOppertunity)="fetchWorkStepsOpportunityValue($event, i)"
+            (pushTaslValue)="fetchWorkStepsTaskValue($event, i)"
+            (pushDecisionValue)="fetchWorkStepsDecisionValue($event, i)"
+            [displayVal]="false"
+            [lockstatus]="lockstatus"
+            [openRatingForNote]="true"
+            [openRatingTabFlag]="true"
+            [color]="phasesPage?.phases[this.mainIndex]?.workSteps[i]?.rating?.color"
+            [note]="phasesPage?.phases[this.mainIndex]?.workSteps[i]?.rating?.note"
+            [decision]="phasesPage?.phases[this.mainIndex]?.workSteps[i]?.rating?.decision"
+            [opportunity]="phasesPage?.phases[this.mainIndex]?.workSteps[i]?.rating?.opportunity"
+            [task]="phasesPage?.phases[this.mainIndex]?.workSteps[i]?.rating?.task"
+          >
+          </app-mian-tool-bar>
+        </span>
+        <input
+          type="text"
+          class="input-height2"
+          placeholder=""
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+          [(ngModel)]="obj.value"
+          (ngModelChange)="saveWorkTypes($event, i)"
+          [disabled]="true ? lockstatus == true : false"
+          maxlength="150"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="div" *ngIf="isPrimeModal">
+  <app-prime-alert
+    (sendIsValueSubmit)="getIsvalueSubmitForPrimeAlert($event)"
+    [isDisplayPrimeAlertModal]="isPrimeModal"
+    [alertMessage]="addMessageForAlertModal"
+    [messagTypeOfAlertModal]="msgTypeOfModal"
+  >
+  </app-prime-alert>
+</div>

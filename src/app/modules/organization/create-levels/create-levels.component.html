@@ -1,0 +1,54 @@
+<div class="contianer px-3">
+    <div class="top-section">
+        <div class="row row-custom">
+            <div class="col-1 d-flex justify-content-end text-center">
+                <button class="btn-style" (click)="toggle()">
+                    <img src="../../../../assets/images/WorkSystem/UpArrow.png" alt="" *ngIf="up" />
+                    <img src="../../../../assets/images/WorkSystem/DownArrow.png" alt="" *ngIf="down" />
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="div create-levels-container mx-3">
+        <div class="container-label">
+            <h5>Create Levels</h5>
+        </div>
+        <div class="card mx-4 custom-card" *ngIf="flagg">
+            <div class="card-body px-5">
+                <div class="row" *ngFor="let levels of listOfLevels; let i= index">
+                    <div class="col-1">{{levels.lname}}</div>
+                    <div class="col-11"> <input type="text" class="form-control" (click)="clicked()"
+                            (keyup)="updateLevelValue($event, i)">{{levels.value}} </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-2">Company</div>
+                    <div class="col-10"> <input type="text" class="form-control"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">Company</div>
+                    <div class="col-10"> <input type="text" class="form-control"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">Company</div>
+                    <div class="col-10"> <input type="text" class="form-control"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">Company</div>
+                    <div class="col-10"> <input type="text" class="form-control"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">Company</div>
+                    <div class="col-10"> <input type="text" class="form-control"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">Company</div>
+                    <div class="col-10"> <input type="text" class="form-control"> </div>
+                </div> -->
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

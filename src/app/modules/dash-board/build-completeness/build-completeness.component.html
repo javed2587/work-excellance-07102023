@@ -1,0 +1,121 @@
+
+
+
+<div *ngIf="showBody === false" class="openbtn">
+  <img
+    height="30px"
+    width="30px"
+    src="../../../../assets/images/dashboard/Colors/Build.svg"
+    style="background-color: lightgray"
+  />
+  <button class="btn-build-completness" (click)="changeShowBody()">
+    Build Completeness
+    <i style="margin-left: 10px" class="fa-sharp fa-solid fa-chevron-down"></i>
+  </button>
+</div>
+<div *ngIf="showBody === true" class="openbtn">
+  <button class="btn-build-completness-open" (click)="changeShowBody()">
+    <img
+      height="30px"
+      width="30px"
+      style="background-color: #005FBE"
+      src="../../../../assets/images/dashboard/White/Build.svg"
+    />
+    Build Completeness
+    <i style="margin-left: 10px" class="fa-sharp fa-solid fa-chevron-up"></i>
+  </button>
+</div>
+<div class="main-container">
+  <div class="container-fluid main-container-sub">
+    <div class="row container-sub-header">
+      <div class="col-3">
+        <div class="header-cols">
+          <img
+            style="width: 50px; height: 50px"
+            src="../../../../assets/workMeasurement/work-system.png"
+          />
+          <p id="p1">WORK SYSTEM</p>
+          <!-- <P id="p2">14</P> -->
+        </div>
+        <div class="header-cols-hr">
+          <hr />
+        </div>
+        <div class="header-buttons" style="display: flex">
+          <button style="margin-left: 35px">3/5</button>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="header-cols">
+          <img
+            style="width: 50px; height: 50px"
+            src="../../../../assets/workMeasurement/work-improvement.png"
+          />
+          <p id="p1">WORK IMPROVEMENT</p>
+          <!-- <P id="p3">28</P> -->
+        </div>
+        <div class="header-cols-hr">
+          <hr />
+        </div>
+        <div class="header-buttons" style="display: flex">
+          <button style="margin-left: 35px">7/7</button>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="header-cols">
+          <img
+            style="width: 30px; height: 50px"
+            src="../../../../assets/workMeasurement/work-measurement.png"
+          />
+          <p id="p1">WORK MEASUREMENT</p>
+          <!-- <P id="p4">40</P> -->
+        </div>
+        <div class="header-cols-hr">
+          <hr />
+        </div>
+        <div class="header-buttons" style="display: flex">
+          <button style="margin-left: 35px">3/4</button>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="header-cols">
+          <img
+            style="width: 50px; height: 50px"
+            src="../../../../assets/workMeasurement/work-direction.png"
+          />
+          <p id="p1">WORK DIRECTION</p>
+          <!-- <P id="p5">54</P> -->
+        </div>
+        <div class="header-cols-hr">
+          <hr style="margin-top: 0px" />
+        </div>
+        <div class="header-buttons" style="display: flex">
+          <button style="margin-left: 35px">5/8</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="displayContentBuild"  class="container-fluid buildContent">
+    <div
+      *ngFor="let build of buildCompleteness; let i = index"
+      class="row container-sub"
+      style="height: 50px"
+    >
+      <div
+        style="padding-top: 0px"
+        *ngFor="let subbuild of buildCompleteness[i]"
+        class="col-3"
+      >
+        <div class="body-buttons" style="display: flex">
+          <p style="margin-top: 10px; font-size: 12px">L{{ subbuild.level }}</p>
+          <button [ngStyle]="{ 'background-color': subbuild.color1 }">
+            {{ subbuild.number1 }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

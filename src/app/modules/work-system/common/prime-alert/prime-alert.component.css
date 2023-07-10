@@ -1,0 +1,11 @@
+:host ::ng-deep .p-dialog .p-dialog-header {
+    background-color: #fdb719;
+    height: 20px;
+}
+:host ::ng-deep .p-dialog .p-dialog-content{
+    padding: 0px !important;
+}
+.p-flex-column {
+    padding-top:30px ;
+    margin-left: 15px;
+}

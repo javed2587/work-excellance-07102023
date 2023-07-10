@@ -1,0 +1,15 @@
+
+  .imag-icon {
+      width: 40px;
+      height: 20px;
+      margin: 0 0 3px 9px;
+  
+  }
+  .second-card {
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+   input{
+    background-color: #fafafa;
+  }

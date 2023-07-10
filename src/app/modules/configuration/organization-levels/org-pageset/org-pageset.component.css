@@ -1,0 +1,49 @@
+:host ::ng-deep .header-label {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background-color: #005FBE;
+    text-align: center;
+    font-size: medium;
+}
+
+:host ::ng-deep .p-dialog {
+    margin-left: 65px !important;
+}
+
+.p-button {
+    margin-right: 10px;
+}
+
+.option-items {
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding-top: 2px;
+    padding-left: 6px;
+    padding-bottom: 3px;
+}
+
+.header-label {
+    color: whitesmoke;
+}
+
+:host::ng-deep .overlay-overider-one {
+    width: 650px !important;
+
+    background-color: #F2F2F2 !important;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.row label {
+    font-size: 14px;
+    color: black;
+    padding-top: 5px;
+    /* padding-bottom: 5px; */
+}

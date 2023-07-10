@@ -1,0 +1,140 @@
+.flex-container {
+    display: flex;
+
+    background-color: #f1f1f1;
+  }
+  .main-container {
+    max-height: 50rem;
+    overflow-y: auto;
+    background: rgb(255, 255, 255);
+    height: 50rem;
+    overflow-y: auto;
+  }
+  .flex-container > div {
+    background-color: DodgerBlue;
+    color: white;
+    /* margin: 10px; */
+    text-align: statrt;
+    /* line-height: 75px; */
+    font-size: 14px;
+  }
+  .flex-container .initiative-flex {
+      flex-grow: 2;
+      max-width: 20rem;
+  }
+  .flex-container .planSteps-flex{
+    margin-left: 2px;
+    flex-grow:calc(100%);
+     min-width: 64rem;
+     max-width:72rem;
+  }
+  .flex-container .gantChart-flex {
+    display: flex;
+    margin-left: 5px;
+    flex-grow:calc(100%);
+    min-width:auto;
+    max-width: 31rem;
+    overflow-x: auto;
+    /* min-width: 21rem; */
+  }
+  .flex-container .gantChart-flex > div {
+    background-color: #f1f1f1;
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    color: black;
+  }
+
+  div.date-col {
+    writing-mode: vertical-lr;
+    border: 1px solid;
+    padding-bottom: 5px;
+    font-size: 13px;
+    padding: 4px;
+}
+div.graph-style {
+  border: solid 0.3px #b1b5b2;
+  color: white;
+  background-color: white;
+  width: 29.5px;
+  height: 30px;
+}
+.graph-col {
+  border: 1px solid;
+  padding-bottom: 5px;
+  font-size: 13px;
+  padding: 5%;
+  height: 26px;
+  
+}
+.custom-bg {
+  background-color: #7f7f7f;
+  color: white;
+  text-align:center;
+}
+.graph-bg {
+  background-color: #ff9d9d;
+  color: white;
+  text-align:center;
+}
+.custom-bg >span{
+  font-weight: 200;
+}
+.chart-header {
+  line-height: 0.4rem !important;
+  padding-top: 0.rem !important;
+  font-size: 13px !important;
+}
+.graph{
+  height: 10px;
+  width: 18px;
+  border: 1px solid;
+  padding-bottom: 5px;
+  font-size: 13px;
+  padding: 4px;
+}
+.constant-section{
+  border: 2px solid #b1b5b2;
+}
+input[type='radio'] {
+  box-sizing: border-box;
+  appearance: none;
+  background: white;
+  outline: 2px solid #333;
+  border: 3px solid white;
+  width: 16px;
+  height: 16px;
+}
+
+input[type='radio']:checked {
+  background: #333;
+}
+:host ::ng-deep .p-button {
+  background-color: #005FBE;
+  height: 1.77rem;
+  color: white;
+  background-origin: padding-box;
+  border: none;
+  border-radius: 5px;
+  }
+  .empty-div {
+    color: #f2f2f2;
+    background-color: #f2f2f2;
+    margin-bottom: 6px;
+  }
+  .maincard-bg {
+    background-color:  #f2f2f2;
+  }
+  .initiative-style {
+    background-color: white;
+  }
+.input-group-text{
+  /* display: flex;
+  flex-direction: column; */
+}
+:host ::ng-deep .p-dropdown .p-dropdown-label{
+  padding-top: 2px;
+  padding-bottom: 2px;
+}

@@ -1,0 +1,234 @@
+<div class="menu-card">
+  <!--? First Gate -->
+  <div class="folder-icon" *ngIf="IsFirstGate">
+    <div class="mb-2" *ngIf="openFolder" (click)="toggle()">
+      <img
+        class="close-door"
+        src="../../../../assets/images/WorkSystem/DoorOpen.png"
+        alt="door open iamge"
+      />
+    </div>
+    <div class="mb-2" *ngIf="closeFolder" (click)="toggle()">
+      <img
+        class="close-door"
+        src="../../../../assets/images/WorkSystem/DoorClose.png"
+        alt="door close image"
+      />
+    </div>
+    <div
+      class="title"
+      *ngIf="openFolder"
+      (click)="
+        sentCurrentGateIndexValue(mainIndex);
+        renameGateModalForFirstGate('First Gate');
+        sentCurrentItemIndexValue(mainIndex)
+      "
+    >
+      <!-- {{ initialTitle != '' ? initialTitle : gateName }} -->
+      {{ reNameStratGate == "" ? reNameStratGate : firstGateName }}
+    </div>
+    <div
+      class="title"
+      *ngIf="closeFolder"
+      (click)="renameGateModalForFirstGate('')"
+    >
+      {{ closeFolderTitle }}
+    </div>
+    <div
+      class="index-number px-1 mt-2"
+      [ngStyle]="{ 'background-color': phasesPage?.phases[mainIndex]?.phaseDefinition?.entryGate?.rating?.color }"
+      (click)="
+        openRatingModalforGate(mainIndex, phases[mainIndex].isStartingGate)
+      "
+    >
+      <span>{{ indexPlusOne }}</span>
+    </div>
+
+    <span
+      *ngIf="
+        phases[mainIndex].isStartingGate &&
+        this.phasesFlag == true &&
+        this.headerFlag == false
+      "
+      class="status-bar"
+    >
+      <app-mian-tool-bar
+        (pushColorToMainParentSpan)="setColorValueForGate($event)"
+        (pushNotesValue)="setpushNoteValueForGate($event)"
+        (pushOppertunity)="setpushOpportunityValueForGate($event)"
+        (pushTaslValue)="setpushTaskValueForGate($event)"
+        (pushDecisionValue)="setpushDecisionValueForGate($event)"
+        [color]="phasesPage?.phases[mainIndex]?.phaseDefinition?.entryGate?.rating?.color"
+        [note]="phasesPage?.phases[mainIndex]?.phaseDefinition?.entryGate?.rating?.note"
+        [decision]="phasesPage?.phases[mainIndex]?.phaseDefinition?.entryGate?.rating?.decision"
+        [task]="phasesPage?.phases[mainIndex]?.phaseDefinition?.entryGate?.rating?.task"
+        [opportunity]="phasesPage?.phases[mainIndex]?.phaseDefinition?.entryGate?.rating?.opportunity"
+        [showSnakeBarMenu]="showSnakeBar"
+        [displayVal]="false"
+        [lockstatus]="locksTabtatus"
+        [openRatingForNote]="true"
+        [openRatingTabFlag]="true"
+      >
+      </app-mian-tool-bar>
+    </span>
+  </div>
+
+  <!-- <span *ngIf="isOpenFirstGate" class="modal-position">
+    <app-gate-modal
+      (cancelEvent)="cancelModal($event)"
+      (renameFirstGate)="firstGateName($event)"
+      (gatExitGateName)="exitGateName($event)"
+       [gateName]="gaterRename"
+      [displayVal]="setRenameGateFlag"
+      [modalName]="modalName">
+    </app-gate-modal>
+  </span> -->
+  <!--? second Gate and onWord   -->
+  <div class="folder-icon" *ngIf="!IsFirstGate">
+    <div class="mb-2" *ngIf="openFolder" (click)="toggle()">
+      <img
+        class="close-door"
+        src="../../../../assets/images/WorkSystem/DoorOpen.png"
+        alt="door open iamge"
+      />
+    </div>
+    <div class="mb-2" *ngIf="closeFolder" (click)="toggle()">
+      <img
+        class="close-door"
+        src="../../../../assets/images/WorkSystem/DoorClose.png"
+        alt="door close image"
+      />
+    </div>
+    <div
+      class="title"
+      *ngIf="openFolder"
+      (click)="
+        renameGateModal('beg');
+        sentCurrentGateIndexValue(mainIndex);
+        sentCurrentItemIndexValue(mainIndex)
+      "
+    >
+      {{ initialTitle == "" ? initialTitle : addGateName }}
+    </div>
+    <div class="title" *ngIf="closeFolder" (click)="renameGateModal('')">
+      {{ closeFolderTitle }}
+    </div>
+
+    <div
+      class="index-number px-1 mt-2"
+      [ngStyle]="{ 'background-color': phasesPage?.phases[mainIndex]?.phaseDefinition?.entryGate?.rating?.color }"
+      (click)="
+        openRatingModalforGate(mainIndex, phases[mainIndex].isStartingGate)
+      "
+    >
+      <span>{{ indexPlusOne }}</span>
+    </div>
+
+    <span
+      *ngIf="
+        phases[mainIndex].isStartingGate &&
+        this.phasesFlag == true &&
+        this.headerFlag == false
+      "
+      class="status-bar"
+    >
+      <app-mian-tool-bar
+      (pushColorToMainParentSpan)="setColorValueForGate($event)"
+      (pushNotesValue)="setpushNoteValueForGate($event)"
+      (pushOppertunity)="setpushOpportunityValueForGate($event)"
+      (pushTaslValue)="setpushTaskValueForGate($event)"
+      (pushDecisionValue)="setpushDecisionValueForGate($event)"
+      [color]="phasesPage?.phases[mainIndex]?.phaseDefinition?.entryGate?.rating?.color"
+      [note]="phasesPage?.phases[mainIndex]?.phaseDefinition?.entryGate?.rating?.note"
+      [decision]="phasesPage?.phases[mainIndex]?.phaseDefinition?.entryGate?.rating?.decision"
+      [task]="phasesPage?.phases[mainIndex]?.phaseDefinition?.entryGate?.rating?.task"
+      [opportunity]="phasesPage?.phases[mainIndex]?.phaseDefinition?.entryGate?.rating?.opportunity"
+
+        [showSnakeBarMenu]="showSnakeBar"
+        [displayVal]="false"
+        [lockstatus]="locksTabtatus"
+        [openRatingForNote]="true"
+        [openRatingTabFlag]="true"
+      >
+      </app-mian-tool-bar>
+    </span>
+  </div>
+
+  <!--? New Phase/Page -->
+  <div class="content-card" *ngIf="showPhaseBody">
+    <div
+      class="acc-body shadow"
+      (click)="sentCurrentItemIndexValue(mainIndex)"
+      [ngClass]="{ highlight: setOutLine ? true : false }"
+    >
+      <app-text-fields
+        [indexPlusOne]="indexPlusOne"
+        [mainIndex]="mainIndex"
+        [phaseListModalFlag]="phasesFlag"
+        [phases]="phases"
+        [phasesPage]="phasesPage"
+        [headerSectionModalFlag]="headerFlag"
+        [lockstatus]="locksTabtatus"
+        (sendphasePurposeValue)="getPhasePurposeValue($event)"
+        (sendPhasePurposeStatusOfSankbar)="
+          getPhasePuposeForSankbarStatus($event)
+        "
+        (pushPhaseMeasureForSnakBarStatus)="sendPhaseMeasureForSnakbar($event)"
+        (pushSavePhaseMeasures)="savePhaseMeasures($event)"
+        (addNewPhaseMeasureList)="addNewPhaseMesaureList($event)"
+        (removePhaseMesaureList)="getRemovePhaseMesaureList($event)"
+        (sendphaseName)="getPhaseName($event)"
+        (sendRatingForPhaseNameColor)="getphaseNameRatingValue($event)"
+        (pushPhaseNameSankbarStatus)="getPhaseNameSnakeBarStatus($event)"
+        (setStepsWorkSnakBarStaus)="getPhaseWorkTypesSnakbarStatus($event)"
+        (pushWorkTypeForSaveData)="getWorkTypesForSave($event)"
+        (sendAddNewWorkTypes)="addWorkTypesList($event)"
+        (sendStepsOfWorkRating)="getWorkTypesRating($event)"
+        (removeVlaueForWorkTypeList)="removeVlaueForWorkTypeList($event)"
+        (sendNotesValue)="fetchNotesValue($event)"
+        (sendDecisionValue)="fetchDecisionValue($event)"
+        (sendOpportunityValue)="fetchOpportunityValue($event)"
+        (sendTaskValue)="fetchTaskValue($event)"
+        (sendPhaseMeasureNotesValue)="fetchPhaseMeasureNotesValue($event)"
+        (sendPhaseMeasureOpportunityValue)="fetchPhaseMeasureOpportunityValue($event)"
+        (sendPhaseMeasureTaskValue)="fetchPhaseMeasureTaskValue($event)"
+        (sendPhaseMeasureDecisionValue)="fetchPhaseMeasureDecisionValue($event)"
+        (sendPhaseNameNote)="fetchPhaseNameNote($event)"
+        (sendPhaseNameOpportunity)="fetchPhaseNameOpportunity($event)"
+        (sendPhaseNameTask)="fetchPhaseNameTask($event)"
+        (sendPhaseNameDecision)="fetchPhaseNameDecision($event)"
+        (sendWorkTypesNotesValue)="fetchWorkTypesNotesValue($event)"
+        (sendWorkTypesOpportunityValue)="fetchWorkTypesOpportunityValue($event)"
+        (sendWorkTypesTaskValue)="fetchWorkTypesTaskValue($event)"
+        (sendWorkTypesDecisionValue)="fetchWorkTypesDecisionValue($event)"
+      >
+      </app-text-fields>
+    </div>
+  </div>
+  <!--? Last gate  -->
+  <div class="folder-exit folder-icon" *ngIf="isLastGate">
+    <div class="mb-2">
+      <img
+        class="close-door"
+        src="../../../../assets/images/WorkSystem/DoorClose.png"
+        alt="door close image"
+      />
+    </div>
+    <div class="title" (click)="renameGateModal('exit')">
+      {{ reNameExitGate != "" ? reNameExitGate : exitgateName }}
+    </div>
+  </div>
+</div>
+<!--? Rename gate Modal -->
+<span *ngIf="setRenameGateFlag" class="modal-position">
+  <app-gate-modal
+    (renameFirstGate)="reNameFirstGate($event)"
+    (cancelEvent)="cancelModal($event)"
+    (renameGate)="renameGateName($event)"
+    (gatExitGateName)="renameExitGate($event)"
+    [gateName]="pushReName"
+    [displayVal]="setRenameGateFlag"
+    [modalName]="renamModalName"
+  >
+  </app-gate-modal>
+</span>

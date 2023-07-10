@@ -1,0 +1,102 @@
+<div class="contianer px-3 ">
+  <div class="top-section">
+    <div class="row row-custom">
+      <div class="col-1 d-flex justify-content-end text-center">
+        <button class="btn-style" (click)="toggle()">
+          <img src="../../../../assets/images/WorkSystem/UpArrow.png" alt="" *ngIf="up">
+          <img src="../../../../assets/images/WorkSystem/DownArrow.png" alt="" *ngIf="down">
+        </button>
+      </div>
+      <div class="col-11 d-flex justify-content-end text-center">
+      </div>
+    </div>
+  </div>
+  <div class="card card-top px-2 rounded shadow-sm contianer-bg" *ngIf="flagg">
+         <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-2 text-center">
+                <span (click)="openInfoCard()">
+                  <img class="info-icon" src="../../../../assets/images/header-images/info-icons.svg" alt="">
+                </span>
+                <span class="mr-2">Name</span>
+                <span (click)="openLightCard()">
+                  <img class="light-icon" src="../../../../assets/images/header-images/Bulb.svg" alt="">
+                </span>
+                <span *ngIf="showLightModal &&
+                phaseOneModalFlag == true &&
+                phaseTwoModalFlag == false &&
+                phaseFourModalFlag == false &&
+                phaseFiveModalFlag == false &&
+                phaseThreeModalFlag == false" class="infoTollbar-group">
+                  <app-mian-tool-bar [openRatingTabFlag]="rating">
+                  </app-mian-tool-bar>
+                </span>
+              </div>
+              <div class="col-10">
+                <input type="text" class="form-control" placeholder="" aria-label="Username" maxlength="150"
+                aria-describedby="basic-addon1" [disabled]="true ? lockstatus == true : false">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2 text-right">
+                <div class="label_contant text-right">Page Owner  </div>
+              </div>
+              <div class="col-10">
+                <input type="text" class="form-control" placeholder="" aria-label="Username"  maxlength="150"
+                aria-describedby="basic-addon1" [disabled]="true ? lockstatus == true : false">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row">
+              <div class="col-2 text-right">
+                <div class="label_contant text-right">Plan Purpose   </div>
+              </div>
+              <div class="col-10">
+                <input type="text" class="form-control" placeholder="" aria-label="Username" maxlength="150"
+                aria-describedby="basic-addon1" [disabled]="true ? lockstatus == true : false">
+              </div>
+            </div>
+            <!-- <div class="row">
+              <div class="col-12">
+                <div class="btn float-end d-flex">
+                  <button type="button" class="btn mx-1 incre-decrement-btn" (click)="addMemebers()">
+                    <i class="fa-solid fa-plus btn-increment"></i>
+                  </button>
+                  <button type="button" class="btn mx-1 incre-decrement-btn" (click)="removeMembers()">
+                    <i class="fa-solid fa-minus btn-increment"></i>
+                  </button>
+                </div>
+              </div>
+            </div> -->
+            <div class="row">
+              <div class="col-2 text-right">
+                <div class="label_contant text-right">Team Members  </div>
+              </div>
+              <div class="col-8">
+                <!-- <div class="" *ngFor="let memebersList of memebrs"> -->
+                  <p-autoComplete [style]="{'width':'100%','height':'30px'}" [inputStyle]="{'width':'100%'}" [(ngModel)]="text"
+                  [suggestions]="results" [field]="'email'" (completeMethod)="search($event)"></p-autoComplete>
+                  <!-- <input type="text" class="form-control" placeholder="" aria-label="Username" maxlength="150"
+                  aria-describedby="basic-addon1" [disabled]="true ? lockstatus == true : false"> -->
+                <!-- </div> -->
+              </div>
+              <div class="col-2 pl-0">
+
+                <div class="btn float-end d-flex">
+                  <button type="button" class="btn mx-1 incre-decrement-btn" (click)="addMemebers()">
+                    <i class="fa-solid fa-plus btn-increment"></i>
+                  </button>
+                  <button type="button" class="btn mx-1 incre-decrement-btn" (click)="removeMembers()">
+                    <i class="fa-solid fa-minus btn-increment"></i>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+         </div>
+  </div>
+</div>
+<app-add-rating></app-add-rating>

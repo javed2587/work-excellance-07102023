@@ -1,0 +1,747 @@
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-lg-6 col-md-12 col-sm-12 mb-4">
+      <div class="card rounded-border shadow-sm">
+        <div class="them-colorAs-blue card-title rounded-border">
+          <div class="row d-flex text-center">
+            <div class="col-4"></div>
+            <div class="col-4 d-flex pl-5 py-0">
+              <img
+                src="../../../../assets/menu/u1533.svg"
+                alt=""
+                class="task"
+              />
+              <p class="mt-1 ml-2 mb-0 text-white">My Task</p>
+            </div>
+            <div class="col-4"></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- <div class="row">
+            <div class="col-4"></div>
+            <div class="col-8 d-flex gap-2 pl-5 search">
+              <input type="search" placeholder="search" class="form-control" />
+              <i class="bi bi-search"></i>
+            </div>
+          </div> -->
+          <div>
+            <p-table
+              #dt
+              [value]="taskValues"
+              sortMode="multiple"
+              [scrollable]="true"
+              scrollHeight="193px"
+              [globalFilterFields]="['status', 'priority', 'dueDate', 'task']"
+            >
+              <ng-template pTemplate="caption">
+                <div
+                  style="
+                    margin-bottom: 0.7rem;
+                    display: flex;
+                    justify-content: end;
+                  "
+                  class="table-header"
+                >
+                  <span
+                    style="text-align: right; width: 50%"
+                    class="p-input-icon-right"
+                  >
+                    <i class="pi pi-search"></i>
+                    <input
+                      (input)="
+                        dt.filterGlobal($any($event.target).value, 'contains')
+                      "
+                      style="width: 100%; height: 2rem"
+                      pInputText
+                      type="text"
+                      placeholder="Search"
+                    />
+                    <!-- (input)="
+                      dt.filterGlobal($any($event.target).value, 'contains')
+                      " -->
+                  </span>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="width: 27%" pSortableColumn="status">
+                    Status
+                    <p-sortIcon class="sortIcon" field="status"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="priority">
+                    Priority <p-sortIcon field="periority"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="dueDate">
+                    DueDate <p-sortIcon field="dueDate"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="task">
+                    Task <p-sortIcon field="task"></p-sortIcon>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-tasks>
+                <tr (click)="showTask(tasks, od, $event)">
+                  <td style="width: 27%">
+                    <div>
+                      <div
+                        class="rate"
+                        [ngStyle]="{
+                          'background-color': tasks.status
+                            ? tasksColors[tasks.status]
+                            : ''
+                        }"
+                      ></div>
+                      <span
+                        class="text-cercle"
+                        >{{
+                          tasks.status ? taskStatus[tasks.status] : ""
+                        }}</span
+                      >
+                    </div>
+                  </td>
+                  <td>{{ tasks.priority }}</td>
+                  <td>{{ tasks.dueDate | date : "shortDate" }}</td>
+                  <td>{{ tasks.task }}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12 mb-4">
+      <div class="card rounded-border">
+        <div class="them-colorAs-blue card-title rounded-border shadow-sm">
+          <div class="row d-flex text-center">
+            <div class="col-4"></div>
+            <div class="col-4 d-flex pl-5 py-0">
+              <img
+                src="../../../../assets/menu/Focus.svg"
+                alt=""
+                class="focus-img"
+              />
+              <p class="mt-1 ml-2 mb-0 text-white text-center">My Focus</p>
+            </div>
+            <div class="col-4"></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- <div class="row">
+            <div class="col-3">
+              <p-dropdown
+                [options]="cities"
+                [(ngModel)]="selectedCity1"
+                optionLabel="name"
+                scrollHeight="300px"
+              ></p-dropdown>
+            </div>
+            <div class="col-3">
+              <p-dropdown
+                [options]="cities"
+                [(ngModel)]="selectedCity1"
+                optionLabel="name"
+                scrollHeight="300px"
+              ></p-dropdown>
+            </div>
+            <div class="col-3">
+              <p-dropdown
+                [options]="cities"
+                [(ngModel)]="selectedCity1"
+                optionLabel="name"
+                scrollHeight="300px"
+              ></p-dropdown>
+            </div>
+            <div class="col-3">
+              <div class="d-flex search">
+                <input
+                  type="search"
+                  placeholder="search"
+                  class="form-control"
+                />
+                <i class="bi bi-search"></i>
+              </div>
+               <span class="p-input-icon-right">
+                        <i class="pi pi-search"></i>
+                        <input type="text" pInputText [(ngModel)]="searchValue" >
+                    </span>  -->
+          <!-- </div>
+          </div> -->
+          <div>
+            <p-table
+              #dt1
+              [value]="pageSetObjects"
+              sortMode="multiple"
+              [scrollable]="true"
+              scrollHeight="193px"
+              [globalFilterFields]="['dueDate','ownerName','name','type']"
+            >
+              <ng-template pTemplate="caption">
+                <div style="margin-bottom: 0.7rem" class="table-header">
+                  <p-columnFilter
+                    field="ownerName"
+                    matchMode="equals"
+                    [showMenu]="false"
+                  >
+                    <ng-template
+                      pTemplate="filter"
+                      let-value
+                      let-filter="filterCallback"
+                      style="width: 25%"
+                    >
+                      <p-dropdown
+                        [ngModel]="value"
+                        [options]="pageOwner"
+                        (onChange)="filter($event.value)"
+                        placeholder="Page Owner"
+                        [showClear]="true"
+                      >
+                        <ng-template let-option pTemplate="item">
+                          <span
+                            [class]="'customer-badge status-' + option.value"
+                            >{{ option.label }}</span
+                          >
+                        </ng-template>
+                      </p-dropdown>
+                    </ng-template>
+                  </p-columnFilter>
+                  <p-columnFilter
+                    field="name"
+                    matchMode="equals"
+                    [showMenu]="false"
+                  >
+                    <ng-template
+                      pTemplate="filter"
+                      let-value
+                      let-filter="filterCallback"
+                    >
+                      <p-dropdown
+                        [ngModel]="value"
+                        [options]="pageName"
+                        (onChange)="filter($event.value)"
+                        placeholder="Page Name"
+                        [showClear]="true"
+                      >
+                        <ng-template let-option pTemplate="item">
+                          <span
+                            class="'customer-badge status-' + option.value"
+                            >{{ option.label }}</span
+                          >
+                        </ng-template>
+                      </p-dropdown>
+                    </ng-template>
+                  </p-columnFilter>
+                  <p-columnFilter
+                    field="type"
+                    matchMode="equals"
+                    [showMenu]="false"
+                  >
+                    <ng-template
+                      pTemplate="filter"
+                      let-value
+                      let-filter="filterCallback"
+                    >
+                      <p-dropdown
+                        [ngModel]="value"
+                        [options]="pageType"
+                        (onChange)="filter($event.value)"
+                        placeholder="Page Type"
+                        [showClear]="true"
+                      >
+                        <ng-template let-option pTemplate="item">
+                          <span
+                            [class]="'customer-badge status-' + option.value"
+                            >{{ option.label }}</span
+                          >
+                        </ng-template>
+                      </p-dropdown>
+                    </ng-template>
+                  </p-columnFilter>
+                  <span
+                    style="text-align: right; width: 25%"
+                    class="p-input-icon-right"
+                  >
+                    <!-- <i class="pi pi-search"></i> -->
+                    <input
+                      style="width: 100%; height: 2rem"
+                      pInputText
+                      type="text"
+                      (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+                      placeholder="Search"
+                    />
+                  </span>
+                  <i class="pi pi-search mt-2" (click)="op.toggle($event)"></i>
+                  <!-- <button (click)="deleteTableData()" style="
+                    width: 28px;
+                    height: 14px;
+                    margin-top: 10px;
+                    border-radius: 9px;
+                    background-color: #FDB719;
+                    color: black;
+                    border: none;
+                    "> -->
+                  <!-- <p style="position: relative; bottom: 8px">-</p> -->
+                  <!-- </button> -->
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th pSortableColumn="completePercentage">
+                    % Complete
+                  </th>
+                  <th pSortableColumn="dueDate">
+                    DueDate <p-sortIcon class="sortIcon" field="dueDate"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="ownerName">
+                    PageOwner <p-sortIcon class="sortIcon" field="ownerName"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="name">
+                    PageName <p-sortIcon class="sortIcon" field="name"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="type">
+                    PageType <p-sortIcon class="sortIcon" field="type"></p-sortIcon>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-pageSetObject>
+                <tr
+                  (dblclick)="
+                    navigatePage(
+                      pageSetObject.nodeId,
+                      pageSetObject.id,
+                      pageSetObject.type
+                    )
+                  "
+                  (click)="highlightRow(pageSetObject)"
+                  [class.highlighted]="selectedRow === pageSetObject"
+                >
+                  <td>{{pageSetObject.completionPercentage | stringToNumber }}%</td>
+                  <td>{{ pageSetObject.dueDate | date : "shortDate" }}</td>
+                  <td>{{ pageSetObject.ownerName }}</td>
+                  <td>{{ pageSetObject.name }}</td>
+                  <td>{{ pageSetObject.type }}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row g-0">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <!-- <div class="card rounded-border">
+        <div class="them-colorAs-blue card-title rounded-border shadow-sm">
+          <div class="row d-flex text-center">
+            <div class="col-4"></div>
+            <div class="col-4 d-flex pl-5 py-0">
+              <img src="../../../../assets/menu/Focus.svg" alt="" class="focus-img" />
+              <p class="mt-1 ml-2 mb-0 text-white">My Pages</p>
+            </div>
+            <div class="col-4"></div>
+          </div>
+        </div> -->
+      <!-- <div class="card-body"> -->
+      <!-- <div class="row">
+            <div class="col-3">
+              <p-dropdown
+                [options]="cities"
+                [(ngModel)]="selectedCity1"
+                optionLabel="name"
+                scrollHeight="300px"
+              ></p-dropdown>
+            </div>
+            <div class="col-3">
+              <p-dropdown
+                [options]="cities"
+                [(ngModel)]="selectedCity1"
+                optionLabel="name"
+                scrollHeight="300px"
+              ></p-dropdown>
+            </div>
+            <div class="col-3">
+              <p-dropdown
+                [options]="cities"
+                [(ngModel)]="selectedCity1"
+                optionLabel="name"
+                scrollHeight="300px"
+              ></p-dropdown>
+            </div>
+            <div class="col-3">
+              <div class="d-flex search">
+                <input
+                  type="search"
+                  placeholder="search"
+                  class="form-control"
+                />
+                <i class="bi bi-search"></i>
+              </div>
+              <!-- <span class="p-input-icon-right">
+                        <i class="pi pi-search"></i>
+                        <input type="text" pInputText [(ngModel)]="searchValue" >
+                    </span>  -->
+      <!-- </div>
+          </div> -->
+      <!-- <div> -->
+      <!-- <p-table #dt1 [value]="pageSetObjects" sortMode="multiple" [scrollable]="true" scrollHeight="193px"
+              [globalFilterFields]="[
+              'dueDate',
+              'pageOwner',
+              'pageName',
+              'pageType'
+              ]">
+              <ng-template pTemplate="caption">
+                <div style="margin-bottom: .7rem;" class="table-header">
+                  <p-columnFilter field="pageOwner" matchMode="equals" [showMenu]="false">
+                    <ng-template pTemplate="filter" let-value let-filter="filterCallback" style="width: 25%;">
+                      <p-dropdown [ngModel]="value" [options]="pageOwner" (onChange)="filter($event.value)"
+                        placeholder="Page Owner" [showClear]="true">
+                        <ng-template let-option pTemplate="item">
+                          <span [class]="'customer-badge status-' + option.value">{{
+                            option.label }}</span>
+                        </ng-template>
+                      </p-dropdown>
+                    </ng-template>
+                  </p-columnFilter>
+                  <p-columnFilter field="pageName" matchMode="equals" [showMenu]="false">
+                    <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                      <p-dropdown [ngModel]="value" [options]="pageName" (onChange)="filter($event.value)"
+                        placeholder="Page Name" [showClear]="true">
+                        <ng-template let-option pTemplate="item">
+                          <span class="'customer-badge status-' + option.value">{{
+                            option.label }}</span>
+                        </ng-template>
+                      </p-dropdown>
+                    </ng-template>
+                  </p-columnFilter>
+                  <p-columnFilter field="pageType" matchMode="equals" [showMenu]="false">
+                    <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                      <p-dropdown [ngModel]="value" [options]="pageType" (onChange)="filter($event.value)"
+                        placeholder="Page Type" [showClear]="true">
+                        <ng-template let-option pTemplate="item">
+                          <span [class]="'customer-badge status-' + option.value">{{
+                            option.label }}</span>
+                        </ng-template>
+                      </p-dropdown>
+                    </ng-template>
+                  </p-columnFilter>
+                  <span style="text-align: right; width: 25%" class="p-input-icon-right"> -->
+      <!-- <i class="pi pi-search"></i> -->
+      <!-- <input style="width: 100%; height: 2rem" pInputText type="text" (input)="
+                      dt1.filterGlobal($any($event.target).value, 'contains')
+                      " placeholder="Search" />
+
+                  </span>
+                  <i class="pi pi-search mt-2" (click)="op.toggle($event)"></i>
+                  <button (click)="deleteTableData()" style="
+                    width: 28px;
+                    height: 14px;
+                    margin-top: 10px;
+                    border-radius: 9px;
+                    background-color: #FDB719;
+                    color: black;
+                    border: none;
+                    ">
+                    <p style="position: relative; bottom: 8px">-</p>
+                  </button>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th pSortableColumn="dueDate">
+                    DueDate <p-sortIcon field="dueDate"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="pageOwner">
+                    PageOwner <p-sortIcon field="pageOwner"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="pageName">
+                    PageName <p-sortIcon field="pageName"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="pageType">
+                    PageType <p-sortIcon field="pageType"></p-sortIcon>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-pageSetObject>
+                <tr (dblclick)="navigatePage(pageSetObject.id, pageSetObject.type)">
+                  <td></td>
+                  <td>{{ pageSetObject.ownerName }}</td>
+                  <td>{{ pageSetObject.name }}</td>
+                  <td>{{ pageSetObject.type }}</td>
+                </tr>
+              </ng-template>
+            </p-table> -->
+      <!-- </div> -->
+      <!-- </div> -->
+      <!-- </div> -->
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
+<div *ngIf="showTaskModal == true">
+  <app-task-modal-dashboard
+    (sendCloseFlag)="getCloseFlag($event)"
+    [displayToolbar]="displayToolbar"
+    [displayVal]="displayVal"
+  ></app-task-modal-dashboard>
+</div>
+
+<!-- <div class="div" *ngIf="statusTask">
+  <app-task-modal [displayVal]="statusTask"></app-task-modal>
+</div> -->
+
+<!-- Report Card -->
+
+<p-overlayPanel #op id="overlay-panel" styleClass="overlay-overider">
+  <ng-template pTemplate styleClass="overlay-content" [(visible)]="display">
+    <!-- Content -->
+
+    <!-- Table Header -->
+    <div class="report-card" id="reportCard">
+      <div
+        style="
+          padding-left: 10px !important;
+          padding-right: 10px !important;
+          padding-top: 15px;
+        "
+      >
+        <!-- Table Body  Row 1 (Select & Search Buttons)-->
+        <div class="row mb-2 g-4">
+          <div class="col-3">
+            <select
+              class="form-select form-select-sm"
+              aria-label="Default
+              select example"
+            >
+              <option selected>Page Type</option>
+              <option value="1">Page Owner</option>
+              <option value="2">Levels</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <select
+              class="form-select form-select-sm"
+              aria-label="Default
+              select example"
+            >
+              <option selected>Page Owner</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <select
+              class="form-select form-select-sm"
+              aria-label="Default
+              select example"
+            >
+              <option selected>Levels</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="col-3 d-flex justify-content-between">
+            <select
+              class="form-select form-select-sm"
+              aria-label="Default
+              select example"
+            >
+              <option selected>Page Name</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Table Body Row 2 (Display data) -->
+
+        <div style="overflow-y: scroll; height: 190px">
+          <table class="" id="myTable">
+            <thead>
+              <tr>
+                <th>Date Created</th>
+                <th>Last Update</th>
+                <th>Page Owner</th>
+                <th>Page Type</th>
+                <th>Page Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of cardData">
+                <td>{{ data.dateCreated }}</td>
+                <td>{{ data.lastUpdate }}</td>
+                <td>{{ data.pageOwner }}</td>
+                <td>{{ data.pageType }}</td>
+                <td>{{ data.pageName }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <button pButton pRipple type="button" label="Add Focus"></button>
+          <button
+            pButton
+            type="button"
+            label="Close"
+            (click)="op.hide()"
+          ></button>
+        </div>
+        <div class="col-4"></div>
+      </div>
+    </div>
+  </ng-template>
+</p-overlayPanel>
+
+<!--? First Toggle Table  -->
+
+<p-overlayPanel #od styleClass="overlay-overider-one">
+  <ng-template pTemplate>
+    <div class="header-label"><b>Task</b></div>
+    <div class="container">
+      <div class="row p-2">
+        <div class="col-6">
+          <!-- <div class="label_contant">Owner </div> -->
+          <label for="">Owner</label>
+          <div class="input-group">
+            <select
+              class="option-items form-control"
+              (change)="setOwner($event)"
+            >
+              <option
+                [selected]="selectedTask?.owner?.userId == user.id"
+                *ngFor="let user of userList"
+                [value]="user"
+              >
+                {{ user.username }}
+              </option>
+            </select>
+          </div>
+          <!-- <div class="label_contant">Due Date </div> -->
+          <label for="">Due Date</label>
+          <div class="input-group">
+            <input
+              type="date"
+              [(ngModel)]="selectedTask.dueDate"
+              class="form-control"
+              placeholder=""
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+
+          <!-- <div class="label_contant">Priority </div> -->
+          <label for="">Priority</label>
+          <div class="input-group">
+            <select
+              [(ngModel)]="selectedTask.priority"
+              class="option-items form-control"
+              name="priority"
+              id=""
+            >
+              <option value="none" selected disabled hidden>
+                Please Select Priority
+              </option>
+              <option value="CRITICAL">Critical</option>
+              <option value="HIGH">High</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="LOW">Low</option>
+            </select>
+            <!-- <input type="text" class="form-control" placeholder="" aria-label="Username"
+                aria-describedby="basic-addon1"> -->
+          </div>
+
+          <!-- <div class="label_contant">Contributors </div> -->
+          <label for="">Contributors</label>
+          <div class="input-group">
+            <select
+              (change)="setContributor($event)"
+              class="option-items form-control"
+              id="cars"
+              name="cars"
+            >
+              <option
+                [selected]="selectedTask?.contributor?.userId == user.id"
+                *ngFor="let user of userList"
+                value="volvo"
+              >
+                {{ user.username }}
+              </option>
+            </select>
+          </div>
+
+          <label for="">Status</label>
+          <div class="input-group">
+            <select
+              [(ngModel)]="selectedTask.status"
+              class="option-items form-control"
+              id="cars"
+              name="cars"
+            >
+              <option value="none" selected disabled hidden>
+                Please Select Priority
+              </option>
+              <option value="NOT_STARTED">Not Started</option>
+              <option value="COMPLETED">Completed</option>
+              <option value="IN_PROGRESS">In Progress</option>
+              <option value="WAITING_ON_SOMEONE_ELSE">
+                Waiting On Someone Else
+              </option>
+              <option value="DEFERRED">Deffered</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-6">
+          <label for="">Task</label>
+          <div class="input-group mb-1 pl-1">
+            <textarea
+              [(ngModel)]="selectedTask.task"
+              class="form-control"
+              rows="3"
+              id="comment"
+              maxlength="250"
+            >
+            </textarea>
+          </div>
+
+          <label for="">Notes</label>
+          <div class="input-group mb-1 pl-1">
+            <textarea
+              [(ngModel)]="selectedTask.notes"
+              class="form-control"
+              rows="3"
+              id="comment"
+              maxlength="250"
+            >
+            </textarea>
+          </div>
+        </div>
+      </div>
+      <div class="button-dialog text-center">
+        <button
+          (click)="saveSelectedTask(od)"
+          type="button"
+          label="Save"
+          class="btn btn-primary btn-sm px-4 rounded-3 p-button"
+        >
+          Save
+        </button>
+        <button
+          type="button"
+          label="Cancel"
+          class="btn btn-primary btn-sm px-3 rounded-3 p-button"
+          (click)="od.hide()"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</p-overlayPanel>

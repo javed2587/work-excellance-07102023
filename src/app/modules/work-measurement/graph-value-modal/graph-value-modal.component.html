@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="card custom-card px-3 shadow-sm">
+    <div class="row">
+      <div class="col-10 pt-1 px-2">
+        <div class="row">
+          <div class="col-12 pt-1">
+            <h2 class="mb-1">{{binding}}</h2>
+          </div>
+        </div>
+        <div class="row px-1">
+          <div class="col-4">
+            <!-- <label for="">Date</label>
+                        <input type="text" class="form-control input-height" placeholder="" aria-label="Username"
+                            aria-describedby="basic-addon1"> -->
+            <label for="">Date</label>
+          </div>
+          <div class="col-4">
+            <label for="">Target</label>
+          </div>
+
+          <div class="col-4">
+            <label for="">Actual</label>
+          </div>
+          <!-- <div class="col-3">
+                        <label for="">No of Periods</label>
+                        <input type="text" class="form-control input-height" placeholder="" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div> -->
+        </div>
+        <div class="card inner-card">
+          <div class="row px-1" *ngFor="let obj of listOfDateValues; let i = index">
+            <div class="col-4">
+              <p-calendar [(ngModel)]="obj.date" (ngModelChange)="saveDate(obj, i)" appendTo="body" [showIcon]="true"></p-calendar>
+            </div>
+            <div class="col-4">
+              <input type="text" class="form-control bgColor" placeholder="" aria-label="Username"
+                aria-describedby="basic-addon1" [(ngModel)]="obj.target" (input)="saveTarget(obj, i)">
+            </div>
+            <div class="col-4">
+              <input type="text" class="form-control bgColor" placeholder="" aria-label="Username"
+                aria-describedby="basic-addon1" [(ngModel)]="obj.actual" (input)="saveActual(obj, i)">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="d-flex justify-content-end btn-position">
+          <div class="">
+            <img src="../../../../../assets/images/WorkSystem/add.png" class="imag-icon" (click)="addFileds()">
+          </div>
+          <div class="">
+            <img src="../../../../../assets/images/WorkSystem/minus.png" class="imag-icon" (click)="removeFields()">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="button-dialog  text-center mt-3">
+        <button type="button" label="Save" class="btn btn-primary btn-sm mx-2 px-4 rounded-3 p-button"
+          (click)="savegraphValues()">Save</button>
+        <button type="button" label="Cancel" class="btn btn-primary btn-sm px-3 mx-2  rounded-3 p-button"
+          (click)="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

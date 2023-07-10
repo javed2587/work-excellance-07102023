@@ -1,0 +1,30 @@
+.card-style{
+    /* width: 677px;
+    top: 29px;
+    height: 80px;
+    background-color: rgb(225, 225, 225); */
+    border-radius: 10px 10px 0px 0px;
+    width: 40rem;
+}
+.card-header{
+    background-color: #fdb719;
+    text-align: center;
+    height: 25px;
+    /* border-top: 2px; */
+    border-radius: 10px 10px 0px 0px;
+}
+.custom-style{
+    background-color: #f3f3f3;
+}
+.card-title{
+    background-color: #fdb719;
+    border-radius: 10px 10px 0px 0px;
+    /* font-weight: bold; */
+    font-size: 14px;
+}
+.card-text{
+    background-color: #ffffff;
+    font-size: 12px;
+    padding: 5px;
+ 
+}

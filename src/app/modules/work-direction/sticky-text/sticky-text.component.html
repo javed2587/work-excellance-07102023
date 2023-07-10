@@ -1,0 +1,82 @@
+<div class="first-container">
+  <div class="cutom-input">
+    <div class="row">
+      <div class="col til head pt-0"><label class="label">Inputs</label></div>
+    </div>
+    <div class="input-group mb-1 pl-1">
+      <div
+        class="input-group-text mr-1 backgound"
+        id="basic-addon1"
+        [ngStyle]="{ 'background-color': colorValue }"
+        (click)="addRatingColor()"
+      >
+        {{ indxVal }}
+      </div>
+      <input
+        type="text"
+        class="form-control text"
+        placeholder=""
+        aria-label="Username"
+        aria-describedby="basic-addon1"
+        maxlength="250"
+        [value]="phaseTitle"
+        [(ngModel)]="phaseTitle"
+        (input)="savePhaseTitle($event)" [disabled]="true ? lockstatus == true : false"
+      />
+    </div>
+  </div>
+</div>
+<div class="second-contianer">
+  <div class="row">
+    <div class="col til"><label class="label">Elements </label></div>
+    <div class="col buttons">
+      <div class="flex-container d-flex justify-content-end">
+        <div class="mic_" (click)="startService()" *ngIf="showMic">
+          <i
+            class="fa fa-microphone microphone-ico"
+            [ngStyle]="{ color: voiceservice == true ? 'red' : 'blue' }"
+          ></i>
+        </div>
+        <div class="" (click)="addFieldsForElements()">
+          <img
+            src="../../../../../assets/images/WorkSystem/add.png"
+            class="imag-icon"
+          />
+        </div>
+        <div class="" (click)="removeFieldsForElements()">
+          <img
+            src="../../../../../assets/images/WorkSystem/minus.png"
+            class="imag-icon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="second-card px-3 pb-2">
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+      <div
+        class="input-group my-1"
+        *ngFor="let obj of fieldsElements; let i = index"
+        (click)="fetchIndex(i)"
+        cdkDrag
+      >
+        <input
+          maxlength="150"
+          type="text"
+          class="form-control"
+          placeholder=""
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+          [(ngModel)]="obj.value"
+          (input)="saveElements($event, i)" [disabled]="true ? lockstatus == true : false"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="div" *ngIf="showRatingModel">
+  <app-add-rating
+    [isdisplayRatingModal]="showRatingModel"
+    (onaddRating)="selectedColor($event)"
+  ></app-add-rating>
+</div>

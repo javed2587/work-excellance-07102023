@@ -1,0 +1,51 @@
+<!-- app-main-page - toolbar component main page fetching value for load dynamic module name -->
+<div class="div menu-header-adjustment">
+  <app-main-page
+    (sendLockStatus)="getLockStatus($event)"
+    [totalRequiredFields]="totalRequiredFields"
+    [totalFieldsFilled]="totalFieldsFilled"
+    [moduleNameVal]="currntModuleTitle"
+    (pushTeamLead)="getTeamLeader($event)"
+    (pushTeamMemebrs)="getTeamMembers($event)"
+    (sendPaintByLetters)="getPaintByLetters($event)"
+    [teamLeader]="pageMeta?.team?.teamLeader"
+    [teamMembers]="pageMeta?.team?.teamMembers"
+    [userRole]="userRole"
+  ></app-main-page>
+
+  <!-- <app-main-page
+  [moduleNameVal]="currntModuleTitle"
+  (sendLockStatus)="getLockStatus($event)"
+  > </app-main-page> -->
+
+  <app-date-header
+    [pageName]="currntModuleTitle"
+    (sendCreationDate)="getCreationDate($event)"
+    (intervalEvent)="getPageInterval($event)"
+    [intervalDuration]="pageMeta?.interval?.definition"
+    [creationDate]="pageMeta?.creationDate"
+    [startDate]="pageMeta?.interval?.startDate"
+    [intervalEndDate]="pageMeta?.interval?.endDate"
+  ></app-date-header>
+  <app-phase-one
+    [pageName]="pageName"
+    [pageOwner]="pageOwner"
+    [pageOverallPurpose]="pageMeta?.planPurpose ? pageMeta?.planPurpose.valueOf() : null"
+    (sendPageName)="getPageName($event)"
+    (sendPageOwner)="getPageOwner($event)"
+    (sendPagePurpose)="getPagePurpose($event)"
+    (sendPageStatements)="getPageStatements($event)"
+    (sendSavePage)="savePage()"
+    [lockstatus]="lockstatus"
+    [wdPageStatements]="pageStatements"
+  ></app-phase-one>
+  <app-side-notes
+    [moduleNameVal]="currntModuleTitle"
+    [paintbyletters]="paintbyletters"
+  >
+  </app-side-notes>
+  <!-- <app-sticky-phases-list></app-sticky-phases-list> -->
+  <!-- <app-phase-two></app-phase-two>
+  <app-phase-three></app-phase-three>
+  <app-phase-four></app-phase-four> -->
+</div>

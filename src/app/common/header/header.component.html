@@ -1,0 +1,74 @@
+<nav class="navbar navbar-bckcolor them-colorAs-gold">
+  <a class="navbar-brand" href="#"><img src="#" style="height:81px ;" alt="" class="img-fluid b-logo img-styling" /></a>
+
+  <ul class="navbar-nav">
+    <div style="display: flex">
+      <li *auth="['ROLE_ORG_ADMIN', 'ROLE_USER']" class="d-flex listone">
+        <img src="../../../assets/workMeasurement/reports.png" style="height: 30px" class="dashboard-img" />
+        <a routerLink="/dashboard" class="nav-link" href=""> Dashboard </a>
+      </li>
+      <li *auth="['ROLE_ORG_ADMIN', 'ROLE_USER']" class="d-flex listone">
+        <!-- <img src="../../../assets/images/Header/Dashboard.svg" style="height: 30px" class="dashboard-img" /> -->
+        <!-- <a routerLink="/page-set/activities" class="dropdown-item">
+          <img class="icons-header" src="../../../assets/workMeasurement/reports.png" />Acitivities Page
+        </a> -->
+      </li>
+      <li *ngIf="showPages" class="nav-item dropdown d-flex listtwo">
+        <img style="height: 30px" class="a3-img" src="../../../assets/images/Header/A3.svg" alt="" />
+        <a (click)="showPageSet()" class="nav-link dropdown-toggle icon-style" id="navbarWelcome" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Page Set
+        </a>
+        <div id="dropdown-submenu" class="dropdown-menu" aria-labelledby="navbarWelcome">
+          <a *ngFor="let page of pages" [routerLink]="['/page-set/', type[page.type], page.id]" class="dropdown-item">
+            <img *ngIf="type[page.type] == 'workSystem'" class="icons-header"
+              src="../../../assets/workMeasurement/work-system.png" />
+            <img *ngIf="type[page.type] == 'workImprovement'" class="icons-header"
+              src="../../../assets/workMeasurement/work-improvement.png" />
+            <img *ngIf="type[page.type] == 'workMeasurement'" class="icons-header" src="../../../assets/workMeasurement/work-measurement.png" />
+            <img *ngIf="type[page.type] == 'workDirection'" class="icons-header" src="../../../assets/workMeasurement/work-direction.png" />
+            {{page.name}}
+          </a>
+         
+        </div>
+      </li>
+
+      <li class="nav-item dropdown d-flex listthree">
+        <img class="config-img" style="height: 30px" src="../../../assets/images/Header/configuration.png" alt="" />
+        <a (click)="showConfiguration()" class="nav-link dropdown-toggle icon-style" id="navbarWelcome" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Configuration
+        </a>
+        <ul id="dropdown-submenu-conf" class="dropdown-menu">
+          
+          <li>
+            <a *auth="['ROLE_ORG_ADMIN']" class="dropdown-item" [routerLink]="['configuration/setup']">
+              Org Setup
+            </a>
+            <a *auth="['ROLE_ORG_ADMIN', 'ROLE_USER']" class="dropdown-item" routerLink="/configuration/levels">
+              Page Set
+            </a>
+            <a *auth="['ROLE_ADMIN']" class="dropdown-item" routerLink="/configuration/organizations">
+              Organizations
+            </a>
+            
+          </li>
+
+          
+        </ul>
+      </li>
+      <button (click)="logout()" style="height: 40px;  margin-right: 8px" class="btn btn-danger">
+        Logout
+      </button>
+     
+    </div>
+  </ul>
+
+</nav>
+<div class="continaer-fluid bg-bottom">
+  <div class="row">
+    <div class="col-sm-12">
+      <img src="assets/images/Header/WorkExcellence.png" alt="" class="logo-img">
+    </div>
+  </div>
+</div>

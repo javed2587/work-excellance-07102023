@@ -1,0 +1,45 @@
+<div class="div menu-header-adjustment">
+  <!-- [teamLeader]="teamLead" [teamMembers]="teamMembers" -->
+  <app-main-page [isLocked]="lockstatus" [totalRequiredFields]="totalFieldsRequired"
+    [totalFieldsFilled]="totalFieldsFilled" (sendLockStatus)="getLockStatus($event)"
+    [moduleNameVal]="currentModuleTitle" (sendPaintByLetters)="getPaintByLetters($event)"
+    (pushTeamMemebrs)="getTeamMemebersForBakend($event)" (pushTeamLead)="getTeamLeadForBackend($event)"
+    [teamLeader]="teamLead" [teamMembers]="teamMembers" [userRole]="userRole">
+  </app-main-page>
+
+  <app-side-notes [moduleNameVal]="currentModuleTitle" [paintbyletters]="paintbyletters">
+  </app-side-notes>
+
+
+
+  <app-date-header [pageName]="currentModuleTitle" [creationDate]="pageMeta?.creationDate"
+    [intervalDuration]="pageMeta?.interval?.definition" [startDate]="pageMeta?.interval?.startDate"
+    (sendCreationDate)="getCreationDate($event)" [intervalEndDate]="pageMeta?.interval?.endDate"
+    (intervalEvent)="getMetaInterval($event)">
+  </app-date-header>
+
+  <app-header-section  [isPageDataOn]="isPageDataOn" (pusheaderBackendData)="getHeaderBackendData($event)"
+    [lockstatus]="lockstatus" (sendHeaderSectionShowModalFlag)="getHeaderSectionShowModalFlag($event)"
+    (sendPhaseListModalFlag)="getPhaseListModalFlag($event)" [headerSectionModalFlag]="headerSectionModalFlag"
+    [workTypeList]="workType" (sendWorkType)="getWorkTypeForBackend($event)" [pageOwner]="pageOwner"
+    (sendPageOwner)="getPageOwnerForBackend($event)" [nameValue]="pageName"
+    (sendPageName)="getPageNameForBackend($event)" (sendPageNameNotes)="getPageNameNotesForBackend($event)"
+    (sendPageNameOpportunity)="getPageNameOpportunityForBackend($event)"
+    (sendPageNameTask)="getPageNameTaskForBackend($event)"
+    (sendPageNameDecision)="getPageNameDecisionForBackend($event)"
+    [leadershipTextValue]="leaderShipRail?.text?.valueOf()" [leaderShipRailObj]="leaderShipRail"
+    (sendLeaderShipRail)="getLeaderShipRailForBackend($event)" [managementRailObj]="managementRail"
+    (sendManagementType)="getManagementRailForBackend($event)" [managment]="managementSystem"
+    (sendManagementSystem)="getManagementTypeForBackend($event)" [phaseListModalFlag]="phaseListModalFlag">
+  </app-header-section>
+  <button class="btn-custom savebuuton" (click)="saveValue(true)">
+    <i class="fa-solid fa-check px-2"></i>
+    <span class="pr-3"> Save</span>
+  </button>
+  <app-phases-list [lockstatus]="lockstatus" [isPhasesOn]="isPhasesOn"
+    (sendHeaderSectionFlag)="getHeaderSectionShowModalFlag($event)"
+    (sendPhaseListModalFlag)="getPhaseListModalFlag($event)" [phaseListModalFlag]="phaseListModalFlag"
+    [headerSectionModalFlag]="headerSectionModalFlag" [phasesPage]="phases" (pushBackEndData)="getBackEndData($event)"
+    (sendSavePageEvent)="savePage()" (sendPhasesList)="getPhasesListForBackend($event)"></app-phases-list>
+</div>
+<!-- <app-test-lab></app-test-lab> -->

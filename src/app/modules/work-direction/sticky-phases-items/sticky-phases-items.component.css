@@ -1,0 +1,58 @@
+.menu-card .folder-icon {
+  height: 286px;
+  background-color: #fafafa;
+  border: none;
+  padding-left: 5px;
+  padding-right: 29px;
+  width: 0px;
+  outline: none;
+}
+
+.menu-card .content-card {
+  background-color: #fafafa;
+}
+
+.content-card .acc-body {
+  background-color: white;
+  box-shadow: 2px 4px 3px #888888;
+  border-radius: 21px;
+  height: 280px;
+  width: 328px;
+  margin: 3px;
+  padding: 15px;
+
+}
+
+.folder-icon .title {
+  writing-mode: vertical-rl;
+  margin-right: 0px;
+  margin-left: 0px;
+  cursor: pointer;
+}
+
+.menu-card {
+  display: flex;
+}
+
+.folder-icon .close-door {
+  width: 23px;
+  height: 24px;
+  cursor: pointer;
+}
+.highlight {
+  /* border: 4px solid #3E7DC0 !important;; */
+  border: 4px solid #FFC107  !important; 
+   outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #ffe69c;
+}
+.highlight:hover{
+  border-color: #FFC107;
+}
+.danger {
+  box-shadow: 2px 4px 3px #888888;
+}
+/* .card:hover{
+  transform: scale(1.05);
+box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+} */

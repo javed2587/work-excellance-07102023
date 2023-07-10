@@ -1,0 +1,151 @@
+<div class="container-fluid my-3">
+    <div class="top-section">
+        <div class="row row-custom">
+            <div class="col-1 d-flex justify-content-end text-center">
+                <button class="btn-style" (click)="toggle()">
+                    <img src="../../../../assets/images/WorkSystem/UpArrow.png" alt="" *ngIf="upArrow">
+                    <img src="../../../../assets/images/WorkSystem/DownArrow.png" alt="" *ngIf="downArrow">
+                </button>
+            </div>
+            <div class="col-11 d-flex justify-content-end text-center">
+            </div>
+        </div>
+    </div>
+    <div class="card card-common-properties px-2  shadow-sm ">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-2 pr-0">
+                    <div class="d-flex">
+                        <label class="px-2 pt-1" for="">Directional Statement</label>
+                        <div class="input-group-text mx-3 justify-content-end" id="basic-addon1"
+                            [ngStyle]="{'background-color': colorValue}" (click)="addRatingColor()">{{phaseMasterIndex}}
+                        </div>
+                    </div>
+                    <div class="div">
+                        <label class="px-2 pt-4" for="">Statement Purpose</label>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="col input-group d-flex">
+                        <input type="text" class="form-control" placeholder="" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="col input-group d-flex">
+                        <input type="text" class="form-control" placeholder="" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="col-5 p-0">
+                    <div class="row px-3">
+                        <div class="col-3 text-center"><label class="px-1 pt-1" for="">Statement Owner</label></div>
+                        <div class="col-9 custom-flex">
+                            <div class="input-group" *ngFor="let stmtObj of statementOwnerList; let i = index">
+                                <input type="text" class="form-control" placeholder="" aria-label="Username"
+                                    aria-describedby="basic-addon1" [value]="stmtObj">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card card-common-properties colapse-card px-2  shadow-sm mt-1" *ngIf="collapseCard">
+        <div class="card-body">
+            <app-sticky-phases-list [parentIndex]="phaseMasterIndex"></app-sticky-phases-list>
+            <div class="card full-card card-common-properties mt-1">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <div class="card main-card card-common-properties contianer-bg">
+                            <div class="card-body pt-1">
+                                <div class="row heading">
+                                    <div class="col-8 til head"><label class="label">Outcome </label></div>
+                                    <div class="col-4 buttons head firstDiv-buttons">
+                                        <div class=" flex-container">
+                                            <div class="" (click)="startService('OutCome')"
+                                                *ngIf="showMicForPlanOutCome">
+                                                <i class="fa fa-microphone microphone-ico"
+                                                    [ngStyle]="{'color': (voiceserviceForOutCome==true) ? 'red' : 'blue'}"></i>
+                                            </div>
+                                            <div class="flex-item-right">
+                                                <img src="../../../../../assets/WorkSystem/add.png" class="imag-icon"
+                                                    (click)="addFiledForOutCome()">
+                                            </div>
+                                            <div class="flex-item-right">
+                                                <img src="../../../../../assets/WorkSystem/minus.png" class="imag-icon"
+                                                    (click)="removeFieldForOutCome()">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div cdkDropList class="example-list" (cdkDropListDropped)="dropOutComeFileds($event)">
+                                    <div class="input-group mb-1 pl-1"
+                                        *ngFor="let o of listOfPlanOutCome; let i = index"
+                                        (click)="fetchIndexforOutComeFields(i)" cdkDrag>
+                                        <span class="input-group-text mr-1" id="basic-addon1"
+                                            [ngStyle]="{'background-color':o?.color}"
+                                            (click)="addRatingForOutCome(i)">{{phaseMasterIndex}}.{{i+1}}</span>
+                                        <span *ngIf="o.showModal" class="tollbar-group">
+                                            <app-mian-tool-bar
+                                                (pushColorToMainParentSpan)="setColorValueForOutCome($event)"
+                                                [showSnakeBarMenu]="showSnakeBar" [displayVal]='showModal'>
+                                            </app-mian-tool-bar>
+                                        </span>
+                                        <input type="text" class="form-control icon" placeholder=""
+                                            aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="o.value">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card main-card card-common-properties contianer-bg">
+                            <div class="card-body pt-1">
+                                <div class="row heading">
+                                    <div class="col-8 til head"><label class="label">PDCA </label></div>
+                                    <div class="col-4 buttons head">
+                                        <div class=" flex-container">
+                                            <div class="" (click)="startService('pdca')"
+                                                *ngIf="showMicForPDCA">
+                                                <i class="fa fa-microphone microphone-ico"
+                                                    [ngStyle]="{'color': (voiceserviceForPDCA==true) ? 'red' : 'blue'}"></i>
+                                            </div>
+                                            <div class="flex-item-right">
+                                                <img src="../../../../../assets/WorkSystem/add.png" class="imag-icon"
+                                                    (click)="addFiledForPDCA()">
+                                            </div>
+                                            <div class="flex-item-right">
+                                                <img src="../../../../../assets/WorkSystem/minus.png" class="imag-icon"
+                                                    (click)="removeFieldForPDCA()">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div cdkDropList class="example-list" (cdkDropListDropped)="dropPDCA($event)">
+                                    <div class="input-group mb-1 pl-1" *ngFor="let o of listOfPDCA; let i = index"
+                                        (click)="fetchIndexForPDCA(i)" cdkDrag>
+                                        <span class="input-group-text mr-1" id="basic-addon1"
+                                            [ngStyle]="{'background-color':o?.color}"
+                                            (click)="addRatingForPDCA(i)">{{phaseMasterIndex}}.{{i+1}}</span>
+                                        <span *ngIf="o.showModal" class="tollbar-group">
+                                            <app-mian-tool-bar
+                                                (pushColorToMainParentSpan)="setColorValueForPDCA($event)"
+                                                [showSnakeBarMenu]="showSnakeBar" [displayVal]='showModal'>
+                                            </app-mian-tool-bar>
+                                        </span>
+                                        <input type="text" class="form-control icon" placeholder=""
+                                            aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="o.value">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div" *ngIf="showRatingModel">
+    <app-add-rating [isdisplayRatingModal]="showRatingModel" (onaddRating)="selectedColor($event)"
+        (onCancel)="cancelMode($event)"></app-add-rating>
+</div>

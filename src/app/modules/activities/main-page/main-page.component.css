@@ -1,0 +1,30 @@
+.menu-header-adjustment{
+    position: relative;
+    bottom: 88px; 
+    min-height: 70%;
+}
+:host ::ng-deep .p-dialog{
+    border-radius: 20px;
+    }
+    
+    :host ::ng-deep .p-dialog-header{
+      height: 15px;
+      background-color: #fdb719;
+    }
+    :host ::ng-deep .p-dialog-header>div
+      {
+        margin-left: 17vw;
+      }
+      /* :host ::ng-deep .p-dialog .p-dialog-content{
+          padding: 0px !important;
+      } */
+    :host ::ng-deep .p-dialog {
+     margin-top: 8vw;
+     margin-right: 8vw;
+     border-radius: 35px;
+     
+    }
+    
+    .p-button {
+      margin-right: 5px; 
+    }

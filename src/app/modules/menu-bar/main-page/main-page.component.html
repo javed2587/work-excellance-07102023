@@ -1,0 +1,10 @@
+<!-- <app-menu-items ></app-menu-items> -->
+<!-- <div>
+    <img src="../../../../assets/menu/tootip.PNG" alt="">
+</div> -->
+<!-- <app-toolbar [moduleName]="moduleNameVal"></app-toolbar> -->
+
+<app-menu-header [userRole]="userRole" [totalRequiredFields]="totalRequiredFields" [totalFieldsFilled]="totalFieldsFilled" [teamMembers]="teamMembers" [lockstatus]="isLocked" [teamLeader]="teamLeader" (sendlockstatus)="getLockStatus($event)" [moduleName]="moduleNameVal"
+    (sendPaintByLetters)="getPaintByLetters($event)" (pushTeamMembersList)="saveTeamMemersList($event)"
+    (pushTeamLead)="saveTeamLead($event)" (savePdfEvent)="savePageToPdf()">
+</app-menu-header>

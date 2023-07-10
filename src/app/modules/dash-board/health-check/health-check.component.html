@@ -1,0 +1,139 @@
+<div *ngIf="showBody === false" class="openbtn">
+    <img
+      height="30px"
+      width="30px"
+      src="../../../../assets/dashboard/Colors/HearCheck.svg"
+      style="background-color: lightgray"
+    />
+    <button (click)="changeShowBody()" class="btn-health-check">
+      Health Check
+      <i style="margin-left: 40px" class="fa-sharp fa-solid fa-chevron-down"></i>
+    </button>
+  </div>
+  <div *ngIf="showBody === true" class="openbtn">
+    <button (click)="changeShowBody()" class="btn-health-check-open">
+      <img
+        height="30px"
+        width="30px"
+        style="background-color: #005FBE"
+        src="../../../../assets/dashboard/White/HealthCheck.svg"
+      />
+      Health Check
+      <i style="margin-left: 40px" class="fa-sharp fa-solid fa-chevron-up"></i>
+    </button>
+  </div>
+  <div class="main-container">
+    <div class="container-fluid main-container-sub">
+      <div class="row container-sub-header">
+        <div class="col-3">
+          <div class="header-cols">
+            <img
+              style="width: 50px; height: 50px"
+              src="../../../../assets/workMeasurement/work-system.png"
+            />
+            <p id="p1">WORK SYSTEM</p>
+            <P id="p2">14</P>
+          </div>
+          <div class="header-cols-hr">
+            <hr />
+          </div>
+          <div class="header-buttons" style="display: flex">
+            <button style="background-color: red; margin-left: 28px">4</button>
+            <button style="background-color: yellow">3</button>
+            <button style="background-color: greenyellow">4</button>
+            <button style="background-color: dodgerblue">3</button>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="header-cols">
+            <img
+              style="width: 50px; height: 50px"
+              src="../../../../assets/workMeasurement/work-improvement.png"
+            />
+            <p id="p1">WORK IMPROVEMENT</p>
+            <P id="p3">28</P>
+          </div>
+          <div class="header-cols-hr">
+            <hr />
+          </div>
+          <div class="header-buttons" style="display: flex">
+            <button style="background-color: red; margin-left: 28px">4</button>
+            <button style="background-color: yellow">3</button>
+            <button style="background-color: greenyellow">4</button>
+            <button style="background-color: dodgerblue">3</button>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="header-cols">
+            <img
+              style="width: 30px; height: 50px"
+              src="../../../../assets/workMeasurement/work-measurement.png"
+            />
+            <p id="p1">WORK MEASUREMENT</p>
+            <P id="p4">40</P>
+          </div>
+          <div class="header-cols-hr">
+            <hr />
+          </div>
+          <div class="header-buttons" style="display: flex">
+            <button style="background-color: red; margin-left: 28px">4</button>
+            <button style="background-color: yellow">3</button>
+            <button style="background-color: greenyellow">4</button>
+            <button style="background-color: dodgerblue">3</button>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="header-cols">
+            <img
+              style="width: 50px; height: 50px"
+              src="../../../../assets/workMeasurement/work-direction.png"
+            />
+            <p id="p1">WORK DIRECTION</p>
+            <P id="p5">54</P>
+          </div>
+          <div class="header-cols-hr">
+            <hr />
+          </div>
+          <div class="header-buttons" style="display: flex">
+            <button style="background-color: red; margin-left: 28px">4</button>
+            <button style="background-color: yellow">3</button>
+            <button style="background-color: greenyellow">4</button>
+            <button style="background-color: dodgerblue">3</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      style="margin-bottom: 30px"
+      *ngIf="showBody === true"
+      class="container-fluid rounded"
+    >
+      <div
+        *ngFor="let check of healthCheck; let i = index"
+        style="height: 50px"
+        class="row container-sub"
+      >
+        <div
+          style="padding-top: 0px"
+          *ngFor="let subcheck of healthCheck[i]"
+          class="col-3"
+        >
+          <div class="body-buttons" style="display: flex">
+            <p style="margin-top: 10px; font-size: 12px">L{{ subcheck.level }}</p>
+            <button [ngStyle]="{ 'background-color': subcheck.color1 }">
+              {{ subcheck.number1 }}
+            </button>
+            <button [ngStyle]="{ 'background-color': subcheck.color2 }">
+              {{ subcheck.number2 }}
+            </button>
+            <button [ngStyle]="{ 'background-color': subcheck.color3 }">
+              {{ subcheck.number3 }}
+            </button>
+            <button [ngStyle]="{ 'background-color': subcheck.color4 }">
+              {{ subcheck.number4 }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

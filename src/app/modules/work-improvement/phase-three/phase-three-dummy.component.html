@@ -1,0 +1,511 @@
+<div class="contianer px-3 lh-1-2 ">
+    <div class="top-section">
+        <div class="row row-custom">
+            <div class="col-lg-1 d-flex justify-content-end text-center" [ngStyle]="{'padding-top':up?'25px':'8px'}">
+                <button class="btn-style" (click)="toggle()"> <img src="./assets/images/initiatives-images/UpArrow.png"
+                        alt="" *ngIf="up"> <img src="./assets/images/initiatives-images/DownArrow.png" alt=""
+                        *ngIf="down"> </button>
+            </div>
+            <div class="col-4 d-flex justify-content-start text-center margin-b-4" *ngIf="up">
+                <button id="addInitiativesId" class=" px-3 btn-dark text-warning rounded-button border-r"
+                    style="height: 1.77rem;" (click)="addinitiatives()">
+                    <div class="text"><span>+ </span> Add WorkImprovementInitiatives</div>
+                </button>
+                <button id="addInitiativesId" class=" px-3  btn-dark text-warning rounded-button border-r"
+                    style="margin-left: 0.4rem !important;margin-right: 0.4rem;height: 1.77rem;"
+                    (click)="deleteInitiative()">
+                    <div class="text"><span>- </span> Remove WorkImprovementInitiatives</div>
+                </button>
+                <!-- <button id="addInitiativesId" class=" px-3  btn-dark text-warning rounded-button border-r" (click)="saveInitiativeDetailInsService()"
+                    style="margin-left: 0.4rem !important;" >
+                    <div class="text"><span></span> Save</div>
+                </button> -->
+                <button pButton pRipple label="Save" icon="pi pi-check"></button>
+            </div>
+            <div class="col-7 d-flex justify-content-end text-center"> </div>
+        </div>
+    </div>
+    <!-- Header for initiative -->
+    <div class="card   rounded shadow-sm" [ngStyle]="{'display':flagg?'':'none'}">
+        <div class="container mainheading">
+            <div class="row main-h">
+                <div class="col-lg-12">
+                    <div class="row initiative-title h-60">
+                        <div class="col-2 main-st header-fw">
+                            Intiatives
+                        </div>
+                        <div class="col-lg-10 main-st2 p-0 h-65">
+                            <div class="row">
+                                <div class="col p-0 lh-64 header-fw">
+                                    Plan Steps
+                                </div>
+                                <div class="col p-0 container-fluid" >
+                                    <!-- Header for chart -->
+
+                                    <div class="wrapper-div">
+                                        <div class="row rowheaderstyle">
+                                            <div class="col-auto col-lg-header-9"
+                                                *ngFor="let value of listofdategantchart">
+                                                <span class="spnvalue">{{value}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- All WorkImprovementInitiatives -->
+            <div class=" initiatives p-0 mr-0 container-fluid m-b-maincontainer"
+                *ngFor="let init of initiatives; let ind=index">
+
+                <div>
+
+                    <button class=" btn-style ml-l" *ngIf="ind>=1" (click)="toggle_intiative(ind)">
+                        <img src="./assets/images/initiatives-images/UpArrow.png"
+                            *ngIf="this.initiatives[ind].display_flag">
+                        <img src="./assets/images/initiatives-images/DownArrow.png"
+                            *ngIf="!this.initiatives[ind].display_flag">
+                    </button>
+
+                </div>
+                <div class=" p-0  mr-0 container-fluid">
+                    <div class="row rowmarginrigth">
+                        <!-- initiative name block -->
+                        <div class="col-2 p-0 initiativename  background-white" (click)="selectedInitiativeBorder(ind)"
+                            [ngStyle]="{'display':this.initiatives[ind].display_flag?'':'none'}"
+                            [class.active]="selectedInititive === ind">
+                            <div>
+                                {{init.index}}. {{init.initiativename}}
+                            </div>
+
+                            <textarea rows="1" cols="23" name="comment" [(ngModel)]="init.inititiative_textarea"
+                                form="usrform"
+                                [disabled]="true ? lockstatus == true : false">{{init.initiative_textarea}}</textarea>
+
+                        </div>
+
+
+                        <div class="col-lg-10 p-0" [ngStyle]="{'display':this.initiatives[ind].display_flag?'':'none'}">
+
+                            <div class="initiativevalue"
+                                *ngFor="let initiative of init.initiativevalues;let index=index"
+                                style="background-color:#f2f2f2 ;">
+
+                                <div class="addinitiatives" style="margin-left: 27.8%; background-color: #f2f2f2;"
+                                    [ngStyle]="{'margin-top':index==0?'3px':'0px'}">
+
+                                    <div _ngcontent-qam-c115="" class="flex-container" style="justify-content: center;">
+
+
+                                        <div _ngcontent-qam-c115="" class="flex-item-right"
+                                            (click)="addparentinitiative(ind,index,init.initiativevalues[init.initiativevalues.length-1]['key'])">
+                                            <img _ngcontent-qam-c115="" *ngIf="index==0"
+                                                src="../../../../../assets/WorkSystem/add.png" class="img-icon">
+
+                                            <div *ngIf="index!=0" class="w-19">
+
+                                            </div>
+                                        </div>
+                                        <div _ngcontent-qam-c115="" class="flex-item-right" (click)="deleteRow(ind)">
+                                            <img _ngcontent-qam-c115="" *ngIf="index==0"
+                                                src="../../../../../assets/WorkSystem/minus.png" class="img-icon">
+
+                                            <div *ngIf="index!=0" class="w-19">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex-container initiative-flex-container"
+                                    [ngStyle]="{'display':this.initiatives[ind].display_flag?'':'none'}">
+
+                                    <div class="d-flex jutify-content-start align-self-start pr flex-1-593">
+                                        <span *ngIf="initiative.displayRatingModel &&
+                                        phaseThreeModalFlag == true &&
+                                        phaseOneModalFlag == false &&
+                                        phaseTwoModalFlag == false &&
+                                        phaseFourModalFlag == false &&
+                                        phaseFiveModalFlag == false" class="tollbar-group">
+                                            <app-mian-tool-bar
+                                                (pushColorToMainParentSpan)="setColorValueForOutCome($event,initiative.displayRatingModel,ind,index)"
+                                                [showSnakeBarMenu]="false" [displayVal]='false'>
+                                            </app-mian-tool-bar>
+                                        </span>
+                                        <span class="remove-border badge  card-text initiativekey"
+                                            (click)="displayRatingModel(initiative.displayRatingModel,ind,index)"
+                                            [ngStyle]="{'background-color':initiative.colorValue}">
+                                            {{initiative['key']}}
+                                            <img class="initiativearrow"
+                                                (click)="$event.stopPropagation();addsubinitiative(ind,index)"
+                                                src="./assets/images/initiatives-images/arrow-right.svg" />
+
+                                        </span>
+
+                                        <input class=" form-control form-control-sm remove-border" type="text"
+                                            [(ngModel)]="initiative.initiativeInput"
+                                            [readonly]="this.initiative.value.initiativeComplete"
+                                            placeholder="purus semper agt duis at."
+                                            (focus)="setDeleteData(ind,index,-1,'parentintiativeDelete')"
+                                            [disabled]="true ? lockstatus == true : false">
+                                    </div>
+
+                                    <select class="assignto-border assignto-border-style"
+                                        [(ngModel)]="initiative.assign_to"
+                                        [disabled]="this.initiative.value.initiativeComplete">
+                                        <option class="background-white" disabled selected value="Assign to">Assign to
+                                        </option>
+                                        <option class="background-white" value="1">Wang</option>
+                                        <option class="background-white" value="2">Lee</option>
+                                        <option class="background-white" value="3">Usha</option>
+                                    </select>
+                                    <div class="flex" *ngIf="!this.initiative.value.initiativeComplete"
+                                        style="color:#f2f2f2">
+                                        the
+                                    </div>
+
+                                    <div class=" checkcompleteinitiative "
+                                        [ngStyle]="{'justify-content':!this.initiative.value.initiativeComplete?'end':''}">
+
+
+
+                                        <img class="compleletedinitiative uncheckparent"
+                                            *ngIf="!this.initiative.value.initiativeComplete"
+                                            (click)="showCompleteModel(ind,index,-1,'parentComplete')"
+                                            [ngStyle]="{'pointer-events':!this.initiative.value.initiativeComplete?'':'none'}"
+                                            src="https://flyclipart.com/thumb2/ic-checkbox-unchecked-checkbox-checked-icon-with-png-and-vector-616470.png">
+
+
+                                        <img class="compleletedinitiative" style="z-index: 0;"
+                                            *ngIf="this.initiative.value.initiativeComplete"
+                                            [ngStyle]="{'pointer-events':!this.initiative.value.initiativeComplete?'':'none'}"
+                                            src="../../../../assets/workImprovement/Tickmark-green.png">
+
+
+
+                                        <span class="crossbtn" *ngIf="!this.initiative.value.initiativeComplete"></span>
+                                    </div>
+                                    <!-- Initiative Gant Chart -->
+                                    <div class="chart-style chart-style-init  "
+                                        [ngClass]="{'chart-style-init-main':this.initiative.value.initiativeComplete}"
+                                        [ngStyle]="{'margin-left':this.initiative.value.initiativeComplete?'-0.7rem':'-2.2rem'}">
+                                        <div>
+                                            <div class="row chart-row-initiative"
+                                                *ngIf="!this.initiative.value.initiativeComplete">
+                                                <div class="col-lg-1 col-md-1 col-sm-1 stylechartbox"
+                                                    *ngFor="let i of this.initiative.value.initiativeGantChart;let indexofchartlist=index"
+                                                    [ngStyle]="{'pointer-events':(this.listofdategantchart[12]=='' &&indexofchartlist==12 )?'none':''}"
+                                                    (click)="openGantChartModal(ind,index,indexofchartlist,'parentintiative')"
+                                                    [ngStyle]="{'margin-top':index>0&&init.initiativevalues[index-1].value.initiativeComplete?'0px':'0px','background-color':i=='filled'?'#7f7f7f':'white'}">
+                                                    <div class="vertical"
+                                                        *ngIf="indexofchartlist==findindexofcurrentdate()">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row chart-row-initiative"
+                                                *ngIf="this.initiative.value.initiativeComplete">
+                                                <div class="col-lg-1 col-md-1 col-sm-1 stylechartbox"
+                                                    *ngFor="let i of this.initiative.value.initiativeGantChart;let indexofchartlist=index"
+                                                    style="pointer-events: none;margin-bottom: -1px;"
+                                                    (click)="openGantChartModal(ind,index,indexofchartlist,'parentintiative')"
+                                                    [ngStyle]="{'margin-top':index>0&&init.initiativevalues[index-1].value.initiativeComplete?'0px':'0px','background-color':i=='filled'?'#7f7f7f':'white'}">
+                                                    <div class="vertical"
+                                                        *ngIf="indexofchartlist==findindexofcurrentdate()">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- Sub WorkImprovementInitiatives -->
+                                <div [ngStyle]="{'display':this.initiatives[ind].display_flag?'':'none'}"
+                                    class=" subinitiative-main"
+                                    *ngFor="let subinitiative of this.initiatives[ind].initiativevalues[index].value.subinitiative;let indexsub=index">
+                                    <div class="flex-container col-lg-10 m-0 p-0 flex-container-style">
+                                        <div class="subinitiative-space-start">
+                                        </div>
+                                        <div class="d-flex jutify-content-start align-self-start pr inputsub ">
+                                            <span *ngIf="subinitiative.subinitiativedisplayRatingModel &&
+                                            phaseThreeModalFlag == true &&
+                                            phaseOneModalFlag == false &&
+                                            phaseTwoModalFlag == false &&
+                                            phaseFourModalFlag == false &&
+                                            phaseFiveModalFlag == false" class="tollbar-group">
+                                                <app-mian-tool-bar
+                                                    (pushColorToMainParentSpan)="setColorValueForOutCome($event,subinitiative.subinitiativedisplayRatingModel,ind,index,indexsub)"
+                                                    [showSnakeBarMenu]="false" [displayVal]='false'>
+                                                </app-mian-tool-bar>
+                                            </span>
+                                            <span class="remove-border badge  card-text initiativekey"
+                                                (click)="displayRatingModel(subinitiative.subinitiativedisplayRatingModel,ind,index,indexsub)"
+                                                [ngStyle]="{'background-color':  subinitiative.subinitiativecolorValue}">
+                                                {{subinitiative.subinitiativekey}}
+                                                <img class="initiativearrow"
+                                                    (click)="$event.stopPropagation();addsubtosubinitiative(ind,index,indexsub)"
+                                                    src="./assets/images/initiatives-images/arrow-right.svg" />
+                                            </span>
+                                            <input class=" form-control form-control-sm remove-border" type="text"
+                                                [(ngModel)]="subinitiative.subinitiativeinitiativeInput"
+                                                [readonly]="subinitiative.subinitiativeComplete"
+                                                placeholder="purus semper agt duis at."
+                                                (focus)="setDeleteData(ind,index,indexsub,'subintiativeDelete')"
+                                                [disabled]="true ? lockstatus == true : false">
+                                        </div>
+                                        <select class="assignto-border assignto-border-style-subini"
+                                            [(ngModel)]="subinitiative.subinitiativeassign_to"
+                                            [disabled]="subinitiative.subinitiativeComplete">
+                                            <option class="background-white" disabled selected value="Assign to">Assign
+                                                to</option>
+                                            <option class="background-white" value="1">Carry</option>
+                                            <option class="background-white" value="2">Henry</option>
+                                            <option class="background-white" value="3">Ellis</option>
+                                        </select>
+                                        <div class="flex" *ngIf="!subinitiative.subinitiativeComplete"
+                                            style="color:#f2f2f2">
+                                            the
+                                        </div>
+                                        <div class=" checkcompleteinitiative checkcompleteinitiative-sub"
+                                            style="margin-right: 1.45rem;margin-left: 0.06rem; z-index: 0;"
+                                            [ngStyle]="{'justify-content':!subinitiative.subinitiativeComplete?'end':''}">
+                                            <img class="compleletedinitiative uncheckparent"
+                                                *ngIf="!subinitiative.subinitiativeComplete"
+                                                (click)="showCompleteModel(ind,index,indexsub,'subinitiativeComplete')"
+                                                [ngStyle]="{'pointer-events':!subinitiative.subinitiativeComplete?'':'none'}"
+                                                src="https://flyclipart.com/thumb2/ic-checkbox-unchecked-checkbox-checked-icon-with-png-and-vector-616470.png">
+                                            <img class="compleletedinitiative"
+                                                *ngIf="subinitiative.subinitiativeComplete"
+                                                [ngStyle]="{'pointer-events':!subinitiative.subinitiativeComplete?'':'none'}"
+                                                src="../../../../assets/workImprovement/Tickmark-green.png">
+                                            <span class="crossbtn" *ngIf="!subinitiative.subinitiativeComplete"></span>
+                                        </div>
+                                        <!-- Sub WorkImprovementInitiatives GantChart -->
+                                        <div class="chart-style"
+                                            [ngStyle]="{'margin-left':subinitiative.subinitiativeComplete?'-1.6rem':'-3.07rem'}">
+                                            <div>
+                                                <div class="row  chart-row-initiative"
+                                                    *ngIf="!subinitiative.subinitiativeComplete">
+                                                    <div class="col-lg-1 col-md-1 col-sm-1 stylechartbox"
+                                                        *ngFor="let sub_gantchart_value of subinitiative.subinitiativeGantChart;let subindexofchartlist=index"
+                                                        [ngStyle]="{'pointer-events':this.listofdategantchart[12]=='' &&subindexofchartlist==12 ?'none':'','padding-bottom':this.listofdategantchart[12]=='' &&subindexofchartlist==12 ?'28px':'0px'}"
+                                                        (click)="openGantChartModal(ind,index,subindexofchartlist,'subinitiative',indexsub)"
+                                                        [ngStyle]="{'margin-top':ind==0?'0px':'0px','background-color':sub_gantchart_value=='filled'?'#7f7f7f':'white'}">
+                                                        <div class="vertical"
+                                                            *ngIf="subindexofchartlist==findindexofcurrentdate()">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row  chart-row-initiative"
+                                                    *ngIf="subinitiative.subinitiativeComplete">
+                                                    <div class="col-lg-1 col-md-1 col-sm-1 stylechartbox"
+                                                        *ngFor="let sub_gantchart_value of subinitiative.subinitiativeGantChart;let subindexofchartlist=index"
+                                                        style="pointer-events:none"
+                                                        (click)="openGantChartModal(ind,index,subindexofchartlist,'subinitiative',indexsub)"
+                                                        [ngStyle]="{'margin-top':ind==0?'0px':'0px','background-color':sub_gantchart_value=='filled'?'#7f7f7f':'white'}">
+                                                        <div class="vertical"
+                                                            *ngIf="subindexofchartlist==findindexofcurrentdate()">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Sub to sub WorkImprovementInitiatives -->
+                                    <div class="main-subtosub"
+                                        *ngFor="let subtosubinitiative of  this.initiatives[ind].initiativevalues[index].value.subinitiative[indexsub].subtosubinitiative; let indexsubtosub=index">
+                                        <div class="flex-container flex-container-sub-tosub col-lg-10 m-0 p-0">
+                                            <div class="subtosub-start-space">
+
+                                            </div>
+                                            <div class="d-flex jutify-content-start align-self-start pr inputsubtosub ">
+                                                <span *ngIf="subtosubinitiative.subtosubinitiativedisplayRatingModel &&
+                                                phaseThreeModalFlag == true &&
+                                                phaseOneModalFlag == false &&
+                                                phaseTwoModalFlag == false &&
+                                                phaseFourModalFlag == false &&
+                                                phaseFiveModalFlag == false" class="tollbar-group">
+                                                    <app-mian-tool-bar
+                                                        (pushColorToMainParentSpan)="setColorValueForOutCome($event,subtosubinitiative.subtosubinitiativedisplayRatingModel,ind,index,indexsub,indexsubtosub)"
+                                                        [showSnakeBarMenu]="false" [displayVal]='false'>
+                                                    </app-mian-tool-bar>
+                                                </span>
+                                                <span class="remove-border badge  card-text initiativekey"
+                                                    (click)="displayRatingModel(subtosubinitiative.subtosubinitiativedisplayRatingModel,ind,index,indexsub,indexsubtosub)"
+                                                    [ngStyle]="{'background-color': subtosubinitiative.subtosubinitiativecolorValue}">
+                                                    {{subtosubinitiative.subtosubinitiativekey}}
+
+                                                </span>
+                                                <input class=" form-control form-control-sm remove-border" type="text"
+                                                    [(ngModel)]="subtosubinitiative.subtosubinitiativeInput"
+                                                    [readonly]="subtosubinitiative.subtosubinitiativeComplete"
+                                                    placeholder="purus semper agt duis at."
+                                                    (focus)="setDeleteData(ind,index,indexsub,'subotsubintiativeDelete',indexsubtosub)"
+                                                    [disabled]="true ? lockstatus == true : false">
+                                            </div>
+
+                                            <select class="assignto-border assignto-border-style-subini"
+                                                [(ngModel)]="subtosubinitiative.subtosubinitiativeassign_to"
+                                                [disabled]="subtosubinitiative.subtosubinitiativeComplete">
+                                                <option class="background-white" disabled selected value="Assign to">
+                                                    Assign to</option>
+                                                <option class="background-white" value="1">Wali</option>
+                                                <option class="background-white" value="2">Denis</option>
+                                                <option class="background-white" value="3">karc</option>
+                                            </select>
+                                            <div class="flex" *ngIf="!subtosubinitiative.subtosubinitiativeComplete"
+                                                style="color:#f2f2f2">
+                                                the
+                                            </div>
+                                            <div class=" checkcompleteinitiative checkcompleteinitiative-sub "
+                                                style="margin-right: 1.4rem ;    z-index: 10;"
+                                                [ngStyle]="{'justify-content':!subtosubinitiative.subtosubinitiativeComplete?'end':''}">
+                                                <img class="compleletedinitiative uncheckparent"
+                                                    *ngIf="!subtosubinitiative.subtosubinitiativeComplete"
+                                                    (click)="showCompleteModel(ind,index,indexsubtosub,'subtosubinitiativeComplete',indexsub)"
+                                                    [ngStyle]="{'pointer-events':!subtosubinitiative.subtosubinitiativeComplete?'':'none'}"
+                                                    src="https://flyclipart.com/thumb2/ic-checkbox-unchecked-checkbox-checked-icon-with-png-and-vector-616470.png">
+
+
+                                                <img class="compleletedinitiative"
+                                                    *ngIf="subtosubinitiative.subtosubinitiativeComplete"
+                                                    [ngStyle]="{'pointer-events':!subtosubinitiative.subtosubinitiativeComplete?'':'none'}"
+                                                    src="../../../../assets/workImprovement/Tickmark-green.png">
+
+
+                                                <span class="crossbtn"
+                                                    *ngIf="!subtosubinitiative.subtosubinitiativeComplete"></span>
+                                            </div>
+
+
+                                            <!-- Sub to sub WorkImprovementInitiatives Gant Chart -->
+                                            <div class="chart-style"
+                                                [ngStyle]="{'margin-left':subtosubinitiative.subtosubinitiativeComplete?'-1.5rem':'-2.97rem'}">
+                                                <div>
+                                                    <div class="row  chart-row-initiative"
+                                                        *ngIf="!subtosubinitiative.subtosubinitiativeComplete">
+
+                                                        <div class="col-lg-1 col-md-1 col-sm-1 stylechartbox"
+                                                            *ngFor="let subtosub_gantchart_value of subtosubinitiative.subtosubinitiativeGantChart;let subtosubindexofchartlist=index"
+                                                            [ngStyle]="{'pointer-events':this.listofdategantchart[12]=='' &&subtosubindexofchartlist==12 ?'none':''}"
+                                                            (click)="openGantChartModal(ind,index,subtosubindexofchartlist,'subtosubinitiative',indexsub,indexsubtosub)"
+                                                            [ngStyle]="{'margin-top':ind==0?'0px':'0px','background-color':subtosub_gantchart_value=='filled'?'#7f7f7f':'white'}">
+                                                            <div class="vertical"
+                                                                *ngIf="subtosubindexofchartlist==findindexofcurrentdate()">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row  chart-row-initiative"
+                                                        *ngIf="subtosubinitiative.subtosubinitiativeComplete">
+
+                                                        <div class="col-lg-1 col-md-1 col-sm-1 stylechartbox"
+                                                            *ngFor="let subtosub_gantchart_value of subtosubinitiative.subtosubinitiativeGantChart;let subtosubindexofchartlist=index"
+                                                            style="pointer-events:none"
+                                                            (click)="openGantChartModal(ind,index,subtosubindexofchartlist,'subtosubinitiative',indexsub,indexsubtosub)"
+                                                            [ngStyle]="{'background-color':subtosub_gantchart_value=='filled'?'#7f7f7f':'white'}">
+                                                            <div class="vertical"
+                                                                *ngIf="subtosubindexofchartlist==findindexofcurrentdate()">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <!-- showCompleteModel -->
+    <p-dialog [transitionOptions]="'0ms'" [draggable]="true" [visible]="display_showCompleteModel"
+        [style]="{width:'45vw'}" [closable]="false" [modal]="true" styleClass="dialog-custom">
+        <ng-template pTemplate="header">
+            <img class="close-btn" src="./assets/images/initiatives-images/warning1.svg">
+            <div class="warningdiv">Warning</div>
+            <button type="button" class="closebtn" (click)="closeWarningModel()"><img class=""
+                    src="./assets/images/initiatives-images/close.svg"></button>
+
+        </ng-template>
+        <div class="div mb-3 mt-4 mx-3 showCompleteModel-body">
+            <div>
+                <div class="modal-body-txt"> Checking this box will permanently mark this as complete.
+                </div>
+
+                <div class="modal-body-txt">
+                    Are you sure?
+                </div>
+
+                <div class="modal-body-txt"> Do not show this warning again
+                    <input [(ngModel)]="checkBoxValue" name="checkBoxValue" type="checkbox" id="chkbox">
+                    <label class="chkboxcls" for="chkbox"></label>
+                </div>
+            </div>
+            <div class="button-dialog text-center mt-3">
+                <button type="button" label="Save" class="btn btn-primary btn-sm mx-2 px-4 rounded-3 p-button"
+                    (click)="taskcomplete()"> OK</button>
+            </div>
+        </div>
+    </p-dialog>
+    <!-- showGantChartModel -->
+    <p-dialog [transitionOptions]="'0ms'" [draggable]="true" [visible]="display" [style]="{width:'45vw'}"
+        [closable]="false" [modal]="true" styleClass="dialog-custom">
+        <ng-template pTemplate="header">
+            <i class="pi lock-open ft-size"></i>
+            <div class="header-label">Gant Chart</div>
+        </ng-template>
+        <div class="row">
+            <div class='col-6 pd-l-4'>
+                <div class="input-group date input-start-date w-20-5">
+                    <label class="config_label start_date_label">Interval
+                        Start Date</label>&nbsp;&nbsp;
+                    <input class="input-date-h" type="date" [(ngModel)]="start_date" min={{start_date}}
+                        max={{start_date}} class="form-control" id="input-start-date" required>
+
+                </div>
+            </div>
+            <div class='col-6 '>
+                <div class="input-group date input-start-date w-20-5">
+                    <label class="config_label start_date_label">
+                        Interval
+                        End Date</label>&nbsp;&nbsp;
+
+                    <input class="input-date-h" type="date" step={{end_date_step}} [(ngModel)]="end_of_date"
+                        *ngIf="this.end_date_type=='date'" class="form-control" min={{start_date}}
+                        max={{end_date_of_listofdategantchart}} id="input-start-date" required>
+
+                    <input class="input-date-h" type="month" [(ngModel)]="end_of_date"
+                        *ngIf="this.end_date_type=='month'"
+                        this.min_month_end_date=this.start_date.substring(0,this.start_date.length()-3)
+                        class="form-control" min={{min_month_end_date}} max={{max_month_end_date}} id="input-start-date"
+                        required>
+
+                </div>
+            </div>
+        </div>
+        <div class="div mb-3 mt-4 mx-3">
+            <div class="button-dialog text-center mt-3">
+                <button type="button" label="Save" class="btn btn-primary btn-sm mx-2 px-4 rounded-3 p-button"
+                    (click)="fillInitiativeGantChart()"> Save</button>
+                <button type="button" label="Cancel" class="btn btn-primary btn-sm px-3 rounded-3 p-button"
+                    (click)="closeGantChartModal()">Cancel</button>
+            </div>
+        </div>
+    </p-dialog>

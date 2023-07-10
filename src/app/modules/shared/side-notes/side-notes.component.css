@@ -1,0 +1,48 @@
+:host ::ng-deep .p-sidebar-right {
+    height: 100%;
+    right: 17px;
+    top: 14%;
+    /* bottom: 50px; */
+    width: 27rem;
+    max-height: 88%;
+    overflow-y: auto;
+    background-color: #f2f2f2;
+    box-shadow: none;
+  }
+  .header__background {
+    background-color: #FFC107;
+    color: black;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+  }
+  #button-card {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: none;
+    position: absolute;
+    margin-left: 30px;
+    margin-top: 20px;
+    background: white;
+    box-shadow: 1px 2px;
+  }
+  .main__container {
+    margin-top: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-radius: 1em;
+  }
+  .body-text {
+    height: 120px;
+    overflow-y: auto;
+  }
+  :host ::ng-deep .p-sidebar .p-sidebar-header + .p-sidebar-content{
+    padding-right: 0px;
+    padding-left: 4px;
+    padding-bottom: 0px;
+  }
+  :host :ng-deep .p-sidebar .p-sidebar-header {
+    /* padding: 5px !important; */
+    padding-top: 5px;
+    
+  }

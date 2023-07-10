@@ -1,0 +1,78 @@
+<div class="container-fluid continer-position mt-5 mb-4">
+  <div class="div date-wraper">
+    <div class="row" style="margin-left: 100px;">
+      <div class="col-12">
+        <div class="row justify-content-end custom-row gx-1">
+          <div class="col-auto">
+            <label for="basic" class="pl-1 pr-2 label-heading pt-1 label" style="cursor: pointer;"
+              pTooltip="Choose the date from the calendar that you are starting the interval.  We allow you to set an interval start date with a maximum of 30 days in the past."
+              tooltipStyleClass="tooltip-header" tooltipPosition="bottom">Interval Start Date</label>
+            <p-calendar [(ngModel)]="selectedStartDate" [showIcon]="true" inputId="icon" [minDate]="minDateValue"
+              [maxDate]="maxDateValue" styleClass="clander-custom"
+              (onSelect)="onChangeIntervalStartDate($event); onchange($event)">
+            </p-calendar>
+
+          </div>
+          <div class="col-auto">
+            <label for="basic" class="pl-1 pr-2 label-heading pt-1 label" style="cursor: pointer;"
+              pTooltip="This is the duration of the interval for this page. How often do you plan to re-rate this Work System?
+
+                        Hint:  We recommend that you rate your Work System at least every 6 months and a minimum once per year.
+
+                        Note:  Consider not changing the interval duration from the organizational interval. This should only be done when absolutely necessary." tooltipStyleClass="tooltip-header"
+              tooltipPosition="bottom">Interval Duration</label>
+            <p-dropdown [options]="interval" [(ngModel)]="selectedInterval" optionLabel="name" scrollHeight="220px"
+              (onChange)="onchange($event); onChangeIntervalDuration($event)">
+            </p-dropdown>
+          </div>
+          <div class="col-auto" *ngIf="improvement || isMeasurement">
+            <label for="basic" class="pl-1 pr-2 label-heading pt-1 label" style="cursor: pointer;"
+              pTooltip="This is the duration of the interval for this page. How often do you plan to re-rate this Work System? "
+              tooltipStyleClass="tooltip-header" tooltipPosition="bottom">Adjust Frequencey</label>
+            <p-dropdown [options]="frequencey" [(ngModel)]="selectedFrequencey" [(ngModel)]="caste"
+              (onChange)="submitDatesForInitiatives($event)" optionLabel="name" scrollHeight="220px">
+            </p-dropdown>
+          </div>
+          <div class="col-auto" *ngIf="improvement">
+            <!-- <label for="basic" class="pl-1 pr-2 label-heading pt-1 label" style="cursor: pointer;"
+              pTooltip="The date this Work System was finalized and locked. This date should not change once the page is completed and agreed upon by the team."
+              tooltipStyleClass="tooltip-header" tooltipPosition="bottom">Plan Date: </label>
+            <p-calendar [(ngModel)]="date15" [showIcon]="true" [minDate]="minDateValue" [maxDate]="maxDateValue"
+              styleClass="my-calendar" (onSelect)="onChangePlanDate($event); onchange($event)"></p-calendar> -->
+            <div class="d-flex">
+              <label for="basic" class="pl-1 pr-2 label-heading pt-1 label" style="cursor: pointer;"
+                pTooltip="This is the plan date." tooltipStyleClass="tooltip-endeDate" tooltipPosition="bottom">Plan
+                Date: </label>
+              <p class="label-heading pt-1">{{planDate | date: 'shortDate' }}</p>
+            </div>
+          </div>
+          <div class="col-auto">
+            <label for="basic" class="pl-1 pr-2 label-heading pt-1 label" style="cursor: pointer;"
+              pTooltip="The date this Work System was finalized and locked. This date should not change once the page is completed and agreed upon by the team."
+              tooltipStyleClass="tooltip-header" tooltipPosition="bottom">Created Date: </label>
+            <p-calendar [(ngModel)]="date14" [showIcon]="true" [minDate]="minDateValue" [maxDate]="maxDateValue"
+              styleClass="my-calendar" (onSelect)="onChangeCreatedDate($event); onchange($event)"
+              styleClass="clander-custom"></p-calendar>
+          </div>
+          <div class="col-auto">
+            <div class="d-flex">
+              <label for="basic" class="pl-1 pr-2 label-heading pt-1 label" style="cursor: pointer;"
+                pTooltip="This is a system generated date based on the start date and interval duration. You can only change this date by changing your start date and / or interval duration."
+                tooltipStyleClass="tooltip-endeDate" tooltipPosition="bottom">Interval End Date: </label>
+              <p class="label-heading pt-1">{{endDate  }}</p>
+            </div>
+          </div>
+          <div class="col-auto updateDate">
+            <div class="d-flex">
+              <label for="basic" class="pl-1 pr-2 label-heading pt-1 label" style="cursor: pointer;"
+                pTooltip="The date this Work System was last updated.
+                            This date is updated each time a change is made, a note is taken, a rating is changed, or an opportunity is captured." tooltipStyleClass="tooltip-updateDate"
+                tooltipPosition="bottom">Updated Date:</label>
+              <p class="label-heading pt-1">{{updatedDate | date: 'shortDate' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

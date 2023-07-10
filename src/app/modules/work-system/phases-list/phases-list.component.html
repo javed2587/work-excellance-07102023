@@ -1,0 +1,128 @@
+<div class="container-fluid mx-2 mt-3">
+  <button
+    id="addPhasesId"
+    class="mb-3 px-3 btn-dark text-warning rounded-button"
+    (click)="addPhases()"
+  >
+    <div class="text"><span>+ Add Phases</span></div>
+  </button>
+  <button
+    id="addPhasesId"
+    class="mb-2 mx-2 btn-dark text-warning rounded-button"
+    (click)="removePhases()"
+  >
+    <div class="text">
+      <span>- Remove Phases</span>
+    </div>
+  </button>
+  <!-- <button pButton pRipple label="Save" icon="pi pi-check" ></button> -->
+  <div class="d-flex flex-row flex-nowrap overflow-auto px-2">
+    <div
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      class="example-list"
+      (cdkDropListDropped)="dropPhases($event)"
+    >
+      <div
+        class="card border-0 flex-grow-0 flex-shrink-0 selected-div"
+        *ngFor="let item of phases; let i = index; let isLastIndex = last"
+        (click)="RemoveElementFromArray(i)"
+        [ngStyle]="{ 'background-color': bgColor }"
+        cdkDrag
+        [cdkDragDisabled]="item.isDisabledDragDrop"
+      >
+        <app-phase-items
+          [initialTitle]="item.initialTitle"
+          [indexPlusOne]="i + 1"
+          [mainIndex]="i"
+          [phases]="phases"
+          [phasesPage]="phasesPage"
+          [locksTabtatus]="lockstatus"
+          [isLastGate]="isLastIndex"
+          [IsFirstGate]="i == 0"
+          [exitGate]="showExitGate"
+          [phasesFlag]="phaseListModalFlag"
+          [headerFlag]="headerSectionModalFlag"
+          [setOutLine]="selectedPhaseIndex == i ? true : false"
+          [reNameExitGate]="item.reNameExitGate"
+          [reNameStratGate]="item.startValue"
+          (sendFirstGateName)="sendFirstGateName($event)"
+          (pushGateSnakebarStatus)="getGateSnakBarStatus($event)"
+          (pushEntryGateStatusIsColesd)="entryGateCloseStatus($event)"
+
+          (sendColorValueForGate)="getColorForGate($event)"
+          (sendNoteValueForGate)="setpushNoteValueForGate($event)"
+          (sendOpportunityValueForGate)="setpushOpportunityValueForGate($event)"
+          (sendTaskValueForGate)="setpushTaskValueForGate($event)"
+          (sendDecisionValueForGate)="setpushDecisionValueForGate($event)"
+
+          (pushOppertunity)="setpushOpportunityValueForGate($event)"
+          (pushTaslValue)="setpushTaskValueForGate($event)"
+          (pushDecisionValue)="setpushDecisionValueForGate($event)"
+
+          (pushCurrentGateIndex)="getchildGateIndex($event)"
+          (onInitialTitleChange)="getInitialTitle($event)"
+          (sendExitVal)="getExitVal($event)"
+          (pushPhasePurposeValue)="getPhasePurposeValues($event)"
+          (pushPhasePurposeSankBarStatus)="phasePurposeSankBarStatus($event)"
+          (addPhaseMesaureList)="addPhaseMesureList($event)"
+          (removePhaseMesaureList)="getRemovePhaseMesaureList($event)"
+          (pushSavePhaseMeasure)="savePhaseMeasure($event)"
+          (sendPhaseMeasureForSnakBar)="getPhaseMeasureForSnakBar($event)"
+          (pushPhaseTitle)="getPhaseTitleValues($event)"
+          (pushPhaseNameSnakebarStatus)="getPhaseNameSnakbarStatus($event)"
+          (addNewhworkType)="addWorkTypesLsit($event)"
+          (removeWorkType)="getRemoveVlaueForWorkTypeList($event)"
+          (pushWorkTypesValues)="getStepsWorkSaveList($event)"
+          (sendWorkTypeSnakbarStaus)="getWorkTypesSnakbarStatus($event)"
+          (sendWorkTypesRating)="getWorkStepsofRating($event)"
+          (pushCurrentItemIndex)="getchildItemIndex($event)"
+          (sendNotesValue)="fetchNotesValue($event, i)"
+          (sendOpportunityValue)="fetchOpportunityValue($event, i)"
+          (sendDecisionValue)="fetchDecisionValue($event, i)"
+          (sendTaskValue)="fetchTaskValue($event, i)"
+          (sendPhaseMeasureNotesValue)="fetchPhaseMeasureNotesValue($event, i)"
+          (sendPhaseMeasureOpportunityValue)="
+            fetchPhaseMeasureOpportunityValue($event, i)
+          "
+          (sendPhaseMeasureTaskValue)="fetchPhaseMeasureTaskValue($event, i)"
+          (sendPhaseMeasureDecisionValue)="
+            fetchPhaseMeasureDecisionValue($event, i)
+          "
+          (phaseNameRatingValue)="getPhaseNameRatingValue($event)"
+          (sendPhaseNameNote)="fetchPhaseNameNote($event, i)"
+          (sendPhaseNameOpportunity)="fetchPhaseNameOpportunity($event, i)"
+          (sendPhaseNameTask)="fetchPhaseNameTask($event, i)"
+          (sendPhaseNameDecision)="fetchPhaseNameDecision($event, i)"
+
+          (sendWorkTypesNotesValue)="fetchWorkTypesNotesValue($event, i)"
+          (sendWorkTypesOpportunityValue)="
+            fetchWorkTypesOpportunityValue($event, i)
+          "
+          (sendWorkTypesTaskValue)="fetchWorkTypesTaskValue($event, i)"
+          (sendWorkTypesDecisionValue)="fetchWorkTypesDecisionValue($event, i)"
+        >
+        </app-phase-items>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="div" *ngIf="isPrimeModal">
+  <app-prime-alert
+    (sendDisplayVlaueFlag)="getDisplayVlaueFlag($event)"
+    [isDisplayPrimeAlertModal]="isPrimeModal"
+    [alertMessage]="errorModalMessage"
+    [messagTypeOfAlertModal]="messageType"
+  >
+  </app-prime-alert>
+</div>
+<!-- -----------without dragDrop-------------- -->
+<!-- <div class=" d-flex flex-row flex-nowrap overflow-auto px-2 shadow-sm" >
+          <div class="card border-0 flex-grow-0 flex-shrink-0 selected-div"
+          *ngFor="let item of items; let i=index; let isLast=last"
+          (click)="RemoveElementFromArray(i)"
+          [ngStyle]="{'background-color': bgColor}" >
+              <app-phase-items title = {{item.title}}  indx= {{i+1}} [closeGate]="isLast">
+              </app-phase-items>
+          </div>
+     </div> -->

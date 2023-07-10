@@ -1,0 +1,45 @@
+<!-- <div class="container-fluid"> -->
+  <div class="menu-card">
+    <div class="folder-icon">
+      <div class="mb-2" *ngIf="openFolder" (click)="toggle()">
+        <img
+          class="close-door"
+          src="../../../../assets/images/WorkSystem/DoorOpen.png"
+          alt="door open iamge"
+        />
+      </div>
+      <div class="mb-2" *ngIf="closeFolder" (click)="toggle()">
+        <img
+          class="close-door"
+          src="../../../../assets/images/WorkSystem/DoorClose.png"
+          alt="door close image"
+        />
+      </div>
+      <div class="title" *ngIf="openFolder" (click)="openGateModal()"></div>
+      <div class="title" *ngIf="closeFolder" (click)="openGateModal()"></div>
+    </div>
+    <div class="content-card" *ngIf="showBody">
+      <div
+        class="acc-body"
+        (click)="checkIfCardIsClicked(thirdCardSelectedInput)"
+        [ngClass]="{ highlight: setOutline ? true : false }"
+      >
+        <app-sticky-text
+          indxVal="{{ stickyPageIndex }}"
+          [showModal]="showModal"
+          [parentindex]="thirdCardSelectedInput"
+          [index]="index"
+          [selectIndexItem]="indexItem"
+          [phaseTitle]="phaseTitle"
+          [elementsData]="elementsData"
+          [stickyItemList]="itemsArray"
+          [wdInput]="wdInput"
+          (sendPhaseTitle)="getPhaseTitle($event)"
+          (sendElements)="getElementsData($event)"
+          (sendInput)="getInput($event)"
+          [lockstatus]="lockstatus"
+        >
+        </app-sticky-text>
+      </div>
+    </div>
+  </div>

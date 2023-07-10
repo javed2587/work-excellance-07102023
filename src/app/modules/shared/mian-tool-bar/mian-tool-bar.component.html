@@ -1,0 +1,70 @@
+
+<div class="snakBar-menu g-0 " >
+  <div class="main-bar d-flex" >
+    <div class="div" *ngIf="openRatingTabFlag">
+      <img class="change-my-color" src="../../../../assets/images/menu/rating-star-2793.png" alt="rate" (click)="openRatingModel()"
+       pTooltip="Rate" tooltipStyleClass="tooltip" tooltipPosition="bottom">
+      <span class="" >
+        <app-add-rating
+        (onaddRating)="fetchColor($event)"
+        [displayToolbar]="showSnakeBarMenu"
+        [isdisplayRatingModal]='isRatingModal'
+        [color]="color">
+        </app-add-rating>
+      </span>
+    </div>
+
+    <div class="add-note-div div" *ngIf="openRatingForNote">
+      <img class="addNote-styel" src="../../../../assets/images/header-images/New-note-2.svg" alt="note" (click)="openNoteModal()"
+      pTooltip="Note" tooltipStyleClass="tooltip" tooltipPosition="bottom">
+      <span class="add-note" *ngIf="showAddNote">
+        <app-add-note
+        (pushNoteValue)="fetchNote($event)"
+        [displayToolbar]="showSnakeBarMenu"
+        [displayVal]='showAddNoteModal'
+        [noteVlaue]="note">
+        </app-add-note>
+      </span>
+    </div>
+
+    <div class="div">
+      <img src="../../../../assets/images/menu/u1536.svg" alt="" (click)="showOppertunityModal()"
+      pTooltip="Opportunity" tooltipStyleClass="tooltip" tooltipPosition="bottom">
+      <div class="div" *ngIf="showOppertunity">
+        <app-add-oppertunity
+        (pushOppertunityValue)="fetchOppertunity($event)"
+        [displayToolbar]="showSnakeBarMenu"
+        [isDisplayModal]='displayOppertunityModal'
+        [oppertunityValue]="opportunity">
+        </app-add-oppertunity>
+      </div>
+    </div>
+
+    <div class="div">
+      <img src="../../../../assets/images/menu/u1533.svg" alt="" (click)="showTaskModal()"
+      pTooltip="Task" tooltipStyleClass="tooltip" tooltipPosition="bottom">
+      <div class="add-task" *ngIf="isTaskModal">
+        <app-add-task-modal
+        (sendValueIsOpened)="sendValueIsOpened($event)"
+        (pushTaskValue)="fetchTaskValue($event)"
+        [displayToolbar]="showSnakeBarMenu"
+         [displayVal]='displayTaskModal'
+         [task]="task">
+        </app-add-task-modal>
+      </div>
+    </div>
+
+    <div class="div">
+      <img class="change-decision-color" src="../../../../assets/images/menu/Decision.png" alt="" (click)="showDecisionModal()"
+      pTooltip="Decision" tooltipStyleClass="tooltip" tooltipPosition="bottom">
+      <div class="add-task" *ngIf="isShowDecision">
+        <app-add-decision
+        (pushDecisionData)="fetchDecisionData($event)"
+        [displayToolbar]="showSnakeBarMenu"
+         [displayVal]='displayDecisionModal'
+         [decision]="decision">
+        </app-add-decision>
+      </div>
+    </div>
+  </div>
+</div>

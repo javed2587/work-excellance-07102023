@@ -1,0 +1,136 @@
+.main-card {
+    height: 256px;
+    /* height: 325px; */
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: none;
+}
+.top-section{
+    height: 29px;
+  }
+.inner-card {
+   height: 245px;
+   overflow-y: auto;
+   overflow-x: hidden;
+   border: none;
+
+
+
+
+   /* height: 240px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: none;
+    position: relative;
+    top: 23px; */
+
+}
+.graph-inner-card{
+    height: 248px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: none;
+
+ 
+ }
+.inner-card-fileds{
+    height: 245px;
+    /* height: 317px; */
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: none;
+ 
+ }
+.title-phase {
+    margin-top: 25px;
+}
+.custom-card {
+    width: 21%;
+    height: 240px;
+
+/* 
+    width: 21%;
+    height: 240px;
+    position: relative;
+    top: 23px; */
+}
+.secondPhase{
+    width: 23%;
+    height: 240px;
+}
+.graphPhase{
+    width: 35%;
+    height: 240px;
+}
+.input-height {
+    height: 26px;
+}
+
+.graph-card {
+    /* height: 227px;
+    width: 103%;
+    background-color: #00FF00; */
+
+    height: 205px;
+    width: 101%;
+    background-color:#aaaaaa;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.child-card {
+    /* height: 190px;
+    width: 93%;
+    background-color: rgb(245, 245, 245); */
+
+    height: 188px;
+    width: 97%;
+    background-color: rgb(245, 245, 245);
+    position: relative;
+    left: -9px;
+    top: -8px;
+    padding: 4px;
+
+}
+.inside {
+    position: absolute;
+    bottom: 10px;
+}
+.svg-color {
+    /* filter: invert(20%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%); */
+    width: 40%;
+}
+.task-color{
+    width: 40px;
+}
+div.parent {
+    position: relative;
+  }
+  
+  div.absolute {
+    width: 45%;
+    bottom: 5px;
+    right: 40px;
+  } 
+  .position-card{
+      position: absolute;
+      z-index: 1;
+  }
+  .light-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 23px;
+    top: 25px;
+  }
+  .infoTollbar-group {
+    /* z-index: 1;
+    top: 28px;
+    left: 65px; */
+
+    z-index: 1;
+    padding: -3px;
+    position: absolute;
+    margin-top: 43px;
+    left: 444px;
+  }

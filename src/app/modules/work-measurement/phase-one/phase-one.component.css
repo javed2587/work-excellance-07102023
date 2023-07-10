@@ -1,0 +1,38 @@
+.collapse-section{
+    height: 29px;
+}
+.first-card {
+    height: 160px;
+    /* width: 1706px; */
+    background-color: rgb(255, 255, 255);
+}
+.f-card > label {
+    padding-right: 5px;
+}
+.inc-btn button {
+    border-radius: 5px;
+  }
+  .text-warning .text {
+    font-size: smaller;
+  }
+  :host ::ng-deep .p-button {
+    background-color: #005FBE;
+    color: white;
+    height: 1.77rem;
+    background-origin: padding-box;
+    border: none;
+    /* margin-bottom: 14px; */
+    border-radius: 5px;
+  }
+
+  :host ::ng-deep .p-dropdown.p-component {
+    width: 100% !important;
+    height: 27px !important;
+  }
+  :host ::ng-deep .p-dropdown .p-dropdown-label.p-placeholder{
+    font-size: small !important;
+    padding-top: 2px !important;
+  }
+  ::ng-deep .p-user-dropdown .p-dropdown-label.p-inputtext {
+    padding: 0;
+  }

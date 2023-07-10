@@ -1,0 +1,26 @@
+.card {
+  border: none;
+}
+
+.flex-row .example-list {
+  width: 100%;
+  max-width: 100%;
+  min-height: 60px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 4px;
+  overflow: auto;
+}
+
+.container-fluid button {
+  border-radius: 8px;
+}
+
+.container-fluid .card .card-body {
+  height: 22rem;
+  background-color: #fafafa;
+}
+
+.container-fluid .card .card-body button {
+  font-size: smaller;
+}

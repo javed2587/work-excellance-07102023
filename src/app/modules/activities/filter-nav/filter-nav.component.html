@@ -1,0 +1,228 @@
+<div class="menu mb-5">
+  <div
+    *ngIf="showFilters.show === true"
+    class="topnav d-flex flex-wrap justify-content-start filter-nav rounded-top"
+    id="myTopnav"
+  >
+    <p-dropdown
+      [options]="pages"
+      [(ngModel)]="selectedPage"
+      placeholder="Page Set"
+      optionLabel="name"
+      styleClass="custom-input"
+    >
+    </p-dropdown>
+
+    <div class="mx-1" *ngIf="selectedPage?.value == 'WORK_SYSTEM'">
+      <p-dropdown
+        [(ngModel)]="selectedPageComponent"
+        [options]="wsComponents"
+        optionLabel="name"
+        placeholder="Page Component"
+        styleClass="custom-input"
+      >
+      </p-dropdown>
+    </div>
+
+    <div class="mx-1" *ngIf="selectedPage?.value == 'WORK_MEASUREMENT'">
+      <p-dropdown
+        [(ngModel)]="selectedPageComponent"
+        [options]="wmComponents"
+        optionLabel="name"
+        placeholder="Page Component"
+        styleClass="custom-input"
+      >
+      </p-dropdown>
+    </div>
+
+    <div class="mx-1" *ngIf="selectedPage?.value == 'WORK_IMPROVEMENT'">
+      <p-dropdown
+        [(ngModel)]="selectedPageComponent"
+        [options]="wiComponents"
+        optionLabel="name"
+        placeholder="Page Component"
+        styleClass="custom-input"
+      >
+      </p-dropdown>
+    </div>
+
+    <div class="mx-1" *ngIf="selectedPage?.value == 'WORK_DIRECTION'">
+      <p-dropdown
+        [(ngModel)]="selectedPageComponent"
+        [options]="wdComponents"
+        optionLabel="name"
+        placeholder="Page Component"
+        styleClass="custom-input"
+      >
+      </p-dropdown>
+    </div>
+
+    <div
+      class="mx-1"
+      *ngIf="
+        selectedPage?.value == 'WORK_DIRECTION' &&
+        selectedPageComponent?.value != null
+      "
+    >
+      <p-dropdown
+        [options]="wdRatingComponents"
+        [(ngModel)]="selectedRatingComponent"
+        placeholder="Rating Component"
+        optionLabel="name"
+      >
+      </p-dropdown>
+    </div>
+
+    <div
+      class="mx-1"
+      *ngIf="
+        selectedPage?.value == 'WORK_DIRECTION' &&
+        selectedRatingComponent?.value == 'Owner'
+      "
+    >
+      <p-dropdown
+        [options]="userList"
+        [(ngModel)]="selectedRatingComponent"
+        placeholder="User"
+        optionLabel="username"
+      >
+      </p-dropdown>
+    </div>
+
+    <div
+      class="mx-1"
+      *ngIf="
+        (selectedPage?.value == 'WORK_MEASUREMENT' &&
+          selectedPageComponent?.value != null) ||
+        (selectedPage?.value == 'WORK_SYSTEM' &&
+          selectedPageComponent?.value != null) ||
+        (selectedPage?.value == 'WORK_IMPROVEMENT' &&
+          selectedPageComponent?.value != null)
+      "
+    >
+      <p-dropdown
+        [options]="ratingComponents"
+        [(ngModel)]="selectedRatingComponent"
+        placeholder="Rating Component"
+        optionLabel="name"
+      >
+      </p-dropdown>
+    </div>
+
+    <div
+      *ngIf="
+        selectedRatingComponent?.value == 'opportunity' ||
+        selectedRatingComponent?.value == 'note'
+      "
+    >
+      <p-dropdown
+        [options]="userList"
+        [(ngModel)]="selectedAuthor"
+        placeholder="Author"
+        optionLabel="username"
+      >
+      </p-dropdown>
+    </div>
+    <div *ngIf="selectedRatingComponent?.value == 'decision'">
+      <p-dropdown
+        [options]="userList"
+        [(ngModel)]="selectedOwner"
+        placeholder="Owner"
+        optionLabel="username"
+      >
+      </p-dropdown>
+      <p-calendar
+        [(ngModel)]="duedate"
+        [monthNavigator]="true"
+        [yearNavigator]="true"
+        yearRange="1900:3030"
+        [showIcon]="true"
+        inputId="icon"
+        placeholder="Due Date"
+      >
+      </p-calendar>
+    </div>
+    <div *ngIf="selectedRatingComponent?.value == 'task'">
+      <p-dropdown
+        [options]="taskPeriorities"
+        [(ngModel)]="selectedTaskPriority"
+        placeholder="Priority"
+        optionLabel="name"
+      >
+      </p-dropdown>
+      <p-dropdown
+        [options]="userList"
+        [(ngModel)]="selectedOwner"
+        placeholder="Owner"
+        optionLabel="username"
+      >
+      </p-dropdown>
+      <p-dropdown
+        [options]="userList"
+        [(ngModel)]="selectedTaskContributor"
+        placeholder="Contributor"
+        optionLabel="username"
+      >
+      </p-dropdown>
+      <p-calendar
+        [(ngModel)]="duedate"
+        [monthNavigator]="true"
+        [yearNavigator]="true"
+        yearRange="1900:3030"
+        [showIcon]="true"
+        inputId="icon"
+        placeholder="Due Date"
+      >
+      </p-calendar>
+    </div>
+    <div *ngIf="selectedRatingComponent?.value == 'rate'">
+      <p-dropdown
+        [options]="ratingValues"
+        [(ngModel)]="selectedColor"
+        placeholder="Color"
+        optionLabel="name"
+      >
+      </p-dropdown>
+    </div>
+
+    <div
+      *ngIf="selectedPage && selectedPageComponent && selectedRatingComponent"
+    >
+      <button (click)="searchActivities()" class="mx-3 btn btn-primary">
+        Search
+      </button>
+    </div>
+
+    <div class="ml-auto align-self-start">
+      <a (click)="showFilters.show = false"
+        ><i
+          style="color: white; cursor: pointer"
+          class="fa-solid fa-filter fa-lg"
+        ></i
+      ></a>
+    </div>
+  </div>
+  <div
+    *ngIf="showFilters.show === false"
+    class="topnav topnav d-flex flex-wrap justify-content-start filter-nav rounded-top"
+    id="myTopnav"
+  >
+    <div>
+      <a>Activities Page</a>
+
+      <a (click)="generatePDF()"> <i class="fa fa-file-pdf-o mr-2" aria-hidden="true"></i>PDF </a>
+      <!-- <a (click)="sendMaildata()" class="disabled" [ngClass]="{'disabled': !isSendMailActive}"  > -->
+        <!-- <i class="fa-solid fa-paper-plane"> </i>
+        Send in Mail
+      </a> -->
+    </div>
+    <div class="ml-auto align-self-start">
+      <a (click)="showFilters.show = true; clearFilters()"
+        ><i
+          style="color: white; cursor: pointer"
+          class="fa-solid fa-filter fa-lg"
+        ></i
+      ></a>
+    </div>
+  </div>
+</div>

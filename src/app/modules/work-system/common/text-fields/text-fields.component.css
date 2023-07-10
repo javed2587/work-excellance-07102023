@@ -1,0 +1,150 @@
+#basic-addon1{
+    width: 35px;
+    height: 28px;
+}
+.input-group>span{
+    padding-left: 3px !important;
+}
+.light-icon{
+  width: 15px;
+  height: 15px;
+}
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* font-size: 10px; */
+    text-align: center;
+    justify-content: end;
+  }
+  
+  .flex-item-left {
+/*     
+    padding: 10px; */
+    flex: 60%;
+  }
+  
+  .flex-item-right {
+ 
+    /* padding: 10px; */
+    flex: 40%;
+  }
+  
+  /* Responsive layout - makes a one column-layout instead of a two-column layout */
+  @media (max-width: 800px) {
+    .flex-item-right, .flex-item-left {
+      flex: 100%;
+    }
+  }
+ 
+
+  .btn-custom{
+    top: -13px;
+    font-size: 20px;
+    height: 21px;
+}
+.btn .badge {
+    top: -13px !important;
+}
+
+.buttons{
+    justify-content: end;
+}
+
+.heading{
+  display: flex;
+  --bs-gutter-x: -0.5rem !important;
+}
+.imag-icon{
+    width: 40px;
+    height: 20px;
+    margin: 0 0 3px 9px;
+
+}
+/* .cutom-input{
+    max-height: 95px;
+    overflow-y: auto;
+} */
+.cutom-input-card{
+  max-height: 90px;
+  overflow-y: auto;
+  background-color: red;
+
+}
+.second-card{
+  max-height: 245px;
+  overflow-y: auto;
+  padding-bottom: 5px;
+}
+.head{
+  padding-top: 2px;
+  padding-bottom: 0px;
+  height: 25px !important; 
+}
+.backgound{
+  background: none;
+  padding-top: 1px;
+}
+
+.infoTollbar-group{
+  z-index: 1;
+  padding: -3px;
+  position: absolute;
+  margin-top: 25px;
+  left: 25px;
+}
+.mic_{
+  padding-right: 5px;
+}
+.bar-position {
+  position: relative;
+  left: -3px;
+}
+.phaseMeasure-toolbar{
+ position: relative;
+ right: 38px;
+}
+  .snackBar-position {
+      position: relative;
+      top: 4px;
+      left: 40px;
+    }
+
+    .phase-measure-container {
+      max-height: 90px;
+      overflow-y: auto;
+    }
+
+    .tollbar-group {
+      z-index: 10;
+    }
+
+    .input-height {
+      padding-left: 10px;
+      height: 26px;
+      width: 100% !important;
+      border-radius: 0.375rem;
+      border: 1px solid #dee2e6;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    .input-height:focus{
+      outline: 0 none;
+      outline-offset: 0;
+      box-shadow: 0 0 0 0.2rem #ffe69c;
+      border-color: #FFC107;
+    }
+
+    .input-height2 {
+      padding-left: 10px;
+      height: 26px;
+      width:218px;
+      border-radius: 0.375rem;
+      border: 1px solid #dee2e6;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+  .input-height2:focus{
+      outline: 0 none;
+      outline-offset: 0;
+      box-shadow: 0 0 0 0.2rem #ffe69c;
+      border-color: #FFC107;
+  }
+  

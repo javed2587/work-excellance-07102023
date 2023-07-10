@@ -1,0 +1,244 @@
+<div class="contianer px-3  ">
+  <div class="top-section">
+    <div class="row row-custom">
+      <div class="col-1 d-flex justify-content-end text-center">
+        <button class="btn-style" (click)="toggle()">
+          <img src="../../../../assets/images/WorkSystem/UpArrow.png" alt="" *ngIf="up">
+          <img src="../../../../assets/images/WorkSystem/DownArrow.png" alt="" *ngIf="down">
+        </button>
+      </div>
+      <div class="col-11 d-flex justify-content-end text-center">
+      </div>
+    </div>
+    <!-- <div class="card">
+      <div class="row">
+        <div class="col-6">{{titleFirstCard}}</div>
+        <div class="col-6">{{titleSecondCard}} </div>
+      </div>
+    </div> -->
+  </div>
+  <div class="card card-top px-2 rounded shadow-sm contianer-bg ">
+    <div class="row header-row">
+      <div class="col-6">
+        <div class="row heading">
+          <div class="col-8 til head"><label class="label">{{titleFirstCard}} </label></div>
+          <div class="col-4 buttons head">
+            <div class=" flex-container">
+              <div class="" (click)="startService('firstCard')" *ngIf="showMicForFirstCard">
+                <i class="fa fa-microphone microphone-ico"
+                   [ngStyle]="{'color': (voicePlanDirection==true) ? 'red' : 'blue'}"></i>
+              </div>
+              <div class="flex-item-right">
+                <img src="../../../../../assets/images/WorkSystem/add.png" class="imag-icon"
+                     (click)="addFieldsForFirstCard()">
+              </div>
+              <div class="flex-item-right">
+                <img src="../../../../../assets/images/WorkSystem/minus.png" class="imag-icon"
+                     (click)="removeFiledsForFirstCard()">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6" >
+        <div class="row heading">
+          <div class="col-8 til head"><label class="label">{{titleSecondCard}} </label></div>
+          <div class="col-4 buttons head">
+            <div class=" flex-container">
+              <div class="" (click)="startService('Plan Direction')" *ngIf="showMicForPlanDirection">
+                <i class="fa fa-microphone microphone-ico"
+                   [ngStyle]="{'color': (voiceCurrentState==true) ? 'red' : 'blue'}"></i>
+              </div>
+              <div class="flex-item-right">
+                <img src="../../../../../assets/images/WorkSystem/add.png" class="imag-icon"
+                     (click)="addFieldsForPlanDirection()">
+              </div>
+              <div class="flex-item-right">
+                <img src="../../../../../assets/images/WorkSystem/minus.png" class="imag-icon"
+                     (click)="removeFiledsForPlanDirection()">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row data-list" *ngIf="flagg">
+      <div class="col-6 card-body">
+        <div cdkDropList class="example-list" (cdkDropListDropped)="dropFirstCard($event)">
+          <div class="input-group mb-1 pl-1" *ngFor="let o of firstCard; let i = index"
+               (click)="fetchIndexForFirstCard(i)" cdkDrag>
+            <span class="input-group-text mr-1" id="basic-addon1" [ngStyle]="{'background-color':o?.color}"
+                  (click)="addRatingForFirstCard(i)">{{i + 1}}</span>
+            <span *ngIf="o.showModal &&
+            firstCardShowModal == true &&
+            planDirectionShowModal == false &&
+            phaseTwoModalFlag == true &&
+            phaseFourModalFlag == false &&
+            phaseFiveModalFlag == false &&
+            phaseOneModalFlag == false &&
+            phaseThreeModalFlag == false" class="tollbar-group">
+              <app-mian-tool-bar
+                (pushColorToMainParentSpan)="setColorValueForFirstCard($event)"
+                (pushNotesValue)="setNoteValue($event)"
+                (pushDecisionValue)="setDecisionValueForState($event)"
+                (pushOppertunity)="setOppertunityValueForState($event)"
+                (pushTaslValue)="setTaskValueForState($event)"
+                [showSnakeBarMenu]="showSnakeBar"
+                [displayVal]='showModal'
+                [openRatingTabFlag]="true"
+                [openRatingForNote]="true"
+                [color]="workImprovementCurrentStates[i]?.rating?.color"
+                [note]="workImprovementCurrentStates[i]?.rating?.note"
+                [task]="workImprovementCurrentStates[i]?.rating?.task"
+                [decision]="workImprovementCurrentStates[i]?.rating?.decision"
+                [opportunity]="workImprovementCurrentStates[i]?.rating?.opportunity"
+              >
+              </app-mian-tool-bar>
+            </span>
+            <input type="text" class="input-height2" placeholder="" aria-label="Username"
+                   aria-describedby="basic-addon1" (input)="saveStateValue(o, i)" [(ngModel)]="o.value"
+                   [disabled]="true ? lockstatus == true : false">
+          </div>
+        </div>
+      </div>
+      <div class="col-6 card-body">
+        <div cdkDropList class="example-list" (cdkDropListDropped)="dropPlanDirection($event)">
+          <div class="input-group mb-1 pl-1" *ngFor="let o of listOfPlanDirection; let i = index"
+               (click)="fetchIndexForPlanDirection(i)" cdkDrag>
+            <span class="input-group-text mr-1" id="basic-addon1" [ngStyle]="{'background-color':o?.color}"
+                  (click)="addRatingForPlanDirection(i)">{{i + 1}}</span>
+            <span *ngIf="o.showModal &&
+            planDirectionShowModal == true &&
+            firstCardShowModal == false &&
+            phaseTwoModalFlag == true &&
+            phaseFourModalFlag == false &&
+            phaseFiveModalFlag == false &&
+            phaseOneModalFlag == false &&
+            phaseThreeModalFlag == false" class="tollbar-group">
+              <app-mian-tool-bar
+                (pushColorToMainParentSpan)="setColorValueForPlanDirection($event)"
+                (pushNotesValue)="setNoteValueForPlanDirection($event)"
+                (pushDecisionValue)="setDecisionValueForPlanDirection($event)"
+                (pushOppertunity)="setOppertunityValueForPlanDirection($event)"
+                (pushTaslValue)="setTaskValueForPlanDirection($event)"
+                [showSnakeBarMenu]="showSnakeBar"
+                [displayVal]='showModal'
+                [openRatingTabFlag]="true"
+                [openRatingForNote]="true"
+                [color]="workImprovementPlanDirection[i].rating.color"
+                [note]="workImprovementPlanDirection[i].rating.note"
+                [decision]="workImprovementPlanDirection[i].rating.decision"
+                [opportunity]="workImprovementPlanDirection[i].rating.opportunity"
+                [task]="workImprovementPlanDirection[i].rating.task"
+              >
+              </app-mian-tool-bar>
+            </span>
+            <input type="text" class="input-height2" placeholder="" aria-label="Username"
+                   aria-describedby="basic-addon1" (input)="savePlanValue(o, i)" [(ngModel)]="o.value"
+                   [disabled]="true ? lockstatus == true : false">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <div class="card card-top px-2 rounded shadow-sm  contianer-bg" *ngIf="flagg">
+    <div class="row g-0">
+      <div class="col-md-6">
+        <div class="card main-card contianer-bg">
+          <div class="card-body">
+            <div class="row heading">
+              <div class="col-8 til head"><label class="label">{{titleFirstCard}} </label></div>
+              <div class="col-4 buttons head">
+                <div class=" flex-container">
+                  <div class="" (click)="startService('firstCard')" *ngIf="showMicForFirstCard">
+                    <i class="fa fa-microphone microphone-ico"
+                      [ngStyle]="{'color': (voicePlanDirection==true) ? 'red' : 'blue'}"></i>
+                  </div>
+                  <div class="flex-item-right">
+                    <img src="../../../../../assets/WorkSystem/add.png" class="imag-icon"
+                      (click)="addFieldsForFirstCard()">
+                  </div>
+                  <div class="flex-item-right">
+                    <img src="../../../../../assets/WorkSystem/minus.png" class="imag-icon"
+                      (click)="removeFiledsForFirstCard()">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div cdkDropList class="example-list" (cdkDropListDropped)="dropFirstCard($event)">
+              <div class="input-group mb-1 pl-1" *ngFor="let o of firstCard; let i = index"
+                (click)="fetchIndexForFirstCard(i)" cdkDrag>
+                <span class="input-group-text mr-1" id="basic-addon1" [ngStyle]="{'background-color':o?.color}"
+                  (click)="addRatingForFirstCard(i)">{{i+1}}</span>
+                <span *ngIf="o.showModal &&
+                firstCardShowModal == true &&
+                planDirectionShowModal == false &&
+                phaseTwoModalFlag == true &&
+                phaseFourModalFlag == false &&
+                phaseFiveModalFlag == false &&
+                phaseOneModalFlag == false &&
+                phaseThreeModalFlag == false
+" class="tollbar-group">
+                  <app-mian-tool-bar (pushColorToMainParentSpan)="setColorValueForFirstCard($event)"
+                    [showSnakeBarMenu]="showSnakeBar" [displayVal]='showModal'>
+                  </app-mian-tool-bar>
+                </span>
+                <input type="text" class="form-control icon" placeholder="" aria-label="Username"
+                  aria-describedby="basic-addon1" [(ngModel)]="o.value" [disabled]="true ? lockstatus == true : false">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card main-card contianer-bg">
+          <div class="card-body">
+            <div class="row heading">
+              <div class="col-8 til head"><label class="label">{{titleSecondCard}} </label></div>
+              <div class="col-4 buttons head">
+                <div class=" flex-container">
+                  <div class="" (click)="startService('Plan Direction')" *ngIf="showMicForPlanDirection">
+                    <i class="fa fa-microphone microphone-ico"
+                      [ngStyle]="{'color': (voiceCurrentState==true) ? 'red' : 'blue'}"></i>
+                  </div>
+                  <div class="flex-item-right">
+                    <img src="../../../../../assets/WorkSystem/add.png" class="imag-icon"
+                      (click)="addFieldsForPlanDirection()">
+                  </div>
+                  <div class="flex-item-right">
+                    <img src="../../../../../assets/WorkSystem/minus.png" class="imag-icon"
+                      (click)="removeFiledsForPlanDirection()">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div cdkDropList class="example-list" (cdkDropListDropped)="dropPlanDirection($event)">
+              <div class="input-group mb-1 pl-1" *ngFor="let o of listOfPlanDirection; let i = index"
+                (click)="fetchIndexForPlanDirection(i)" cdkDrag>
+                <span class="input-group-text mr-1" id="basic-addon1" [ngStyle]="{'background-color':o?.color}"
+                  (click)="addRatingForPlanDirection(i)">{{i+1}}</span>
+                <span *ngIf="o.showModal &&
+                planDirectionShowModal == true &&
+                firstCardShowModal == false &&
+                phaseTwoModalFlag == true &&
+                phaseFourModalFlag == false &&
+                phaseFiveModalFlag == false &&
+                phaseOneModalFlag == false &&
+                phaseThreeModalFlag == false" class="tollbar-group">
+                  <app-mian-tool-bar (pushColorToMainParentSpan)="setColorValueForPlanDirection($event)"
+                    [showSnakeBarMenu]="showSnakeBar" [displayVal]='showModal'>
+                  </app-mian-tool-bar>
+                </span>
+                <input type="text" class="form-control icon" placeholder="" aria-label="Username"
+                  aria-describedby="basic-addon1" [(ngModel)]="o.value" [disabled]="true ? lockstatus == true : false">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>

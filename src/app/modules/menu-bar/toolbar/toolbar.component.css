@@ -1,0 +1,309 @@
+.navbar-dark .navbar-nav .nav-link {
+    color: #f9fafb;
+}
+.menuimg {
+    margin-top: -9px;
+    margin-left: 13px;
+    margin-right: 7px 
+}
+.navbar {
+    margin-left: 5.7rem;
+    margin-right: 0.89rem;
+    margin-top: 0.55rem;
+    height: 2.8rem !important;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+.navbar-brand {
+    padding-left: 10px;
+    margin-left: 0px !important;
+}
+.logo-image {
+    margin-right: 10px;
+    margin-top: 0.1rem;
+}
+.vl {
+    border-left: 2px solid #f8f9fa;
+    height: 26px;
+    left: 50%;
+   /* margin-left: 13px;
+    */
+    top: revert;
+    padding-left: -20px;
+   /* padding-right: 29px;
+    */
+    margin-right: 40px;
+    margin-left: 30px;
+}
+@media (min-width: 1800px) and (max-width: 1906px) {
+    .img-fluid {
+        height: 2rem !important;
+        width: 1.7rem !important;
+   }
+    .vl {
+        margin-right: 39px;
+        margin-left: 28px;
+   }
+    .input-start-date {
+        width: 17rem !important;
+   }
+    .form-select {
+        width: 12rem !important;
+   }
+    .input-end-date {
+        width: 9.5rem !important;
+   }
+}
+@media (min-width: 1691px) and (max-width: 1800px) {
+    .img-fluid {
+        height: 2rem !important;
+        width: 1.8rem !important;
+   }
+    .vl {
+        margin-right: 20px;
+        margin-left: 10px;
+   }
+    .input-start-date {
+        width: 16rem !important;
+   }
+    .form-select {
+        width: 9.5rem !important;
+   }
+    .input-end-date {
+        width: 9.5rem !important;
+   }
+    .config_label {
+        font-size: 0.7rem !important;
+   }
+}
+@media (min-width: 1591px) and (max-width: 1691px) {
+    .img-fluid {
+        height: 1.89rem !important;
+        width: 1.6rem !important;
+   }
+    .navbar {
+        margin-left: 5.7rem;
+        margin-right: 0.89rem;
+   }
+    .vl {
+        margin-right: 15px;
+        margin-left: 2px;
+   }
+    .input-start-date {
+        width: 15rem !important;
+   }
+    .form-select {
+        width: 9.8rem !important;
+        margin-left: 10px;
+   }
+    .input-end-date {
+        width: 8.8rem !important;
+   }
+    .config_label {
+        font-size: 0.7rem !important;
+   }
+}
+@media (min-width: 1547px) and (max-width: 1591px) {
+    .img-fluid {
+        height: 1.89rem !important;
+        width: 1.9rem !important;
+   }
+    .navbar {
+        margin-left: 5.7rem;
+        margin-right: 0.89rem;
+   }
+    .vl {
+        margin-right: 10px;
+        margin-left: 2px;
+   }
+    .input-start-date {
+        width: 15rem !important;
+   }
+    .form-select {
+        width: 9.8rem !important;
+        margin-left: 10px;
+   }
+    .input-end-date {
+        width: 8.8rem !important;
+   }
+    .logo-image {
+        margin-left: 0.3rem;
+        margin-right: 0rem;
+   }
+    .config_label {
+        font-size: 0.7rem !important;
+   }
+}
+@media (min-width: 1535px) and (max-width: 1547px) {
+    .img-fluid {
+        height: 1.8rem !important;
+        width: 1.4rem !important;
+   }
+    .navbar {
+        margin-left: 5.5rem;
+        margin-right: 0.89rem;
+   }
+    .vl {
+        margin-right: 10px;
+        margin-left: 2px;
+   }
+    .input-start-date {
+        width: 15rem !important;
+   }
+    .form-select {
+        width: 9.8rem !important;
+        margin-left: 10px;
+   }
+    .input-end-date {
+        width: 8.8rem !important;
+   }
+    .logo-image {
+        margin-left: 0.3rem;
+        margin-right: 0rem;
+   }
+    .config_label {
+        font-size: 0.7rem !important;
+   }
+}
+@media (min-width: 1380px) and (max-width: 1535px) {
+    .img-fluid {
+        height: 1.89rem !important;
+        width: 1.6rem !important;
+   }
+    .bd-example-modal-sm{
+        left: 18rem!important;
+        right: -19rem!important;
+   }
+    .navbar {
+        margin-left: 5rem;
+        margin-right: 0.89rem;
+   }
+    .vl {
+        margin-right: 0px;
+        margin-left: 0px;
+   }
+    .input-start-date {
+        width: 14rem !important;
+   }
+    .form-select {
+        width: 8rem !important;
+        margin-left: 10px;
+   }
+    .input-end-date {
+        width: 7rem !important;
+   }
+    .logo-image {
+        margin-left: 0.01rem !important;
+        ;
+        margin-right: 0rem !important;
+        ;
+   }
+    .config_label {
+        font-size: 0.7rem !important;
+   }
+}
+@media (min-width: 1360px) and (max-width: 1380px) {
+    .img-fluid {
+        height: 1.8rem !important;
+        width: 1.5rem !important;
+   }
+    .navbar {
+        margin-left: 5rem;
+        margin-right: 0.89rem;
+   }
+    .vl {
+        margin-right: 0px;
+        margin-left: 0px;
+   }
+    .input-start-date {
+        width: 14rem !important;
+   }
+    .form-select {
+        width: 8rem !important;
+        margin-left: 10px;
+   }
+    .input-end-date {
+        width: 7rem !important;
+   }
+    .logo-image {
+        margin-left: 0.01rem !important;
+        ;
+        margin-right: 0rem !important;
+        ;
+   }
+    .config_label {
+        font-size: 0.7rem !important;
+   }
+}
+@media (min-width: 1300px) and (max-width: 1360px) {
+    .img-fluid {
+        height: 1.7rem !important;
+        width: 1.2em !important;
+   }
+    .navbar {
+        margin-left: 5rem;
+        margin-right: 0.89rem;
+   }
+    .vl {
+        margin-right: 0px;
+        margin-left: 0px;
+   }
+    .input-start-date {
+        width: 14rem !important;
+   }
+    .form-select {
+        width: 8rem !important;
+        margin-left: 10px;
+   }
+    .input-end-date {
+        width: 7rem !important;
+   }
+    .logo-image {
+        margin-left: 0.01rem !important;
+        ;
+        margin-right: 0rem !important;
+        ;
+   }
+    .config_label {
+        font-size: 0.7rem !important;
+   }
+}
+@media (min-width: 1200px) and (max-width: 1300px) {
+    .img-fluid {
+        height: 1.7rem !important;
+        width: 1.2em !important;
+   }
+    .navbar {
+        margin-left: 5rem;
+        margin-right: 0.89rem;
+   }
+    .vl {
+        margin-right: 0px;
+        margin-left: 0px;
+   }
+    .input-start-date {
+        width: 14rem !important;
+   }
+    .form-select {
+        width: 8rem !important;
+        margin-left: 10px;
+   }
+    .input-end-date {
+        width: 7rem !important;
+   }
+    .logo-image {
+        margin-left: 0.01rem !important;
+        ;
+        margin-right: 0rem !important;
+        ;
+   }
+    .config_label {
+        font-size: 0.7rem !important;
+   }
+}
+.container {
+    position: relative;
+}
+.pill-button{
+    width: 35px;
+}

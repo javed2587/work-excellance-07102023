@@ -1,0 +1,170 @@
+<div class="contianer px-3 ">
+  <div class="top-section">
+    <div class="row row-custom">
+      <div class="col-4">
+        <button class="btn-style btn-up" (click)="toggle()" *ngIf="up">
+          <i class="fa-solid fa-angle-up"></i>
+        </button>
+        <button class="btn-style btn-down" (click)="toggle()"  *ngIf="down">
+          <i class="fa-solid fa-angle-down"></i>
+          Plan Outcomes - Plan Measures Name
+        </button>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="card card-top px-2 rounded shadow-sm contianer-bg mt-3" *ngIf="flagg">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <div class="card first-card contianer-bg">
+          <div class="card-body">
+            <div class="row heading">
+              <div class="col-8 til head"><label class="label">{{firstCardtitle}} </label></div>
+              <div class="col-4 buttons head firstDiv-buttons">
+                <div class=" flex-container">
+                  <div class="" (click)="startService('OutCome')" *ngIf="showMicForPlanOutCome">
+                    <i class="fa fa-microphone microphone-ico"
+                      [ngStyle]="{'color': (voicOutCome==true) ? 'red' : 'blue'}"></i>
+                  </div>
+                  <div class="flex-item-right">
+                    <img src="../../../../../assets/images/WorkSystem/add.png" class="imag-icon"
+                      (click)="addFiledForOutCome()">
+                  </div>
+                  <div class="flex-item-right">
+                    <img src="../../../../../assets/images/WorkSystem/minus.png" class="imag-icon"
+                      (click)="removeFieldForOutCome()">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div cdkDropList class="example-list" (cdkDropListDropped)="dropOutComeFileds($event)">
+              <div class="input-group mb-1 pl-1" *ngFor="let o of listOfPlanOutCome; let i = index"
+                (click)="fetchIndexforOutComeFields(i)" cdkDrag>
+                <span class="input-group-text mr-1" id="basic-addon1" [ngStyle]="{'background-color':o?.color}"
+                  (click)="addRatingForOutCome(i)">{{i+1}}.{{0}}</span>
+                <span *ngIf="o.showModal &&
+                outcomeShowModal == true &&
+                planMeasureShowModal == false &&
+                phaseFourModalFlag == true &&
+                phaseFiveModalFlag == false &&
+                phaseTwoModalFlag == false &&
+                phaseOneModalFlag == false &&
+                phaseThreeModalFlag == false" class="tollbar-group">
+                  <app-mian-tool-bar
+                    (pushColorToMainParentSpan)="setColorValueForOutCome($event)"
+                    (pushTaslValue)="getOutcomeTaskValue($event)"
+                    (pushOppertunity)="getOutcomeOpportunity($event)"
+                    (pushDecisionValue)="getOutcomeDecisionValue($event)"
+                    (pushNotesValue)="getOutcomeNotesValue($event)"
+                    [showSnakeBarMenu]="showSnakeBar"
+                    [displayVal]='showModal'
+                    [openRatingTabFlag]="true"
+                    [openRatingForNote]="true"
+                    [color]="o?.color"
+                    [color]="planOutcomes[i].rating.color"
+                    [note]="planOutcomes[i].rating.note"
+                    [decision]="planOutcomes[i].rating.decision"
+                    [opportunity]="planOutcomes[i].rating.opportunity"
+                    [task]="planOutcomes[i].rating.task"
+                    >
+                  </app-mian-tool-bar>
+                </span>
+                <input type="text" class="input-height-plan-outcome input-onFocus" placeholder="" aria-label="Username" [disabled]="o.btnstate"
+                  aria-describedby="basic-addon1" (input)="getPlanOutcomeValue(o, i)" [(ngModel)]="o.value" [disabled]="true ? lockstatus == true : false" >
+
+                <span class="tickmark" [ngClass]="o.button2 ? 'visible' : 'invisible'" >
+                  <img src="../../../../assets/workImprovement/Tickmark-green.png" alt="" >
+                </span>
+                <span [ngClass]="o.button1 ? 'visible' : 'invisible'" class="tickmark"  (click)="disableFunc()" >
+                  <img src="../../../../assets/workImprovement/Tickmark-blue.png" alt="" (click)="boxHide(o)">
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 pl-4">
+        <div class="card  border-0 contianer-bg">
+          <div class="card-body">
+            <div class="row heading">
+              <div class="col-6 til head"><label class="label">{{secondCardtitle}} </label></div>
+              <div class="col-3 head"><label class="label">Target </label></div>
+              <div class="col-3 buttons head">
+                <div class="  ">
+
+                  <!-- <div class="text-left">
+                    <label class="label">Target </label>
+                  </div> -->
+
+                <div class="row">
+                  <div class="col-6 text-right head">
+                    <label class="label label-actual">Actual </label>
+                  </div>
+                  <div class="col-6 flex-container head">
+                    <div class="" (click)="startService('PlanMeasure')" *ngIf="showMicForPlanMeasure">
+                      <i class="fa fa-microphone microphone-ico"
+                        [ngStyle]="{'color': (voicPlanMeasure==true) ? 'red' : 'blue'}"></i>
+                    </div>
+                    <div class="flex-item-right">
+                      <img src="../../../../../assets/images/WorkSystem/add.png" class="imag-icon"
+                        (click)="addFiledForPlanMeasure()">
+                    </div>
+                    <div class="flex-item-right">
+                      <img src="../../../../../assets/images/WorkSystem/minus.png" class="imag-icon"
+                        (click)="removeFieldForPlanMeasure()">
+                    </div>
+
+                  </div>
+                </div>
+
+
+
+                </div>
+              </div>
+            </div>
+            <div cdkDropList class="example-list" (cdkDropListDropped)="dropPlanMeasureFileds($event)">
+              <div class="input-group mb-1 pl-1" *ngFor="let o of listOfPlanMeasure; let i = index"
+                (click)="fetchIndexforPlanMeasureFields(i)" cdkDrag>
+                <span class="input-group-text mr-1" id="basic-addon1" [ngStyle]="{'background-color':o?.color}"
+                  (click)="addRatingForPlanMeasure(i)">{{i+1}}.{{0}}</span>
+                <span *ngIf="o.showModal &&
+                planMeasureShowModal == true &&
+                outcomeShowModal == false &&
+                phaseFourModalFlag == true &&
+                phaseFiveModalFlag == false &&
+                phaseTwoModalFlag == false &&
+                phaseOneModalFlag == false &&
+                phaseThreeModalFlag == false" class="tollbar-group">
+                  <app-mian-tool-bar
+                    (pushColorToMainParentSpan)="setColorValueForPlanMeasure($event)"
+                    (pushNotesValue)="getNotesForPlanMeasure($event)"
+                    (pushDecisionValue)="getDecisionForPlanMeasure($event)"
+                    (pushOppertunity)="getOpportunityForPlanMeasure($event)"
+                    (pushTaslValue)="getTaskForPlanMeasure($event)"
+                    [showSnakeBarMenu]="showSnakeBar"
+                    [displayVal]='showModal'
+                    [openRatingTabFlag]="true"
+                    [openRatingForNote]="true"
+                    [color]="o.color"
+                    [color]="planMeasures[i].rating.color"
+                    [note]="planMeasures[i].rating.note"
+                    [decision]="planMeasures[i].rating.decision"
+                    [opportunity]="planMeasures[i].rating.opportunity"
+                    [task]="planMeasures[i].rating.task"
+                    >
+                  </app-mian-tool-bar>
+                </span>
+                <input type="text" class="input-height3 input-onFocus" placeholder="" aria-label="Username"
+                  aria-describedby="basic-addon1" (input)="getPlanMeasureValue(o, i)" [(ngModel)]="o.value" [disabled]="true ? lockstatus == true : false">
+                <input type="text" class="input-height-target input-onFocus" (input)="getPlanMeasureTargetValue(o, i)" [(ngModel)]="o.targetVal" placeholder={{o.targetVal}} [disabled]="true ? lockstatus == true : false">
+                <input type="text" class="input-height-actual input-onFocus" (input)="getPlanMeasureActualValue(o, i)" [(ngModel)]="o.actualVal" placeholder={{o.actualVal}} [disabled]="true ? lockstatus == true : false">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

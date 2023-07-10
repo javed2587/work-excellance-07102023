@@ -1,0 +1,43 @@
+
+<p-dialog position="center"  [transitionOptions]="'0ms'" [draggable]="true" [visible]="displayVal"  [style]="{width:'35vw'}" [closable]="false"
+styleClass="dialog-custom" [modal]="true">
+
+<ng-template pTemplate="header">
+  <i class="pi lock-open" style="font-size: 2rem"></i>
+  <div class="header-label float-start"><b>{{modalName}}</b></div>
+</ng-template>
+<ng-template let-message pTemplate="message">
+  <div class="form-check p-0 p-field-checkbox mx-2 my-2">
+    <Label class="ml-1 mb-1">Gate Description</Label>
+    <input type="text" class="rate_tray" [(ngModel)]="gateName" placeholder="" aria-label="Username" aria-describedby="basic-addon1" maxlength="150">
+  </div>
+</ng-template>
+<ng-template pTemplate="footer">
+  <div class="button-dialog  text-center">
+    <button type="button" label="Save" class="btn btn-primary btn-sm  px-4 rounded-3 p-button"
+      (click)="saveRating()"> Save</button>
+    <button type="button" label="Cancel" class="btn btn-primary btn-sm px-3  rounded-3 p-button"
+      (click)="closeClick()">Cancel</button>
+ </div>
+  </ng-template>
+</p-dialog>
+
+
+
+
+
+<!-- <div class="modal-rename">
+   <div class="card custom-card border border-top-0 shadow">
+     <div class="header-sec">Beginning Gate</div>
+     <div class="div">
+      <div class="form-check p-0 p-field-checkbox mx-2 my-2">
+        <Label class="ml-1 mb-1">Gate Description</Label>
+        <input type="text" class="rate_tray" [(ngModel)]="gateName" placeholder="" aria-label="Username" aria-describedby="basic-addon1" maxlength="150">
+      </div>
+      <div class="button-dialog  text-center">
+        <button type="button" label="Save" class="btn btn-primary btn-sm  px-4 rounded-3 p-button"
+          (click)="saveRating()"> Save</button>
+        <button type="button" label="Cancel" class="btn btn-primary btn-sm px-3  rounded-3 p-button"
+          (click)="closeClick()">Cancel</button>
+     </div>
+</div> -->

@@ -1,0 +1,10 @@
+.bg-color{
+    background-color: #fafafa;
+}
+::ng-deep .p-dropdown.p-component  {
+    width: 100%;
+}
+
+:host ::ng-deep .p-button{
+    margin-top: 7px !important;
+}

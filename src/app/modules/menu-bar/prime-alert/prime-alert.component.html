@@ -1,0 +1,23 @@
+
+<p-dialog position={{modelPosition}}  [transitionOptions]="'0ms'" [draggable]="true" [visible]="displayVal"  [style]="{width:'35vw'}" [closable]="false"
+  styleClass="dialog-custom" [modal]="true">
+
+  <ng-template pTemplate="header">
+    <i class="pi lock-open" style="font-size: 2rem"></i>
+    <div class="header-label float-start"><b>{{headerName}}</b></div>
+  </ng-template>
+  <ng-template let-message pTemplate="message">
+    <div class="p-flex p-flex-column" style="flex: 1; ">
+        <div class="p-text-center d-flex">
+            <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+            <p class="pt-2 px-2">{{alertMessage}}</p>
+        </div>
+    </div>
+</ng-template>
+ <ng-template pTemplate="footer">
+  <button type="button" label="Cancel" class="btn btn-primary btn-sm px-3  rounded-3 p-button"
+  (click)="closeClick()">{{btnName}}</button>
+    </ng-template>
+</p-dialog>
+
+

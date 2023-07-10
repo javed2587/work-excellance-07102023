@@ -1,0 +1,85 @@
+<div class="container"></div>
+<div class="container-fluid ">
+   <nav  class="navbar navbar-dark bg-dark navbar-expand-xl navbar-light bg-light">
+      <a class="navbar-brand" href="#">Sales L0.1</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse"  id="navbarNav">
+         <ul class="navbar-nav" *ngFor="let label of navigations.label; let index=index" >
+            <li class="nav" *ngIf="label!='vl'">
+               <a class="nav-link " *ngIf="label=='Menu'"><img height="22px" class="" width="24px"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStuBOT2bCDbSaCfq2SLuyFNCaUyvp_leFrsw&usqp=CAU" class="img-fluid"> </a> 
+               <a class="nav-link logo-image" style="font-size: 0.875rem;font-family: 'Roboto'" *ngIf="label!='Menu' "  (click)="openModal()" routerLink={{navigations.routerLink[index]}}>
+               <img [ngStyle]= "{'height': navigations.height[index],'width': navigations.width[index]}" src={{navigations.icon[index]}} class="img-fluid">
+               {{label}} </a>
+            </li>
+            <div class="vl" *ngIf="label=='vl'"></div>
+         </ul>
+      </div>
+   </nav>
+</div>
+<div class="align-items-end  " id="configModel" [ngStyle]="{'display':display}" style="
+   right: 0;
+   ">
+   <div class=" float-left" style="    max-width: 49.5%;
+      position: fixed;
+      right: 0;
+      margin-right: 9rem;
+      ">
+      <div class="modal-content" style="border-radius: 12px;">
+         <div class="modal-header-sm d-flex justifya-content-start" style="background-color: #FDB719;    border-top-right-radius: 12px; border-top-left-radius: 12px;">
+            <img height="20px"  style="margin-top:5px;margin-left: 8px;" src="./assets/images/config-images/lock-open.svg">
+            <h5 class="modal-title mx-auto"  style="margin-top:0.5rem;font-size: 17px;text-align: center;font-weight: bold;">Page Configuration
+            </h5>
+         </div>
+         <div class="modal-body">
+            <div class="row">
+               <div class='col-md-4 '>
+                  <div class="input-group date input-start-date" style="width:18.5rem;">
+                     <label class="config_label" style="color: black;font-weight: bold;font-size: 0.92rem;padding-top: 9px;">Start Date</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                     <input type="text" class="form-control" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" >
+                     <span class="input-group-text bg-white d-block" ngbDatepicker (click)="d.toggle()">
+                     <i class="fa fa-calendar" ></i>
+                     </span>
+                  </div>
+               </div>
+               <div class='col-md-4 '>
+                  <div class="row">
+                     <div class="col-md-3 col-sm-3" style="padding-top: 9px;">
+                        <label class="config_label" for="interval" style="color: black;font-weight: bold;font-size: 0.92rem;">&nbsp;&nbsp;&nbsp;&nbsp;Interval&nbsp; </label>
+                     </div>
+                     <div class="col-md-9 form-group">
+                        <select id="interval"formControlName="website" class="input-interval" style=" width: 14rem;"class="form-select" >
+                           <option  selected disabled>Choose Interval</option>
+                           <option>1-Month</option>
+                           <option>2-Month</option>
+                           <option>3-Month</option>
+                           <option>4-Month</option>
+                           <option>5-Month</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class='col-md-4 '>
+                  <label class="config_label" style="color: black;font-weight: bold;font-size: 0.92rem;padding-top: 9px;">End Date </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input class="input-end-date" style=" opacity: 0.7;     width:13rem; 
+                     height: 2.35rem;" readonly  type="text" />
+               </div>
+            </div>
+            <br>
+            <div class=" text-center" style="text-align: center;">
+               <button type="button" style="border: none;padding-left: 1rem;
+                  padding-right: 1.17rem;" class="btn bg-info btn-primary ml-20">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;
+               <button type="button" style="border: none;"  (click)="onCloseHandled()"class="btn bg-info btn-secondary" data-bs-dismiss="mymodel">Cancel</button>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<app-initiatives></app-initiatives>
+<app-initiatives></app-initiatives>
+<app-initiatives></app-initiatives>
+<app-initiatives></app-initiatives>
+<app-initiatives></app-initiatives>
+<app-initiatives></app-initiatives>
+<router-outlet></router-outlet>

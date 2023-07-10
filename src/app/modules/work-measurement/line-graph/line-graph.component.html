@@ -1,0 +1,8 @@
+
+<!-- <p-toast></p-toast> -->
+<p-chart 
+type="line" [data]="data ? data : null"  
+(onDataSelect)="selectData($event)"  
+height="165" width="600" 
+[options]="options">
+</p-chart>

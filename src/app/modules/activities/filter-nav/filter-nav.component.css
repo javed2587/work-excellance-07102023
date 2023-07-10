@@ -1,0 +1,73 @@
+.filter-nav {
+  background-color: #333333;
+  padding: 10px 10px 10px;
+  margin-left: 240px;
+  margin-right: 20px
+}
+
+a {
+  color: white !important;
+  margin-left: 20px !important;
+  line-height: 2;
+
+}
+
+:host ::ng-deep .p-dropdown {
+  margin-top: 4px;
+  margin-left: 4px;
+  height: 30px;
+}
+
+:host ::ng-deep .p-placeholder {
+  font-size: small;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:host ::ng-deep .p-dropdown-label {
+  font-size: small;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:host ::ng-deep .p-cascadeselect-label {
+  font-size: small;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:host ::ng-deep .p-inputtext {
+  font-size: small;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:host ::ng-deep .p-calendar {
+  margin-top: 4px;
+  margin-left: 4px;
+  height: 30px;
+  width: 130px;
+}
+
+:host ::ng-deep .p-input-icon-left .p-inputtext {
+  margin-top: 4px;
+  margin-left: 4px;
+  height: 30px;
+  width: 100px;
+}
+
+:host ::ng-deep .cascade {
+  margin-top: 4px;
+  margin-left: 4px;
+  height: 30px;
+}
+
+.disabled{
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}

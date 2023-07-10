@@ -1,0 +1,244 @@
+<!-- <p-button class="savepage" (click)="savePage()">Save Page</p-button> -->
+
+<div class="contianer px-3" *ngFor="let lev of levels; let i = index">
+  
+
+  <div class="card flex justify-content-center" >
+    <p-accordion [activeIndex]="0">
+        <p-accordionTab header="{{ lev?.mainTitle }}">
+          <div class="div create-levels-container mx-3">
+            <!-- <div class="container-label">
+              <h5>{{ lev?.mainTitle }}</h5>
+            </div> -->
+            <div class="card mx-4 custom-card" *ngIf="lev?.collapse" style="border: none !important">
+              <div class="card-body px-2 py-1">
+                <div class="row optional-row">
+                  <div class="col-2"></div>
+                  <div class="col-10 py-0">
+                    <div class="row">
+                      <div class="d-flex" *ngFor="let optional of lev.firstArry">
+                        <div class="col-2" *ngFor="
+                            let subOptional of optional.btnTitle
+                            let optionalIndex = index
+                          ">
+                          <div class="div">
+                            <select [disabled]="lev.lock || subOptional.reportsTo != null" *ngIf="i === 1"
+                              class="option-items input-group" (change)="updateLevel1ReportsTo($event, i, optionalIndex)"
+                              id="names" name="adminNames">
+                              <option>Select Node</option>
+                              <!-- <option [selected]="subOptional.reportsTo ? false: true">{{subOptional.parentNodeName}}</option> -->
+                              <option [selected]="subOptional.reportsTo == node.id ? true: false"
+                                *ngFor="let node of this.modifiedListOfUsersLevel1" class="form-control" value="{{ node.id }}">
+                                {{ node.role }}
+                              </option>
+                            </select>
+                            <select [disabled]="lev.lock || subOptional.reportsTo != null" *ngIf="i === 2" class="option-items input-group"
+                              (change)="updateLevel2ReportsTo($event, i, optionalIndex)" id="names" name="adminNames">
+                              <option>Select Node</option>
+                              <option [selected]="subOptional.reportsTo == node.id ? true: false"
+                                *ngFor="let node of this.modifiedListOfUsersLevel2" class="form-control" value="{{ node.id }}">
+                                {{ node.role }}
+                              </option>
+                            </select>
+                            <select [disabled]="lev.lock || subOptional.reportsTo != null" *ngIf="i === 3" class="option-items input-group"
+                              (change)="updateLevel3ReportsTo($event, i, optionalIndex)" id="names" name="adminNames">
+                              <option>Select Node</option>
+                              <option [selected]="subOptional.reportsTo == node.id ? true: false"
+                                *ngFor="let node of this.modifiedListOfUsersLevel3" class="form-control" value="{{ node.id}}">
+                                {{ node.role }}
+                              </option>
+                            </select>
+                            <select [disabled]="lev.lock || subOptional.reportsTo != null" *ngIf="i === 4" class="option-items input-group"
+                              (change)="updateLevel4ReportsTo($event, i, optionalIndex)" id="names" name="adminNames">
+                              <option>Select Node</option>
+                              <option [selected]="subOptional.reportsTo == node.id ? true: false"
+                                *ngFor="let node of this.modifiedListOfUsersLevel4" class="form-control" value="{{ node.id }}">
+                                {{ node.role }}
+                              </option>
+                            </select>
+                            <select [disabled]="lev.lock || subOptional.reportsTo != null" *ngIf="i === 5" class="option-items input-group"
+                              (change)="updateLevel5ReportsTo($event, i, optionalIndex)" id="names" name="adminNames">
+                              <option>Select Node</option>
+                              <option [selected]="subOptional.reportsTo == node.id ? true: false"
+                                *ngFor="let node of this.modifiedListOfUsersLevel5" class="form-control" value="{{ node.id }}">
+                                {{ node.role }}
+                              </option>
+                            </select>
+                            <select [disabled]="lev.lock || subOptional.reportsTo != null" *ngIf="i === 6" class="option-items input-group"
+                              (change)="updateLevel6ReportsTo($event, i, optionalIndex)" id="names" name="adminNames">
+                              <option>Select Node</option>
+                              <option [selected]="subOptional.reportsTo == node.id ? true: false"
+                                *ngFor="let node of this.modifiedListOfUsersLevel6" class="form-control" value="{{ node.id}}">
+                                {{ node.role }}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="row first-row">
+                  <div class="col-2 pr-0">
+                    <div *ngIf="lev.isNodeAddable" class="btn-div d-flex justify-content-center">
+                      <div class="div px-2">
+                        <label for="">Node</label>
+                      </div>
+                      <div class="btn-div">
+                        <button [disabled]="lev.lock" type="button" class="btn mx-1 incre-decrement-btn"
+                          (click)="addFirstLine(i);addSecondLine(i) ">
+                          <i class="fa-solid fa-plus btn-increment"></i>
+                        </button>
+                        <button [disabled]="lev.lock" type="button" class="btn mx-1 incre-decrement-btn"
+                          (click)="removeFirstLine(i); removeSecondLine(i)">
+                          <i class="fa-solid fa-minus btn-increment"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-10 pt-0">
+                    <div class="row">
+                      <div class="d-flex" *ngFor="let first of lev.firstArry; let ind = index">
+                        <div class="col-2 py-0" *ngFor="let btn of first.btnTitle; let btnIndex = index">
+                          <div class="designation-tab text-center mb-2">
+                            {{ btn.title }}
+                          </div>
+                          <input [disabled]="lev.lock || btn.isRoleExists" value=""
+                            [(ngModel)]="lev.firstArry[ind].btnTitle[btnIndex].role" style="width: 100%" />
+                          <select [disabled]="lev.lock" (change)="
+                              updateFirstArrayUserSelection($event, i, btnIndex)
+                            " class="option-items input-group" id="names" name="adminNames">
+                            <option [selected]="btn.user.id ? false: true">Select User</option>
+                            <option [selected]="btn.user.id == user.id" *ngFor="let user of this.listOfUsers"
+                              class="form-control" [value]="user.id">
+                              {{ user.username }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="row second-row">
+                  <div class="col-2 pr-0">
+        
+                  </div>
+                  <div class="col-10">
+                    <div class="row">
+                      <div class="d-flex" *ngFor="let first of lev.secondArray, let secondArrayIndex=index">
+                        <div class="col-2" *ngFor="
+                            let pageSet of first.userValue;
+                            let pageSetIndex = index
+                          ">
+                          <div style="display: flex">
+                            <input [value]="lev.firstArry[secondArrayIndex].btnTitle[pageSetIndex].role + ' pageSet'"
+                              type="text" disabled class="form-control" />
+                            <img src="../../../../../assets/a3-document.png"
+                              style="margin-left: 5px; height: 30px; width: 20px;"
+                              (click)="(lev.lock ? null : od.toggle($event)); openPageSet(i, pageSetIndex)" />
+                          </div>
+        
+                          <p-overlayPanel #od appendTo="body">
+                            <div>
+                              <div class="header-label"><b>Create Page</b></div>
+                              <div class="container">
+                                <div class="d-flex justify-content-between mt-3">
+                                  <div class="heading">
+                                    <p><b>Page Set Managment</b></p>
+                                  </div>
+                                  <button (click)="updatePageSet(i, pageSetIndex)"
+                                    class="btn btn-primary d-flex justify-content-between align-items-center" style="
+                                      height: 20px;
+                                      font-size: smaller;
+                                      margin-left: 20rem;
+                                    ">
+                                    +Add
+                                  </button>
+                                </div>
+                                <div *ngFor="
+                                    let page of pageSet.pageSet;
+                                    let pageIndex = index
+                                  " class="row g-1 p-1">
+                                  <div class="col-4">
+                                    <select (change)="
+                                        updatePageName(
+                                          $event,
+                                          i,
+                                          pageSetIndex,
+                                          pageIndex
+                                        )
+                                      " class="form-select form-select-sm" aria-label="Default select example">
+                                      <option [selected]="page.type ? false: true">Page Type</option>
+                                      <option [selected]="page.type == pageType.key ? true : false"
+                                        *ngFor="let pageType of pageSet.pages" [value]="pageType.key"
+                                        [disabled]="!pageType.show">
+                                        {{pageType.value}} </option>
+                                    </select>
+                                  </div>
+        
+                                  <div class="col-4">
+                                    <select (change)="
+                                        updatePageOwner(
+                                          $event,
+                                          i,
+                                          pageSetIndex,
+                                          pageIndex
+                                        )
+                                      " class="form-select form-select-sm" aria-label="Default
+                                                                                      select example">
+                                      <option [selected]="page.owner.userId ? false: true">Select User</option>
+                                      <option [selected]="page.owner.userId == user.id ? true : false"
+                                        *ngFor="let user of this.listOfUsers" class="form-control" [value]="user.id">
+                                        {{ user.username }}
+                                      </option>
+                                    </select>
+                                  </div>
+        
+                                  <div class="col-4">
+        
+        
+        
+                                    <div class="input-container">
+                                      <div class="prepopulated-text">{{ page.name }}</div>
+                                      <input [(ngModel)]="page.tempName" type="text" placeholder=""
+                                        style="width: 110%; height: 30px ;  border: none;" class="input" />
+                                    </div>
+                                    <!-- <input
+                                    type="text"
+                                    style="width: 100%; height: 30px"
+                                    (input)="setPageName($event, i, pageSetIndex, pageIndex, page.type)"
+                                    />  -->
+                                  </div>
+                                </div>
+                                <div class="button-dialog text-center">
+                                  <button (click)="savePageSetUpdates(i, pageSetIndex); od.hide()" type="button" label="Save"
+                                    class="btn btn-primary btn-sm px-4 rounded-3 p-button">
+                                    Save
+                                  </button>
+                                  <button type="button" label="Cancel" class="btn btn-primary btn-sm px-3 rounded-3 p-button"
+                                    (click)="od.hide()">
+                                    Cancel
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </p-overlayPanel>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="btn-container mt-2">
+            <p-button [disabled]="lev.lock" class="savepage" (click)="Save(i)">Save</p-button>
+          </div>
+        </p-accordionTab>
+    </p-accordion>
+  </div>
+
+  
+</div>

@@ -1,0 +1,50 @@
+<p-overlayPanel #od styleClass="overlay-overider-one">
+    <ng-template pTemplate>
+        <div class="header-label"><b>Task</b></div>
+        <div class="container">
+            <div class="d-flex justify-content-between mt-3">
+                <div class="heading">
+                    <p><b>Page Set Managment</b></p>
+                </div>
+                <button class="btn btn-primary d-flex justify-content-between align-items-center"
+                    style="height: 20px; font-size: smaller;">+Add</button>
+            </div>
+            <div class="row g-1 p-1">
+                <div class="col-4">
+                    <select class="form-select form-select-sm" aria-label="Default
+      select example">
+                        <option selected>Page Name</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+
+
+                <div class="col-4">
+                    <select class="form-select form-select-sm" aria-label="Default
+      select example">
+                        <option selected>Page Name</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+
+                <div class="col-4">
+                    <input type="text" disabled placeholder="Sample Text" style="width: 100%;">
+                </div>
+            </div>
+            <div class="button-dialog text-center">
+                <button type="button" label="Save" class="btn btn-primary btn-sm px-4 rounded-3 p-button">
+                    Save
+                </button>
+                <button type="button" label="Cancel" class="btn btn-primary btn-sm px-3 rounded-3 p-button"
+                    (click)="od.hide()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </ng-template>
+
+</p-overlayPanel>

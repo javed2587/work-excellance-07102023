@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body p-0 border-0 g-0">
+      <button class="mb-2 px-2 btn-dark text-warning" (click)="addPhases()">
+        <div class="text"><span>+ </span> Add Inputs</div>
+      </button>
+      <button class="mb-2 mx-1 btn-dark text-warning" (click)="removePages()">
+        <div class="text">
+          <span><b>-</b></span> Remove Inputs
+        </div>
+      </button>
+      <div class="d-flex flex-row flex-nowrap overflow-auto px-2">
+        <div
+          cdkDropList
+          cdkDropListOrientation="horizontal"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div
+            class="card border-0 flex-grow-0 flex-shrink-0 selected-div"
+            *ngFor="let item of items; let i = index; let isLast = last"
+            (click)="RemoveElementFromArray(i)"
+            [ngStyle]="{ border: bgColor }"
+            cdkDrag
+          >
+            <app-sticky-phases-items
+              [input]="inputs[i]"
+              [wdInput]="wdInputs[i]"
+              [stickPageTitle]="item.title"
+              stickyPageIndex="{{ parentIndex }}.{{ i + 1 }}"
+              [closeGate]="isLast"
+              [exitGate]="showExitGate"
+              [setOutline]="selectedPhaseIndex == i ? true : false"
+              [thirdCardSelectedInput]="i"
+              [indexItem]="i"
+              [itemList]="itemsArray"
+              (selectedPhaseIndex)="setSelectedPhaseIndex($event)"
+              (sendElementsData)="getElementsData($event)"
+              (sendPhaseTitle)="getPhaseTitle($event)"
+              (sendInput)="getInput($event)"
+              [lockstatus]="lockstatus"
+            >
+            </app-sticky-phases-items>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <p class="abc">color test</p> -->

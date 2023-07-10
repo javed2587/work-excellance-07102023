@@ -1,0 +1,23 @@
+:host ::ng-deep .p-dialog-header {
+  height: 15px;
+  background-color: #fdb719;
+}
+
+.p-button {
+  margin-right: 10px;
+}
+
+.option-items {
+  width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  padding-top: 2px;
+  padding-left: 6px;
+  padding-bottom: 3px;
+
+}
+.row label{
+  color: black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

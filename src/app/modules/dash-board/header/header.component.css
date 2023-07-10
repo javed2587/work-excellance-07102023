@@ -1,0 +1,8 @@
+.header-label > img {
+    width: 50px;
+}
+.dashboard-header {
+    position: relative;
+    left: 17rem;
+    bottom: 4.3rem;
+}

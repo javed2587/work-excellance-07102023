@@ -1,0 +1,93 @@
+.openbtn {
+    display: flex;
+    /* width: 15%; */
+    margin-left: 5%;
+    margin-top: 20px;
+  }
+  .openbtn > button {
+    border: none;
+    background-color: #005FBE;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 15px;
+    font-weight: 20px;
+  }
+  .main-container {
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  .container-sub-header {
+    border-radius: 10px;
+    box-shadow: 2px 2px lightgray;
+    background-color: white;
+  }
+  .container-sub {
+    background-color: white;
+  }
+  .main-container-sub {
+    margin-bottom: 5px;
+    border-bottom-left-radius: 30px;
+  }
+  .header-buttons > button {
+    width: 40px;
+    border: none;
+    height: 40px;
+    margin-left: 15px;
+  }
+  .body-buttons > button {
+    margin-left: 15px;
+    width: 40px;
+    border: none;
+    height: 40px;
+  }
+  .header-cols {
+    display: flex;
+    margin-left: 5%;
+  }
+  .header-cols #p1 {
+    margin-top: 30px;
+    font-size: 12px;
+    font-weight: bolder;
+  }
+  .header-cols #p2 {
+    margin-left: 16%;
+    margin-top: 30px;
+    font-size: 12px;
+  }
+  .header-cols #p3 {
+    margin-left: 8%;
+    margin-top: 30px;
+    font-size: 12px;
+  }
+  .header-cols #p4 {
+    margin-left: 12%;
+    margin-top: 30px;
+    font-size: 12px;
+  }
+  .header-cols #p5 {
+    margin-left: 13%;
+    margin-top: 30px;
+    font-size: 12px;
+  }
+  .header-cols-hr {
+    width: 50%;
+    margin-left: 5%;
+  }
+  .header-cols-hr > hr {
+    margin-top: 0px;
+  }
+  .btn-health-check {
+    width: 200px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn-health-check-open {
+    width: 230px;
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }

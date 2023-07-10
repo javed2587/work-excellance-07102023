@@ -1,0 +1,390 @@
+<div class="container-fluid my-3">
+  <div class="top-section">
+    <div class="row row-custom">
+      <div class="col-1 d-flex justify-content-end text-center">
+        <button class="btn-style" (click)="toggle()">
+          <img
+            src="../../../../assets/images/WorkSystem/UpArrow.png"
+            alt=""
+            *ngIf="upArrow"
+          />
+          <img
+            src="../../../../assets/images/WorkSystem/DownArrow.png"
+            alt=""
+            *ngIf="downArrow"
+          />
+        </button>
+      </div>
+      <div class="col-11 d-flex justify-content-end text-center"></div>
+    </div>
+  </div>
+  <div class="card card-common-properties px-2 shadow-sm">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2 mt-3 pr-0">
+          <div class="d-flex">
+            <label class="px-2 pt-1">Directional Statement</label>
+            <div
+              class="input-group-text mx-3 justify-content-end"
+              id="basic-addon1"
+              [ngStyle]="{ 'background-color': colorValue }"
+              (click)="addRatingColor()"
+            >
+              {{ phaseMasterIndex }}
+            </div>
+          </div>
+          <div class="div">
+            <label class="px-2 pt-4">Statement Purpose</label>
+          </div>
+        </div>
+        <div class="col-4 mt-3">
+          <div class="col input-group d-flex">
+            <input
+              type="text"
+              class="input-height"
+              placeholder=""
+              aria-label="Username"
+              [(ngModel)]="statement"
+              (input)="setStatement()"
+              aria-describedby="basic-addon1"
+              [disabled]="true ? lockstatus == true : false"
+              maxlength="250"
+            />
+          </div>
+          <div class="col input-group d-flex">
+            <input
+              type="text"
+              class="input-height"
+              placeholder=""
+              aria-label="Username"
+              maxlength="250"
+              [(ngModel)]="statementPurpose"
+              (input)="setStatementPurpose()"
+              aria-describedby="basic-addon1"
+              [disabled]="true ? lockstatus == true : false"
+            />
+          </div>
+        </div>
+        <div class="col-1"></div>
+        <div
+          class="col-5 p-0"
+          style="height: 200px; overflow-y: scroll; overflow-x: hidden"
+        >
+          <div class="row">
+            <div class="col-6">
+              <label for="">Statement Owner</label>
+            </div>
+            <div class="col-6 py-0">
+              <div class="btn float-end d-flex">
+                <button
+                  type="button"
+                  class="btn mx-1 incre-decrement-btn"
+                  (click)="addOwners()"
+                >
+                  <i class="fa-solid fa-plus btn-increment"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn mx-1 incre-decrement-btn"
+                  (click)="removeOwner()"
+                >
+                  <i class="fa-solid fa-minus btn-increment"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 statement-owner">
+              <div
+                class="pb-1"
+                *ngFor="let owner of ownerList; let i = index"
+                (click)="fetchOwnerSelectiveIndex(i)"
+              >
+                <!-- <p-autoComplete
+                  [style]="{'width':'100%' ,'height':'28px', 'font-size':'smaller' }"
+                  [inputStyle]="{'width':'100%', 'height':'28px'}"
+                  [(ngModel)]="owner.ownerName"
+                  (ngModelChange)="getStatementOwner(owner.ownerName, i)"
+                  [suggestions]="results"
+                  [field]="'username'"
+                  (completeMethod)="search($event)">
+                </p-autoComplete> -->
+                <div class="input-group">
+                  <select
+                    (change)="getStatementOwner($event, i)"
+                    class="option-items form-control"
+                    id="cars"
+                    name="cars"
+                  >
+                    <option value="select">Select Owner</option>
+                    <option
+                      [selected]="owner ? owner.id == user.id : false"
+                      *ngFor="let user of users"
+                      [value]="user.id"
+                    >
+                      {{ user.username }}
+                    </option>
+                  </select>
+                </div>
+                <!-- <div class="input-group ">
+                  <select (change)="getStatementOwner($event, i)" class="form-control">
+                    <option>Select User</option>
+                    <option [selected]="owner.id == user.id" *ngFor="let user of users" [value]="user.id">
+                      {user.username}</option>
+                  </select>
+                </div> -->
+
+                <!-- <p-autoComplete
+                [style]="{'width':'100%'}"
+                [inputStyle]="{'width':'100%'}"
+                [(ngModel)]="text"
+                [suggestions]="results"
+                (completeMethod)="search($event)">
+              </p-autoComplete> -->
+
+                <!-- position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0.7; -->
+                <!-- <p-autoComplete
+                [(ngModel)]="text"
+                [suggestions]="results"
+                (completeMethod)="search($event)"
+                [style]="{'width':'100%', 'height':'28px', 'margin-bottom': '6px'}"
+                [inputStyle]="{'width':'100%' ,'height':'28px'}" >
+               </p-autoComplete> -->
+
+                <!-- <div class="ng-autocomplete">
+                 <ng-autocomplete
+                   [data]="data"
+                   [searchKeyword]="keyword"
+                   placeholder="Select country"
+                   (selected)='selectEvent($event)'
+                   (inputChanged)='onChangeSearch($event)'
+                   (inputFocused)='onFocused($event)'
+                   [itemTemplate]="itemTemplate"
+                   [notFoundTemplate]="notFoundTemplate">
+                 </ng-autocomplete>
+                 <ng-template #itemTemplate let-item>
+                 <a [innerHTML]="item.name"></a>
+                 </ng-template>
+                 <ng-template #notFoundTemplate let-notFound>
+                 <div [innerHTML]="notFound"></div>
+                 </ng-template>
+                 </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="card card-common-properties colapse-card px-2 shadow-sm mt-1"
+    *ngIf="collapseCard"
+  >
+    <div class="card-body">
+      <app-sticky-phases-list
+        [parentIndex]="phaseMasterIndex"
+        [wdInputs]="wdStatement?.data?.inputs"
+        (sendElementsData)="getElementsData($event)"
+        (sendPhaseTitle)="getPhaseTitle($event)"
+        (sendItemsArray)="getItemsArray($event)"
+        (sendInputs)="getInputs($event)"
+        [itemsArray]="this.itemslist"
+        [lockstatus]="lockstatus"
+      >
+      </app-sticky-phases-list>
+      <div class="card full-card card-common-properties mt-1">
+        <div class="row g-0">
+          <div class="col-md-6">
+            <div class="card main-card card-common-properties contianer-bg">
+              <div class="card-body pt-1">
+                <div class="row heading">
+                  <div class="col-8 til head">
+                    <label class="label">Outcome </label>
+                  </div>
+                  <div class="col-4 buttons head firstDiv-buttons">
+                    <div class="flex-container">
+                      <div
+                        class=""
+                        (click)="startService('OutCome')"
+                        *ngIf="showMicForPlanOutCome"
+                      >
+                        <i
+                          class="fa fa-microphone microphone-ico"
+                          [ngStyle]="{
+                            color:
+                              voiceserviceForOutCome == true ? 'red' : 'blue'
+                          }"
+                        ></i>
+                      </div>
+                      <div class="flex-item-right">
+                        <img
+                          src="../../../../../assets/images/WorkSystem/add.png"
+                          class="imag-icon"
+                          (click)="addFiledForOutCome()"
+                        />
+                      </div>
+                      <div class="flex-item-right">
+                        <img
+                          src="../../../../../assets/images/WorkSystem/minus.png"
+                          class="imag-icon"
+                          (click)="removeFieldForOutCome()"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  cdkDropList
+                  class="example-list"
+                  (cdkDropListDropped)="dropOutComeFileds($event)"
+                >
+                  <div
+                    class="input-group mb-1 pl-1"
+                    *ngFor="let o of listOfPlanOutCome; let i = index"
+                    (click)="fetchIndexforOutComeFields(i)"
+                    cdkDrag
+                  >
+                    <span
+                      class="input-group-text mr-1"
+                      id="basic-addon1"
+                      [ngStyle]="{ 'background-color': o?.color }"
+                      (click)="addRatingForOutCome(i)"
+                    >
+                      {{ phaseMasterIndex }} . {{ i + 1 }}
+                    </span>
+
+                    <span *ngIf="o.showModal" class="tollbar-group">
+                      <app-mian-tool-bar
+                        (pushColorToMainParentSpan)="
+                          setColorValueForOutCome($event)
+                        "
+                        (pushNotesValue)="setNoteValueForOutcome($event)"
+                        (pushDecisionValue)="setDecisionValueForOutcome($event)"
+                        (pushOppertunity)="
+                          setOpportunityValueForOutcome($event)
+                        "
+                        (pushTaslValue)="setTaskValueForOutcome($event)"
+                        [showSnakeBarMenu]="showSnakeBar"
+                        [displayVal]="showModal"
+                        [color]="o.color"
+                      >
+                      </app-mian-tool-bar>
+                    </span>
+                    <input
+                      maxlength="150"
+                      type="text"
+                      class="form-control icon"
+                      placeholder=""
+                      aria-label="Username"
+                      aria-describedby="basic-addon1"
+                      (input)="saveOutcomeValue(o, i)"
+                      [(ngModel)]="o.value"
+                      [disabled]="true ? lockstatus == true : false"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card main-card card-common-properties contianer-bg">
+              <div class="card-body pt-1">
+                <div class="row heading">
+                  <div class="col-8 til head">
+                    <label class="label">PDCA </label>
+                  </div>
+                  <div class="col-4 buttons head">
+                    <div class="flex-container">
+                      <div
+                        class=""
+                        (click)="startService('pdca')"
+                        *ngIf="showMicForPDCA"
+                      >
+                        <i
+                          class="fa fa-microphone microphone-ico"
+                          [ngStyle]="{
+                            color: voiceserviceForPDCA == true ? 'red' : 'blue'
+                          }"
+                        ></i>
+                      </div>
+                      <div class="flex-item-right">
+                        <img
+                          src="../../../../../assets/images/WorkSystem/add.png"
+                          class="imag-icon"
+                          (click)="addFiledForPDCA()"
+                        />
+                      </div>
+                      <div class="flex-item-right">
+                        <img
+                          src="../../../../../assets/images/WorkSystem/minus.png"
+                          class="imag-icon"
+                          (click)="removeFieldForPDCA()"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  cdkDropList
+                  class="example-list"
+                  (cdkDropListDropped)="dropPDCA($event)"
+                >
+                  <div
+                    class="input-group mb-1 pl-1"
+                    *ngFor="let o of listOfPDCA; let i = index"
+                    (click)="fetchIndexForPDCA(i)"
+                    cdkDrag
+                  >
+                    <span
+                      class="input-group-text mr-1"
+                      id="basic-addon1"
+                      [ngStyle]="{ 'background-color': o?.color }"
+                      (click)="addRatingForPDCA(i)"
+                      >{{ phaseMasterIndex }}.{{ i + 1 }}</span
+                    >
+                    <span *ngIf="o.showModal" class="tollbar-group">
+                      <app-mian-tool-bar
+                        (pushColorToMainParentSpan)="
+                          setColorValueForPDCA($event)
+                        "
+                        (pushNotesValue)="setNoteValueForPDCA($event)"
+                        (pushDecisionValue)="setDecisionValueForPDCA($event)"
+                        (pushOppertunity)="setOpportunityValueForPDCA($event)"
+                        (pushTaslValue)="setTaskValueForPDCA($event)"
+                        [showSnakeBarMenu]="showSnakeBar"
+                        [displayVal]="showModal"
+                        [color]="o.color"
+                      >
+                      </app-mian-tool-bar>
+                    </span>
+                    <input
+                      maxlength="250"
+                      type="text"
+                      class="form-control icon"
+                      placeholder=""
+                      aria-label="Username"
+                      aria-describedby="basic-addon1"
+                      (input)="saveValueForPDCA(o, i)"
+                      [(ngModel)]="o.value"
+                      [disabled]="true ? lockstatus == true : false"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="div" *ngIf="showRatingModel">
+  <app-add-rating
+    [isdisplayRatingModal]="showRatingModel"
+    (onaddRating)="selectedColor($event)"
+    (onCancel)="cancelMode($event)"
+  ></app-add-rating>
+</div>

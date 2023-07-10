@@ -1,0 +1,31 @@
+.top-section{
+    height: 29px;
+  }
+
+  .row-custom{
+      height: 10px;
+  }
+  .create-levels-container{
+      padding-bottom: 20px;
+      background-color:#9932b1;
+  }
+  .inner-container{
+    padding: 20px;
+    height: 20rem;
+    background-color: white;
+  }
+  .container-label h5 {
+    padding-left: 2rem;
+    padding-top: 1rem;
+    color: white;
+  }
+  .card-body .row .col-1 {
+    color: #9932b1;
+  }
+  .custom-card{
+    border-radius: 5px;
+
+  }
+  .custom-card .card-body{
+    background-color: #fafafa;
+  }
